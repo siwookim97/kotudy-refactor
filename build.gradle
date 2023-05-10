@@ -34,6 +34,8 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok'
+    // compile 수행 시 annotiation에 대한 스캔 및 롬복 관련 설정
+    annotationProcessor 'org.projectlombok:lombok'
 
     //Querydsl 추가
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}" // querydsl 라이브러리
