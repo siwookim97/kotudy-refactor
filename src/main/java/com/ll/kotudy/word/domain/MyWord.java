@@ -4,9 +4,12 @@ import com.ll.kotudy.util.baseEntity.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +26,16 @@ public class MyWord extends BaseEntity {
 
     @ColumnDefault("0")
     private long count;
+
+    @OneToMany(mappedBy = "myWord")
+    private List<MemberMyWord> membmerMyWords = new ArrayList<>();
+
+    public void addMemberMyWord(MemberMyWord memberMyWord) {
+        this.getMembmerMyWords().add(memberMyWord);
+        if (memberMyWord.getMyWord() != null) {
+            memberMyWord.setMyWord(this);
+        }
+    }
 
     public MyWord(String name, String morpheme, String mean) {
         this.name = name;
