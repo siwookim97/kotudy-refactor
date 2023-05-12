@@ -28,6 +28,9 @@ class MyWordTest {
                 "사람을 제외한 길짐승, 날짐승, 물짐승 따위를 통틀어 이르는 말.");
         em.persist(wordA);
         em.persist(wordB);
+
+        em.flush();
+        em.clear();
     }
 
     @Test
