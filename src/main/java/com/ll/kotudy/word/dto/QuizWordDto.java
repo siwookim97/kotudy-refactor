@@ -1,4 +1,4 @@
-package com.ll.kotudy.word.service.dto;
+package com.ll.kotudy.word.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
