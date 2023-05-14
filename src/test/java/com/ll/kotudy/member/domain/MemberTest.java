@@ -29,8 +29,8 @@ class MemberTest {
 
     @BeforeEach
     void init() {
-        Member member_A = new Member("SUE1234", "김시우", "1234", "1q2w3e4r");
-        Member member_B = new Member("Min4321", "김민재", "4321", "4r3e2w1q");
+        Member member_A = new Member("김시우", "1234");
+        Member member_B = new Member("김민재", "4321");
         memberRepository.save(member_A);
         memberRepository.save(member_B);
 
@@ -71,8 +71,8 @@ class MemberTest {
     @Rollback(value = false)
     @DisplayName("member 테이블에서 내 단어장 목록 띄워주는 쿼리")
     void findFirstByNameAndPassword() {
-        Member findMember_1 = memberRepository.findFirstByNameAndPassword("SUE1234", "1234").orElse(null);
-        Member findMember_2 = memberRepository.findFirstByNameAndPassword("Min4321", "4321").orElse(null);
+        Member findMember_1 = memberRepository.findFirstByUsernameAndPassword("김시우", "1234").orElse(null);
+        Member findMember_2 = memberRepository.findFirstByUsernameAndPassword("김민재", "4321").orElse(null);
 
         assertThat(findMember_1.getMemberMyWords().size()).isEqualTo(3);
         assertThat(findMember_2.getMemberMyWords().size()).isEqualTo(2);

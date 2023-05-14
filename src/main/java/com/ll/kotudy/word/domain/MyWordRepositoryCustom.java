@@ -1,6 +1,6 @@
 package com.ll.kotudy.word.domain;
 
-import com.ll.kotudy.word.service.dto.QuizWordDto;
+import com.ll.kotudy.word.dto.QuizWordDto;
 
 import java.util.List;
 

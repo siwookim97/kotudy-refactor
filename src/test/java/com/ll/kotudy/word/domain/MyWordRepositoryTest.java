@@ -1,6 +1,6 @@
 package com.ll.kotudy.word.domain;
 
-import com.ll.kotudy.word.service.dto.QuizWordDto;
+import com.ll.kotudy.word.dto.QuizWordDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
