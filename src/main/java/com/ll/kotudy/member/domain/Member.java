@@ -19,10 +19,11 @@ public class Member extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
     private String username;
     private String password;
-    private String image;
+
+    @Enumerated(EnumType.STRING)
+    private MemberRole role; // ROLE_ADMIN, ROLE_USER, ROLE_GUEST
 
     @OneToMany(mappedBy = "member")
     private List<MemberMyWord> memberMyWords = new ArrayList<>();
@@ -34,10 +35,9 @@ public class Member extends BaseEntity {
         }
     }
 
-    public Member(String name, String username, String password, String image) {
-        this.name = name;
+    public Member(String username, String password) {
         this.username = username;
         this.password = password;
-        this.image = image;
+        this.role = MemberRole.ROLE_USER;
     }
 }
