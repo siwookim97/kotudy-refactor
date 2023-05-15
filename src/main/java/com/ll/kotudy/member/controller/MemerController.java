@@ -1,6 +1,7 @@
 package com.ll.kotudy.member.controller;
 
 import com.ll.kotudy.member.dto.reqeust.MemberJoinRequest;
+import com.ll.kotudy.member.dto.reqeust.MemberLoginRequest;
 import com.ll.kotudy.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,5 +19,12 @@ public class MemerController {
         memberService.join(request.getUsername(), request.getPassword());
 
         return ResponseEntity.ok().body("회원가입이 성공 했습니다.");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody MemberLoginRequest request) {
+        String token = memberService.login(request.getUsername(), request.getPassword());
+
+        return ResponseEntity.ok().body(token);
     }
 }

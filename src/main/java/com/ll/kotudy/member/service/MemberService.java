@@ -26,4 +26,18 @@ public class MemberService {
 
         return "SUCCESS!!!";
     }
+
+    public String login(String username, String password) {
+        // username 없음
+        Member selectedMember = memberRepository.findByUsername(username)
+                .orElseThrow(() -> new AppException(ErrorCode.USERNAME_NOT_FOUND, username + "이 없습니다."));
+
+        // password 틀림
+        if (!encoder.matches(selectedMember.getPassword(), password)) {
+            throw new AppException(ErrorCode.INVALID_PASSWORD, "패스워드를 잘못 입력했습니다.");
+        }
+
+        // 앞에서 Exception 안났으면 토큰 발행
+        return "token 리턴";
+    }
 }
