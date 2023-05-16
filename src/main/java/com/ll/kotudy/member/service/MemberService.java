@@ -4,6 +4,7 @@ import com.ll.kotudy.member.domain.Member;
 import com.ll.kotudy.member.domain.MemberRepository;
 import com.ll.kotudy.member.exception.AppException;
 import com.ll.kotudy.member.exception.ErrorCode;
+import com.ll.kotudy.config.auth.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,9 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
-    public String join(String username, String password) {
+    private final JwtTokenProvider jwtTokenProvider;
 
+    public String join(String username, String password) {
         // username 중복 체크
         memberRepository.findByUsername(username)
                 .ifPresent(user -> {
@@ -33,11 +35,13 @@ public class MemberService {
                 .orElseThrow(() -> new AppException(ErrorCode.USERNAME_NOT_FOUND, username + "이 없습니다."));
 
         // password 틀림
-        if (!encoder.matches(selectedMember.getPassword(), password)) {
+        if (!encoder.matches(password, selectedMember.getPassword())) {
             throw new AppException(ErrorCode.INVALID_PASSWORD, "패스워드를 잘못 입력했습니다.");
         }
 
         // 앞에서 Exception 안났으면 토큰 발행
-        return "token 리턴";
+        String token = jwtTokenProvider.createToken(selectedMember.getUsername());
+
+        return token;
     }
 }

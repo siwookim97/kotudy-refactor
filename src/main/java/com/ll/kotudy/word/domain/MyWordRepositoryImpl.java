@@ -1,9 +1,8 @@
 package com.ll.kotudy.word.domain;
 
-import com.ll.kotudy.word.service.dto.QuizWordDto;
+import com.ll.kotudy.word.dto.QuizWordDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.Expressions;
-import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
