@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class AuthenticationConfig {
 
     private final MemberService memberService;
+    private final JwtProvider jwtProvider;
 
     @Value("${jwt.token.secretKey}")
     private String secretKey;
@@ -34,7 +35,7 @@ public class AuthenticationConfig {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //jwt에 사용
                 .and()
-                .addFilterBefore(new JwtFilter(memberService, secretKey), UsernamePasswordAuthenticationFilter.class) // UsernamePasswordA.. 전에 JwtFilter 적용
+                .addFilterBefore(new JwtFilter(memberService, secretKey, jwtProvider), UsernamePasswordAuthenticationFilter.class) // UsernamePasswordA.. 전에 JwtFilter 적용
                 .build();
     }
 }

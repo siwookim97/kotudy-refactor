@@ -15,7 +15,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
-    private final JwtProvider jwtTokenProvider;
+    private final JwtProvider jwtProvider;
 
     public String join(String username, String password) {
         // username 중복 체크
@@ -40,7 +40,7 @@ public class MemberService {
         }
 
         // 앞에서 Exception 안났으면 토큰 발행
-        String token = jwtTokenProvider.createToken(selectedMember.getUsername());
+        String token = jwtProvider.createToken(selectedMember.getUsername());
 
         return token;
     }
