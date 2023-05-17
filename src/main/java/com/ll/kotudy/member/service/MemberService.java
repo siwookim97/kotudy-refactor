@@ -2,6 +2,8 @@ package com.ll.kotudy.member.service;
 
 import com.ll.kotudy.member.domain.Member;
 import com.ll.kotudy.member.domain.MemberRepository;
+import com.ll.kotudy.member.dto.response.JoinResponse;
+import com.ll.kotudy.member.dto.response.LoginResponse;
 import com.ll.kotudy.member.exception.AppException;
 import com.ll.kotudy.member.exception.ErrorCode;
 import com.ll.kotudy.config.auth.JwtProvider;
@@ -17,7 +19,7 @@ public class MemberService {
     private final BCryptPasswordEncoder encoder;
     private final JwtProvider jwtProvider;
 
-    public String join(String username, String password) {
+    public JoinResponse join(String username, String password) {
         // username 중복 체크
         memberRepository.findByUsername(username)
                 .ifPresent(user -> {
@@ -26,10 +28,10 @@ public class MemberService {
         Member createdMember = new Member(username, encoder.encode(password));
         memberRepository.save(createdMember);
 
-        return "SUCCESS!!!";
+        return new JoinResponse("회원 가입이 완료되었습니다.", createdMember.getId(), createdMember.getUsername());
     }
 
-    public String login(String username, String password) {
+    public LoginResponse login(String username, String password) {
         // username 없음
         Member selectedMember = memberRepository.findByUsername(username)
                 .orElseThrow(() -> new AppException(ErrorCode.USERNAME_NOT_FOUND, username + "이 없습니다."));
@@ -40,8 +42,6 @@ public class MemberService {
         }
 
         // 앞에서 Exception 안났으면 토큰 발행
-        String token = jwtProvider.createToken(selectedMember.getUsername());
-
-        return token;
+        return new LoginResponse("로그인이 완료되었습니다.", jwtProvider.createToken(selectedMember.getUsername()));
     }
 }

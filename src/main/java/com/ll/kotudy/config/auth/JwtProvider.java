@@ -25,7 +25,7 @@ public class JwtProvider {
 
     public String createToken(String username) {
         Claims claims = Jwts.claims();
-        claims.put("userName", username);
+        claims.put("username", username);
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
@@ -45,5 +45,15 @@ public class JwtProvider {
                 .getBody()
                 .getExpiration()
                 .before(new Date());
+    }
+
+    public String getUsername(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .get("username", String.class);
+
     }
 }

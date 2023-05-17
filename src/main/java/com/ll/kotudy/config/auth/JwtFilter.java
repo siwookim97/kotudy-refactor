@@ -55,7 +55,8 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        String username = "";
+        String username = jwtProvider.getUsername(token);
+        log.info("username : {}", username);
 
         // 권한 부여
         UsernamePasswordAuthenticationToken authenticationToken =

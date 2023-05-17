@@ -29,7 +29,7 @@ public class AuthenticationConfig {
                 .csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers("/api/v1/users/join", "/api/v1/users/login").permitAll()
+                .antMatchers("/api/v1/member/join", "/api/v1/member/login").permitAll()
                 .antMatchers("/api/v1/myword").authenticated()
                 .and()
                 .sessionManagement()
