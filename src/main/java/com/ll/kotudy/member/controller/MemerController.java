@@ -18,7 +18,7 @@ public class MemerController {
     public ResponseEntity<String> join(@RequestBody MemberJoinRequest request) {
         memberService.join(request.getUsername(), request.getPassword());
 
-        return ResponseEntity.ok().body("회원가입이 성공 했습니다.");
+        return ResponseEntity.ok().body("회원가입이 성공했습니다.");
     }
 
     @PostMapping("/login")

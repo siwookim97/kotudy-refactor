@@ -12,23 +12,25 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
-public class JwtTokenProvider {
+public class JwtProvider {
 
     private final SecretKey secretKey;
     private final long validityInMilliseconds;
 
-    public JwtTokenProvider(@Value("${jwt.token.secretKey}") final String secretKey,
-                            @Value("${jwt.token.expire-length}") final long validityInMilliseconds) {
+    public JwtProvider(@Value("${jwt.token.secretKey}") final String secretKey,
+                       @Value("${jwt.token.expire-length}") final long validityInMilliseconds) {
         this.secretKey = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
         this.validityInMilliseconds = validityInMilliseconds;
     }
 
-    public String createToken(String payload) {
+    public String createToken(String username) {
+        Claims claims = Jwts.claims();
+        claims.put("userName", username);
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()
-                .setSubject(payload)
+                .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(validity)
                 .signWith(secretKey, SignatureAlgorithm.HS256)

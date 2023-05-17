@@ -4,7 +4,7 @@ import com.ll.kotudy.member.domain.Member;
 import com.ll.kotudy.member.domain.MemberRepository;
 import com.ll.kotudy.member.exception.AppException;
 import com.ll.kotudy.member.exception.ErrorCode;
-import com.ll.kotudy.config.auth.JwtTokenProvider;
+import com.ll.kotudy.config.auth.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtProvider jwtTokenProvider;
 
     public String join(String username, String password) {
         // username 중복 체크
