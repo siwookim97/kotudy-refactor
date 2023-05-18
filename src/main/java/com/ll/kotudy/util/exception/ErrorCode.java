@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @Getter
 public enum ErrorCode {
-    USERNAME_DUPLICATED(HttpStatus.CONFLICT, ""),
-    USERNAME_BAD_REQUEST(HttpStatus.BAD_REQUEST, ""),
-    INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, ""),
-    PASSWORD_BAD_REQUEST(HttpStatus.BAD_REQUEST, "");
+    USERNAME_DUPLICATED(409, HttpStatus.CONFLICT),
+    BODY_BAD_REQUEST(400, HttpStatus.BAD_REQUEST),
+    INVALID_PASSWORD(401, HttpStatus.UNAUTHORIZED),
+    RUNTIME_EXCEPTION(500, HttpStatus.INTERNAL_SERVER_ERROR);
 
+    private int code;
     private HttpStatus httpStatus;
-    private String message;
 }

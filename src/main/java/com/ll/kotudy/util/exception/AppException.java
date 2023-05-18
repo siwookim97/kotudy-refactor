@@ -1,4 +1,4 @@
-package com.ll.kotudy.member.exception;
+package com.ll.kotudy.util.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +8,6 @@ import lombok.Getter;
 public class AppException extends RuntimeException{
 
     private ErrorCode errorCode;
-    private String message;
+    private String msg;
 
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/member")
@@ -20,7 +22,7 @@ public class MemberAuthController {
     private final MemberService memberService;
 
     @PostMapping("/join")
-    public ResponseEntity<JoinResponse> join(@RequestBody MemberJoinRequest request) {
+    public ResponseEntity<JoinResponse> join(@RequestBody @Valid MemberJoinRequest request) {
         JoinResponse response = memberService.join(request.getUsername(), request.getPassword());
 
         // 추 후 ResponseEntity.created(URI).body(response)로 변경예정
@@ -28,7 +30,7 @@ public class MemberAuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody MemberLoginRequest request) {
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid MemberLoginRequest request) {
         LoginResponse response = memberService.login(request.getUsername(), request.getPassword());
 
         return ResponseEntity.ok(response);

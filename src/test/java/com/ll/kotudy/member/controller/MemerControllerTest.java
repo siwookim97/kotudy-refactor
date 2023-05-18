@@ -3,8 +3,9 @@ package com.ll.kotudy.member.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ll.kotudy.member.dto.reqeust.MemberJoinRequest;
 import com.ll.kotudy.member.dto.reqeust.MemberLoginRequest;
-import com.ll.kotudy.member.exception.AppException;
-import com.ll.kotudy.member.exception.ErrorCode;
+import com.ll.kotudy.member.dto.response.LoginResponse;
+import com.ll.kotudy.util.exception.AppException;
+import com.ll.kotudy.util.exception.ErrorCode;
 import com.ll.kotudy.member.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -77,7 +78,7 @@ class MemerControllerTest {
         String password = "1234";
 
         when(memberService.login(any(), any()))
-                .thenReturn("token");
+                .thenReturn(new LoginResponse("honggildong", "accessToken"));
 
         mockMvc.perform(post("/api/v1/users/login")
                         .with(csrf())
@@ -95,7 +96,7 @@ class MemerControllerTest {
         String password = "1234";
 
         when(memberService.login(any(), any()))
-                .thenThrow(new AppException(ErrorCode.USERNAME_NOT_FOUND, ""));
+                .thenThrow(new AppException(ErrorCode.USERNAME_BAD_REQUEST, ""));
 
         mockMvc.perform(post("/api/v1/users/login")
                         .with(csrf())
