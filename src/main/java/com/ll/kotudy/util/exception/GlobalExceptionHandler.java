@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> appExceptionHandler(AppException e) {
         log.info(LOG_FORMAT, e.getClass().getSimpleName(),
                 e.getErrorCode().getCode(),
-                INTERNAL_SERVER_ERROR_MESSAGE);
+                e.getMessage());
 
         return ResponseEntity.status(e.getErrorCode().getHttpStatus())
                 .body(ErrorResponse.occurred(e));
