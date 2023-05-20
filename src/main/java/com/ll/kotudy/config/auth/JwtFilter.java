@@ -39,26 +39,48 @@ public class JwtFilter extends OncePerRequestFilter {
         final String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
         log.info("authorization : {}", authorization);
 
-        if (authorization == null || !authorization.startsWith("Bearer ")) {
-            log.info("authorization 이 없거나 잘못 보냈습니다.");
-            filterChain.doFilter(request, response);
-            return;
-        }
+        if (isAuthorizationNotExist(request, response, filterChain, authorization)) return;
 
         // Token 꺼내기
         String token = authorization.split(" ")[1];
 
         // Token 만료
-        if (jwtProvider.isExpired(token)) {
-            log.error("Token이 만료 되었습니다.");
-            filterChain.doFilter(request, response);
-            return;
-        }
+        if (isTokenExpired(request, response, filterChain, token)) return;
 
         String username = jwtProvider.getUsername(token);
         log.info("username : {}", username);
 
         // 권한 부여
+        authorize(request, response, filterChain, username);
+    }
+
+    private boolean isAuthorizationNotExist(HttpServletRequest request,
+                              HttpServletResponse response,
+                              FilterChain filterChain, String authorization) throws IOException, ServletException {
+        if (authorization == null || !authorization.startsWith("Bearer ")) {
+            log.info("authorization 이 없거나 잘못 보냈습니다.");
+            filterChain.doFilter(request, response);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isTokenExpired(HttpServletRequest request,
+                               HttpServletResponse response,
+                               FilterChain filterChain,
+                               String token) throws IOException, ServletException {
+        if (jwtProvider.isExpired(token)) {
+            log.error("Token이 만료 되었습니다.");
+            filterChain.doFilter(request, response);
+            return true;
+        }
+        return false;
+    }
+
+    private void authorize(HttpServletRequest request,
+                            HttpServletResponse response,
+                            FilterChain filterChain,
+                            String username) throws IOException, ServletException {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, null, List.of(new SimpleGrantedAuthority("USER")));
         // Detail 넣기
