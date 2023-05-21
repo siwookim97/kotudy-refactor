@@ -96,7 +96,7 @@ class MemerControllerTest {
         String password = "1234";
 
         when(memberService.login(any(), any()))
-                .thenThrow(new AppException(ErrorCode.USERNAME_BAD_REQUEST, ""));
+                .thenThrow(new AppException(ErrorCode.BODY_BAD_REQUEST, ""));
 
         mockMvc.perform(post("/api/v1/users/login")
                         .with(csrf())
