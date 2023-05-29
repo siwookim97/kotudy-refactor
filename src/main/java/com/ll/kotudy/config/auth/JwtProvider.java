@@ -1,6 +1,7 @@
 package com.ll.kotudy.config.auth;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -38,13 +39,13 @@ public class JwtProvider {
     }
 
     public boolean isExpired(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(secretKey)
-                .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getExpiration()
-                .before(new Date());
+            return Jwts.parserBuilder()
+                    .setSigningKey(secretKey)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getExpiration()
+                    .before(new Date());
     }
 
     public String getUsername(String token) {
@@ -54,6 +55,5 @@ public class JwtProvider {
                 .parseClaimsJws(token)
                 .getBody()
                 .get("username", String.class);
-
     }
 }

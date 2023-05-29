@@ -1,10 +1,12 @@
 package com.ll.kotudy.util.exception;
 
+import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -14,7 +16,9 @@ public class GlobalExceptionHandler {
 
     private static final String LOG_FORMAT = "Class : {}, Code : {}, Message : {}";
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "서버에서 에러가 발생했습니다.";
-    private static final String REQUEST_DATA_FORMAT_MESSAGE = "올바른 BODY 형식이 아닙니다.";
+    private static final String REQUEST_BODY_FORMAT_MESSAGE = "올바른 요청 Body 형식이 아닙니다.";
+    private static final String REQUEST_PARAM_ERROR_MESSAGE = "올바른 요청 Parameter 형식이 아닙니다.";
+    private static final String REQUEST_TOKEN_ERROR_MESSAGE = "올바른 토큰이 아닙니다.";
 
     @ExceptionHandler(AppException.class)
     public ResponseEntity<ErrorResponse> appExceptionHandler(AppException e) {
@@ -31,7 +35,7 @@ public class GlobalExceptionHandler {
         log.info(LOG_FORMAT,
                 e.getClass().getSimpleName(),
                 ErrorCode.RUNTIME_EXCEPTION.getCode(),
-                REQUEST_DATA_FORMAT_MESSAGE);
+                REQUEST_BODY_FORMAT_MESSAGE);
 
         return ResponseEntity.status(ErrorCode.RUNTIME_EXCEPTION.getHttpStatus())
                 .body(ErrorResponse.occurred(new AppException(
@@ -40,8 +44,23 @@ public class GlobalExceptionHandler {
                 )));
     }
 
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<ErrorResponse> MissingServletRequestParameterExceptionHandler(
+            MissingServletRequestParameterException e) {
+        log.info(LOG_FORMAT,
+                e.getClass().getSimpleName(),
+                ErrorCode.REQUEST_PARAM_BAD_REQUEST.getCode(),
+                e.getMessage());
+
+        return ResponseEntity.status(ErrorCode.REQUEST_PARAM_BAD_REQUEST.getHttpStatus())
+                .body(ErrorResponse.occurred(new AppException(
+                        ErrorCode.REQUEST_PARAM_BAD_REQUEST,
+                        REQUEST_PARAM_ERROR_MESSAGE
+                )));
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> methodArgumentExceptionHandler(MethodArgumentNotValidException e) {
+    public ResponseEntity<ErrorResponse> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
         log.info(LOG_FORMAT,
                 e.getClass().getSimpleName(),
                 ErrorCode.BODY_BAD_REQUEST.getCode(),

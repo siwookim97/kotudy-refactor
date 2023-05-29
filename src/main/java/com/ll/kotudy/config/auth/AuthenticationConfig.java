@@ -1,7 +1,6 @@
 package com.ll.kotudy.config.auth;
 
 import com.ll.kotudy.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,14 +12,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class AuthenticationConfig {
 
     private final MemberService memberService;
     private final JwtProvider jwtProvider;
+    private final JwtFilter jwtFilter;
 
     @Value("${jwt.token.secretKey}")
     private String secretKey;
+
+    public AuthenticationConfig(MemberService memberService, JwtProvider jwtProvider) {
+        this.memberService = memberService;
+        this.jwtProvider = jwtProvider;
+        this.jwtFilter = new JwtFilter(memberService, secretKey, jwtProvider);
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -35,7 +40,8 @@ public class AuthenticationConfig {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //jwt에 사용
                 .and()
-                .addFilterBefore(new JwtFilter(memberService, secretKey, jwtProvider), UsernamePasswordAuthenticationFilter.class) // UsernamePasswordA.. 전에 JwtFilter 적용
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class) // UsernamePasswordA.. 전에 JwtFilter 적용
+               // .addFilterBefore(new JwtExceptionFilter(), jwtFilter.getClass())
                 .build();
     }
 }
