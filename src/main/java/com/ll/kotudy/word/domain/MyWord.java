@@ -25,9 +25,9 @@ public class MyWord extends BaseEntity {
     private String mean;
 
     @ColumnDefault("0")
-    private long count;
+    private long count; // 추가 된 횟수
 
-    @OneToMany(mappedBy = "myWord")
+    @OneToMany(mappedBy = "myWord", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MemberMyWord> membmerMyWords = new ArrayList<>();
 
     public void addMemberMyWord(MemberMyWord memberMyWord) {

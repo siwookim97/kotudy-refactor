@@ -28,7 +28,7 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private MemberRole role; // ROLE_ADMIN, ROLE_USER, ROLE_GUEST
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MemberMyWord> memberMyWords = new ArrayList<>();
 
     public void addMemberMyWord(MemberMyWord memberMyWord) {
