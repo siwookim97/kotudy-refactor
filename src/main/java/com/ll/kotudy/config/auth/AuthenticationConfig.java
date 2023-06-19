@@ -24,7 +24,7 @@ public class AuthenticationConfig {
     public AuthenticationConfig(MemberService memberService, JwtProvider jwtProvider) {
         this.memberService = memberService;
         this.jwtProvider = jwtProvider;
-        this.jwtFilter = new JwtFilter(memberService, secretKey, jwtProvider);
+        this.jwtFilter = new JwtFilter(jwtProvider);
     }
 
     @Bean
