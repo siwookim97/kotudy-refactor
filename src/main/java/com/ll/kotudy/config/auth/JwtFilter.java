@@ -1,7 +1,6 @@
 package com.ll.kotudy.config.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ll.kotudy.member.service.MemberService;
 import com.ll.kotudy.util.exception.ErrorResponse;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;

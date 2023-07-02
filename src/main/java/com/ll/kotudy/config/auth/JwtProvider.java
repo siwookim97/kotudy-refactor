@@ -24,9 +24,10 @@ public class JwtProvider {
         this.validityInMilliseconds = validityInMilliseconds;
     }
 
-    public String createToken(String username) {
+    public String createToken(String username, Long id) {
         Claims claims = Jwts.claims();
         claims.put("username", username);
+        claims.put("id", id);
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
@@ -55,5 +56,14 @@ public class JwtProvider {
                 .parseClaimsJws(token)
                 .getBody()
                 .get("username", String.class);
+    }
+
+    public Long getId(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .get("id", Long.class);
     }
 }
