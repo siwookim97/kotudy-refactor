@@ -18,9 +18,10 @@ import java.security.NoSuchAlgorithmException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/search")
-public class SearchWordController {
+public class DictionaryOpenApiController {
 
     private final DictionaryOpenApiService dictionaryOpenApiService;
+
     @GetMapping("/word")
     public ResponseEntity<SearchedWordsResponse> search(
             @Valid @NotEmpty(message = "요청 단어는 공백이 불가합니다.") @RequestParam String q)
