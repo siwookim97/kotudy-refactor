@@ -24,8 +24,25 @@ public class MemberMyWord {
     @Setter
     private MyWord myWord;
 
+    @Builder
     public MemberMyWord(Member member, MyWord myWord) {
+        setUpMember(member);
+        setUpMyWord(myWord);
+    }
+
+    private void setUpMember(Member member) {
+        if (this.member != null) {
+            this.member.getMemberMyWords().remove(this);
+        }
         this.member = member;
+        member.getMemberMyWords().add(this);
+    }
+
+    private void setUpMyWord(MyWord myWord) {
+        if (this.myWord != null) {
+            this.myWord.getMemberMyWords().remove(this);
+        }
         this.myWord = myWord;
+        myWord.getMemberMyWords().add(this);
     }
 }
