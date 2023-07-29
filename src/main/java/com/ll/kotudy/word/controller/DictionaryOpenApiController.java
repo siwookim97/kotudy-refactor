@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/search")
+@RequestMapping("/api/v1/dictionary")
 public class DictionaryOpenApiController {
 
     private final DictionaryOpenApiService dictionaryOpenApiService;
