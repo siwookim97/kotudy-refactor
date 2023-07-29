@@ -10,11 +10,14 @@ import com.ll.kotudy.word.domain.MyWord;
 import com.ll.kotudy.word.domain.MyWordRepository;
 import com.ll.kotudy.word.dto.request.MyWordAddRequest;
 import com.ll.kotudy.word.dto.response.MyWordAddResponse;
+import com.ll.kotudy.word.dto.response.MyWordDeleteResponse;
+import com.ll.kotudy.word.dto.response.MyWordResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MyWordService {
 
@@ -28,10 +31,7 @@ public class MyWordService {
         MyWord findMyWord = getFindMyWord(request);
 
         if (isExists(loginId, findMyWord.getId())) {
-            return new MyWordAddResponse(findMyWord.getName() + "님의 단어 추가가 실패하였습니다.",
-                    findMyWord.getName(),
-                    findMyWord.getMorpheme(),
-                    findMyWord.getMean());
+            return createAddMethodReponseFail(findMyWord);
         }
 
         findMyWord.plusCount();
@@ -41,10 +41,7 @@ public class MyWordService {
                 .build();
         memberMyWordRepository.save(createdMemberMyWord);
 
-        return new MyWordAddResponse(findMyWord.getName() + "님의 단어 추가가 완료되었습니다.",
-                findMyWord.getName(),
-                findMyWord.getMorpheme(),
-                findMyWord.getMean());
+        return createAddMethodReponseScuccess(findMyWord);
     }
 
     private boolean isExists(Long loginId, Long myWordId) {
@@ -67,5 +64,71 @@ public class MyWordService {
                             .build();
                     return myWordRepository.save(newWord);
                 });
+    }
+
+    private MyWordAddResponse createAddMethodReponseFail(MyWord responseEntity) {
+        MyWordResponse item = new MyWordResponse(
+                responseEntity.getId(),
+                responseEntity.getName(),
+                responseEntity.getMorpheme(),
+                responseEntity.getMean()
+        );
+
+        return new MyWordAddResponse(responseEntity.getName() + "님의 단어 추가가 실패하였습니다.", item);
+    }
+
+    private MyWordAddResponse createAddMethodReponseScuccess(MyWord responseEntity) {
+        MyWordResponse item = new MyWordResponse(
+                responseEntity.getId(),
+                responseEntity.getName(),
+                responseEntity.getMorpheme(),
+                responseEntity.getMean()
+        );
+
+        return new MyWordAddResponse(responseEntity.getName() + "님의 단어 추가가 성공하였습니다.", item);
+    }
+
+    @Transactional
+    public MyWordDeleteResponse delete(Long myWordId, Long loginId) {
+        if (!isExists(loginId, myWordId)) {
+            return createDeleteMethodReponseFailByNotExist(myWordId);
+        }
+        
+        MyWord findMyWord = getFindMyWord(myWordId);
+        findMyWord.minusCount();
+        memberMyWordRepository.deleteByMemberIdAndMyWordId(loginId, myWordId);
+        deleteIfMyWordEqualToZero(findMyWord);
+        return createDeleteMethodReponseSuccess(findMyWord);
+    }
+
+    private MyWord getFindMyWord(Long myWordId) {
+        return myWordRepository.findById(myWordId)
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, myWordId + " 번호의 단어가 없습니다."));
+    }
+
+    private void deleteIfMyWordEqualToZero(MyWord findMyWord) {
+        if (findMyWord.getCount() == 0) {
+            myWordRepository.delete(findMyWord);
+        }
+    }
+
+    private MyWordDeleteResponse createDeleteMethodReponseFailByNotExist(Long myWordId) {
+        MyWordResponse item = new MyWordResponse(
+                myWordId, null, null, null
+        );
+
+        return new MyWordDeleteResponse(
+                myWordId + "번호의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)", item);
+    }
+
+    private MyWordDeleteResponse createDeleteMethodReponseSuccess(MyWord responseEntity) {
+        MyWordResponse item = new MyWordResponse(
+                responseEntity.getId(),
+                responseEntity.getName(),
+                responseEntity.getMorpheme(),
+                responseEntity.getMean()
+        );
+
+        return new MyWordDeleteResponse(responseEntity.getId() + "번호의 단어 삭제를 성공하였습니다.", item);
     }
 }

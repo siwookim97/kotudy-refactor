@@ -1,6 +1,7 @@
 package com.ll.kotudy.word.domain;
 
 import com.ll.kotudy.util.baseEntity.BaseEntity;
+import com.ll.kotudy.word.dto.response.MyWordResponse;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -43,5 +44,9 @@ public class MyWord extends BaseEntity {
 
     public void plusCount() {
         this.count++;
+    }
+
+    public void minusCount() {
+        this.count--;
     }
 }
