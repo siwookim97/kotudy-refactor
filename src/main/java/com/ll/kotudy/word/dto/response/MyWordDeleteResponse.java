@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class MyWordAddResponse {
+public class MyWordDeleteResponse {
 
     private String msg;
     private MyWordResponse data;
