@@ -26,8 +26,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -65,15 +64,15 @@ class MemberAuthControllerTest {
         mockMvc.perform(post("/api/v1/member/join")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(memberJoinRequest))
-        )
+                )
                 .andExpect(status().isOk())
                 .andExpect(content().string(response))
                 .andDo(document("Member-join",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestFields(
-                                fieldWithPath("username").description("Username for member").type(JsonFieldType.STRING),
-                                fieldWithPath("password").description("Password for member").type(JsonFieldType.STRING)
+                                fieldWithPath("username").description("Username for member join").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("Password for member join").type(JsonFieldType.STRING)
                         ),
                         responseFields(
                                 fieldWithPath("msg").description("Message of request").type(JsonFieldType.STRING),
@@ -95,101 +94,24 @@ class MemberAuthControllerTest {
                 .andDo(print());
 
         MemberLoginRequest memberLoginRequest = new MemberLoginRequest("홍길동", "qwer1234");
-        String response = "{\"msg\":\"회원 가입이 완료되었습니다.\",\"id\":1,\"username\":\"홍길동\"}";
 
         mockMvc.perform(post("/api/v1/member/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(memberLoginRequest))
                 )
                 .andExpect(status().isOk())
-              //  .andExpect(content().json(response))
+                .andExpect(jsonPath("$.msg").value(("로그인이 완료되었습니다.")))
+                .andDo(document("Member-login",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestFields(
+                                fieldWithPath("username").description("Username for member login").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("Password for member login").type(JsonFieldType.STRING)
+                        ),
+                        responseFields(
+                                fieldWithPath("msg").description("Message of request").type(JsonFieldType.STRING),
+                                fieldWithPath("accessToken").description("AccessToken of member").type(JsonFieldType.STRING)
+                        )))
                 .andDo(print());
     }
-
-//    @Test
-//    @DisplayName("회원가입 성공")
-//    @WithMockUser
-//    void join() throws Exception {
-//        String username = "honggildong";
-//        String password = "1234";
-//
-//        mockMvc.perform(post("/api/v1/users/join")
-//                        .with(csrf())
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsBytes(new MemberJoinRequest(username, password))))
-//                .andDo(print())
-//                .andExpect(status().isOk());
-//    }
-//
-//    @Test
-//    @DisplayName("회원가입 실패 - USERNAME 중복")
-//    @WithMockUser
-//    void joinFail_username() throws Exception {
-//        String username = "honggildong";
-//        String password = "1234";
-//
-//        when(memberService.join(any(), any()))
-//                .thenThrow(new RuntimeException("해당 userId가 중복됩니다."));
-//
-//        mockMvc.perform(post("/api/v1/users/join")
-//                        .with(csrf())
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsBytes(new MemberJoinRequest(username, password))))
-//                .andDo(print())
-//                .andExpect(status().isConflict());
-//    }
-//
-//    @Test
-//    @DisplayName("로그인 성공")
-//    @WithMockUser
-//    void login_success() throws Exception {
-//        String username = "honggildong";
-//        String password = "1234";
-//
-//        when(memberService.login(any(), any()))
-//                .thenReturn(new LoginResponse("honggildong", "accessToken"));
-//
-//        mockMvc.perform(post("/api/v1/users/login")
-//                        .with(csrf())
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsBytes(new MemberLoginRequest(username, password))))
-//                .andDo(print())
-//                .andExpect(status().isOk());
-//    }
-//
-//    @Test
-//    @DisplayName("로그인 실패 - USERNAME 없음")
-//    @WithMockUser
-//    void login_fail_username() throws Exception {
-//        String username = "honggildong";
-//        String password = "1234";
-//
-//        when(memberService.login(any(), any()))
-//                .thenThrow(new AppException(ErrorCode.BODY_BAD_REQUEST, ""));
-//
-//        mockMvc.perform(post("/api/v1/users/login")
-//                        .with(csrf())
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsBytes(new MemberLoginRequest(username, password))))
-//                .andDo(print())
-//                .andExpect(status().isNotFound());
-//    }
-//
-//    @Test
-//    @DisplayName("로그인 실패 - PASSWORD 불일치")
-//    @WithMockUser
-//    void login_fail_password() throws Exception {
-//        String username = "honggildong";
-//        String password = "1234";
-//
-//        when(memberService.login(any(), any()))
-//                .thenThrow(new AppException(ErrorCode.INVALID_PASSWORD, ""));
-//
-//        mockMvc.perform(post("/api/v1/users/login")
-//                        .with(csrf())
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsBytes(new MemberLoginRequest(username, password))))
-//                .andDo(print())
-//                .andExpect(status().isUnauthorized());
-//    }
 }

@@ -1,0 +1,16 @@
+= Kotudy Refactoring Project Rest Docs
+:doctype: book
+:icons: front
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 1
+
+[[Member-join]]
+== Member-join
+
+operation::Member-join[]
+
+[[Member-login]]
+== Member-login
+
+operation::Member-login[]
