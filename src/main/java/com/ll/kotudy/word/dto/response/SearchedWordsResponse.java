@@ -15,5 +15,5 @@ import java.util.List;
 public class SearchedWordsResponse {
 
     private String msg;
-    private List<SearchedWordDto> result;
+    private List<SearchedWordDto> data;
 }
