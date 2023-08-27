@@ -25,6 +25,8 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -53,10 +55,10 @@ public class DictionaryOpenApiService {
         requestUrl.append("key=");
         requestUrl.append(key);
         requestUrl.append("&q=");
-        requestUrl.append(replacedQ); // TODO: 없으면 예외 처리 RequestDTO 에서 처리 NOT EMPTY로
+        // TODO: replacedQ 없으면 예외 처리 RequestDTO 에서 처리 NOT EMPTY로
 
         sslTrustAllCerts();
-        String resultWord = trimXmlString(requestUrl.toString());
+        String resultWord = trimXmlString(requestUrl.toString(), replacedQ);
 
         if (resultWord.contains(noResult)) {
             String msg = "표준 한국어 대사전 Open API를 통해 단어 " + replacedQ + "의 검색 결과가 없습니다.";
@@ -119,7 +121,7 @@ public class DictionaryOpenApiService {
         }
 
         searchedWordsResponse.setMsg("표준 한국어 대사전 Open API를 통해 단어 " + replacedQ + "의 검색결과는 다음과 같습니다.");
-        searchedWordsResponse.setResult(searchedWordDtoList);
+        searchedWordsResponse.setData(searchedWordDtoList);
         return searchedWordsResponse;
     }
 
@@ -142,12 +144,13 @@ public class DictionaryOpenApiService {
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
     }
 
-    private String trimXmlString(String urlString) throws IOException {
+    private String trimXmlString(String urlString, String replacedQ) throws IOException {
         StringBuilder sb = new StringBuilder();
+        String finalQ = URLEncoder.encode(replacedQ, StandardCharsets.UTF_8);
 
-        URL url = new URL(urlString);
+        URL url = new URL(urlString + finalQ);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
         String lineWord;
         while ((lineWord = reader.readLine()) != null) {
             sb.append(lineWord.trim());

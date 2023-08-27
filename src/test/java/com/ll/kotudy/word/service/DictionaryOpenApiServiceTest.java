@@ -18,14 +18,14 @@ class DictionaryOpenApiServiceTest {
     @DisplayName("표준한국어대사전 OpenAPI 테스트 - 검색 결과 없음, 실패1")
     void searchWordOpenApiFailTest() throws Exception {
         // given
-        String q = "noreult";
+        String q = "뚫훓";
 
         // when
         SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
 
         // then
         assertThat(response.getMsg()).endsWith("검색 결과가 없습니다.");
-        assertThat(response.getResult().size()).isEqualTo(0);
+        assertThat(response.getData().size()).isEqualTo(0);
     }
 
     @Test
@@ -36,23 +36,22 @@ class DictionaryOpenApiServiceTest {
 
         // when
         SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
-
         // then
         assertThat(response.getMsg()).endsWith("검색 결과가 없습니다.");
-        assertThat(response.getResult().size()).isEqualTo(0);
+        assertThat(response.getData().size()).isEqualTo(0);
     }
 
     @Test
     @DisplayName("표준한국어대사전 OpenAPI 테스트 - 성공")
     void searchWordOpenApiSuccessTest() throws Exception {
         // given
-        String q = "하늘";
+        String q = "사랑";
 
         // when
         SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
-
+        System.out.println("Data : " + response.getData());
         // then
         assertThat(response.getMsg()).endsWith("의 검색결과는 다음과 같습니다.");
-        assertThat(response.getResult().size()).isNotEqualTo(0);
+        assertThat(response.getData().size()).isNotEqualTo(0);
     }
 }
