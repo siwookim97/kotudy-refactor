@@ -14,3 +14,12 @@ operation::Member-join[]
 == Member-login
 
 operation::Member-login[]
+
+[[Dictionary-word]]
+== Dictionary-word
+
+operation::Dictionary-word[]
+
+[[MyWord-add]]
+== MyWord-add
+operation::MyWord-add[]
