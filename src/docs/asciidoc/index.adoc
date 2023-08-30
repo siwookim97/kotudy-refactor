@@ -22,4 +22,10 @@ operation::Dictionary-word[]
 
 [[MyWord-add]]
 == MyWord-add
+
 operation::MyWord-add[]
+
+[[MyWord-delete]]
+== MyWord-delete
+
+operation::MyWord-delete[]
