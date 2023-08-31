@@ -18,7 +18,6 @@ public class QuizController {
     private final QuizService quizService;
     private final JwtProvider jwtProvider;
 
-    // TODO: 퀴즈 FORM 생성
     @GetMapping
     public ResponseEntity<QuizResponse> searchMyWord() {
         QuizResponse response = quizService.createForm();

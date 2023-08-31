@@ -6,7 +6,6 @@ import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
-@ToString
 public class QuizWordDto {
 
     private String name;
