@@ -5,6 +5,7 @@ import com.ll.kotudy.word.domain.MemberMyWord;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
+    @ColumnDefault("0")
+    private int score;
+
     @Enumerated(EnumType.STRING)
     private MemberRole role; // ROLE_ADMIN, ROLE_USER, ROLE_GUEST
 
@@ -42,5 +46,9 @@ public class Member extends BaseEntity {
         this.username = username;
         this.password = password;
         this.role = MemberRole.ROLE_USER;
+    }
+
+    public void plusScore(int quizScore) {
+        score += quizScore;
     }
 }
