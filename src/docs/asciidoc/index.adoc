@@ -29,3 +29,8 @@ operation::MyWord-add[]
 == MyWord-delete
 
 operation::MyWord-delete[]
+
+[[Quiz-create]]
+== Quiz-create
+
+operation::Quiz-craete[]
