@@ -3,7 +3,6 @@ package com.ll.kotudy.word.controller;
 import com.ll.kotudy.config.auth.JwtProvider;
 import com.ll.kotudy.member.dto.reqeust.TokenHeaderRequest;
 import com.ll.kotudy.word.dto.request.QuizResultRequest;
-import com.ll.kotudy.word.dto.response.MyWordSearchResponse;
 import com.ll.kotudy.word.dto.response.QuizResponse;
 import com.ll.kotudy.word.dto.response.QuizResultResponse;
 import com.ll.kotudy.word.service.QuizService;
@@ -29,8 +28,7 @@ public class QuizController {
         return ResponseEntity.ok(response);
     }
 
-    // TODO: 퀴즈결과 반환
-    @PostMapping
+    @PatchMapping
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<QuizResultResponse> result(
             @RequestHeader("Authorization") TokenHeaderRequest tokenHeaderRequest,
