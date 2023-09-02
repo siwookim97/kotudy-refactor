@@ -34,3 +34,8 @@ operation::MyWord-delete[]
 == Quiz-create
 
 operation::Quiz-craete[]
+
+[[Quiz-patch]]
+== Quiz-patch
+
+operation::Quiz-patch[]
