@@ -9,12 +9,17 @@ import com.ll.kotudy.word.domain.MemberMyWordRepository;
 import com.ll.kotudy.word.domain.MyWord;
 import com.ll.kotudy.word.domain.MyWordRepository;
 import com.ll.kotudy.word.dto.request.MyWordAddRequest;
+import com.ll.kotudy.word.dto.request.MyWordSearchRequest;
 import com.ll.kotudy.word.dto.response.MyWordAddResponse;
 import com.ll.kotudy.word.dto.response.MyWordDeleteResponse;
 import com.ll.kotudy.word.dto.response.MyWordResponse;
+import com.ll.kotudy.word.dto.response.MyWordSearchResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.awt.print.Pageable;
 
 @Service
 @Transactional(readOnly = true)
@@ -74,7 +79,7 @@ public class MyWordService {
                 responseEntity.getMean()
         );
 
-        return new MyWordAddResponse(responseEntity.getName() + "님의 단어 추가가 실패하였습니다.", item);
+        return new MyWordAddResponse(responseEntity.getName() + " 단어 추가가 실패하였습니다.(이미 단어장에 존재)", item);
     }
 
     private MyWordAddResponse createAddMethodReponseScuccess(MyWord responseEntity) {
@@ -85,7 +90,7 @@ public class MyWordService {
                 responseEntity.getMean()
         );
 
-        return new MyWordAddResponse(responseEntity.getName() + "님의 단어 추가가 성공하였습니다.", item);
+        return new MyWordAddResponse(responseEntity.getName() + " 단어 추가가 성공하였습니다.", item);
     }
 
     @Transactional
@@ -98,6 +103,7 @@ public class MyWordService {
         findMyWord.minusCount();
         memberMyWordRepository.deleteByMemberIdAndMyWordId(loginId, myWordId);
         deleteIfMyWordEqualToZero(findMyWord);
+
         return createDeleteMethodReponseSuccess(findMyWord);
     }
 
@@ -130,5 +136,11 @@ public class MyWordService {
         );
 
         return new MyWordDeleteResponse(responseEntity.getId() + "번호의 단어 삭제를 성공하였습니다.", item);
+    }
+
+    public MyWordSearchResponse searchByPagenation(MyWordSearchRequest request, Integer page, int count) {
+        Pageable pageRequest = (Pageable) PageRequest.of(page, count);
+
+        return null;
     }
 }
