@@ -77,11 +77,6 @@ class QuizControllerTest {
         myWordRepository.deleteAll();
     }
 
-    @BeforeEach
-    void setUpMyWord() {
-
-    }
-
     @Test
     public void quiz_create() throws Exception {
         // given
