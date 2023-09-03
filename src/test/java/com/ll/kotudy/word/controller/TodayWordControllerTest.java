@@ -1,11 +1,6 @@
 package com.ll.kotudy.word.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ll.kotudy.member.domain.MemberRepository;
 import com.ll.kotudy.member.service.MemberService;
-import com.ll.kotudy.word.domain.MyWordRepository;
-import com.ll.kotudy.word.domain.TodayWord;
-import com.ll.kotudy.word.dto.TodayWordDto;
 import com.ll.kotudy.word.dto.request.MyWordAddRequest;
 import com.ll.kotudy.word.service.MyWordService;
 import com.ll.kotudy.word.service.TodayWordService;
@@ -26,10 +21,6 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.ServletException;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -54,8 +45,6 @@ class TodayWordControllerTest {
 
     @Autowired
     private TodayWordService todayWordService;
-
-    final private ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setUpMockMvcForRestDocs(WebApplicationContext webApplicationContext,
