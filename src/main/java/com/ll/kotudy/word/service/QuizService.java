@@ -5,11 +5,13 @@ import com.ll.kotudy.member.domain.MemberRepository;
 import com.ll.kotudy.util.exception.AppException;
 import com.ll.kotudy.util.exception.ErrorCode;
 import com.ll.kotudy.word.domain.MyWordRepository;
+import com.ll.kotudy.word.dto.MemberRankingDto;
 import com.ll.kotudy.word.dto.QuizWordDto;
 import com.ll.kotudy.word.dto.QuizForm;
 import com.ll.kotudy.word.dto.request.QuizResultRequest;
 import com.ll.kotudy.word.dto.response.QuizResponse;
 import com.ll.kotudy.word.dto.response.QuizResultResponse;
+import com.ll.kotudy.word.dto.response.RankingResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -90,5 +92,23 @@ public class QuizService {
     
     private int getRankByMemberId(Long loginId) {
         return memberRepository.findRankByMemberId(loginId);
+    }
+
+    public RankingResponse getQuizRaking(Long loginId) {
+        Member findMember = getFindMember(loginId);
+        int rank = getRankByMemberId(loginId);
+        String username = findMember.getUsername();
+        int score = findMember.getScore();
+
+        List<MemberRankingDto> memberRankingDtoList = setMemberRankingDtoList();
+
+        return new RankingResponse("퀴즈 랭킹 결과입니다.", rank, username, score, memberRankingDtoList);
+    }
+
+    private List<MemberRankingDto> setMemberRankingDtoList() {
+        List<MemberRankingDto> memberRankingDtoList = memberRepository.findTop10MembersByScoreDesc();
+        memberRankingDtoList.forEach(dto -> dto.setRanking(memberRankingDtoList.indexOf(dto) + 1));
+
+        return memberRankingDtoList;
     }
 }
