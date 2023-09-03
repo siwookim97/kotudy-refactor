@@ -158,4 +158,51 @@ class QuizControllerTest {
                         )))
                 .andDo(print());
     }
+
+    @Test
+    @WithMockUser(username = "이길동", roles = {"USER"})
+    public void quizRanking_get() throws Exception {
+        // given
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("이길동", "qwer1234");
+        MemberLoginRequest memberLoginRequest = new MemberLoginRequest("이길동", "qwer1234");
+        QuizResultRequest quizResultRequest = new QuizResultRequest(5);
+        String response = "퀴즈 랭킹 결과입니다.";
+
+        // when
+        mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andReturn();
+
+        MvcResult mvcResultLogin = mockMvc.perform(post("/api/v1/member/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberLoginRequest))
+                )
+                .andReturn();
+
+        token = JsonPath.parse(mvcResultLogin.getResponse().getContentAsString()).read("$.accessToken");
+
+        // then
+        mockMvc.perform(get("/api/v1/quiz/ranking")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("QuizRanking-get",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        responseFields(
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("userRanking").description("로그인한 회원의 랭킹").type(JsonFieldType.NUMBER),
+                                fieldWithPath("username").description("로그인한 회원의 이름").type(JsonFieldType.STRING),
+                                fieldWithPath("userScore").description("로그인한 회원의 점수 ").type(JsonFieldType.NUMBER),
+                                fieldWithPath("topMemberRanking").description("퀴즈 점수 상위 랭커 10명의 정보 (같은 점수라면 가입 순으로 정렬)").type(JsonFieldType.ARRAY),
+                                fieldWithPath("topMemberRanking[].ranking").description("랭커의 순위").type(JsonFieldType.NUMBER),
+                                fieldWithPath("topMemberRanking[].username").description("랭커의 이름 ").type(JsonFieldType.STRING),
+                                fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER)
+                        )))
+                .andDo(print());
+    }
 }
