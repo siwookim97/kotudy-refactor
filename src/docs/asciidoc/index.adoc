@@ -44,3 +44,8 @@ operation::Quiz-patch[]
 == QuizRanking-get
 
 operation::QuizRanking-get[]
+
+[[TOdayWord-get]]
+== TodayWord-get
+
+operation::TodayWord-get[]
