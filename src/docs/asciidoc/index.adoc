@@ -39,3 +39,8 @@ operation::Quiz-craete[]
 == Quiz-patch
 
 operation::Quiz-patch[]
+
+[[QuizRanking-get]]
+== QuizRanking-get
+
+operation::QuizRanking-get[]
