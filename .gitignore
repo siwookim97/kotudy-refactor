@@ -38,3 +38,4 @@ out/
 
 ### Custom ###
 application-secret.yml
+application-redis.yml
