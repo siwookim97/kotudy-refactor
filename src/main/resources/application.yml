@@ -1,7 +1,9 @@
 spring:
   profiles:
     active: local
-    include: secret
+    include:
+      - secret
+      - redis
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/kotudy__refactor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
     username: kotudy
@@ -15,6 +17,13 @@ spring:
       hibernate:
         # show_sql: true
         format_sql: true
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
 
 logging.level:
   org.hibernate.SQL: debug
