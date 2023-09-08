@@ -490,7 +490,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_회원가입"><a class="link" href="#_회원가입">1.1. 회원가입</a></h3>
 <div class="sect3">
-<h4 id="_회원가입_http_request"><a class="link" href="#_회원가입_http_request">1.1.1. HTTP request</a></h4>
+<h4 id="_성공"><a class="link" href="#_성공">1.1.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_http_request"><a class="link" href="#_성공_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/join HTTP/1.1
@@ -505,8 +507,8 @@ Host: localhost:8080
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_회원가입_http_response"><a class="link" href="#_회원가입_http_response">1.1.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_http_response"><a class="link" href="#_성공_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -524,8 +526,8 @@ Content-Length: 99
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_회원가입_request_fields"><a class="link" href="#_회원가입_request_fields">1.1.3. Request fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_request_fields"><a class="link" href="#_성공_request_fields">Request fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -553,8 +555,8 @@ Content-Length: 99
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_회원가입_response_fields"><a class="link" href="#_회원가입_response_fields">1.1.4. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_response_fields"><a class="link" href="#_성공_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -588,10 +590,13 @@ Content-Length: 99
 </table>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_로그인"><a class="link" href="#_로그인">1.2. 로그인</a></h3>
 <div class="sect3">
-<h4 id="_로그인_http_request"><a class="link" href="#_로그인_http_request">1.2.1. HTTP request</a></h4>
+<h4 id="_성공_2"><a class="link" href="#_성공_2">1.2.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_2_http_request"><a class="link" href="#_성공_2_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/login HTTP/1.1
@@ -606,8 +611,8 @@ Host: localhost:8080
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_로그인_http_response"><a class="link" href="#_로그인_http_response">1.2.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_2_http_response"><a class="link" href="#_성공_2_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -619,13 +624,13 @@ Content-Length: 228
 
 {
   "msg" : "로그인이 완료되었습니다.",
-  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoyLCJpYXQiOjE2OTQxOTEyNDIsImV4cCI6MTY5NDE5MjI0Mn0.fDif-O5lWzqpUw-1LLAOa7OaKNSR_qxj1RRCz1uiXAg"
+  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoyLCJpYXQiOjE2OTQxOTcxNjcsImV4cCI6MTY5NDE5ODE2N30.9Przn1hl0EXk4vAFQM5fIWW6_wPdTUJ-UTeJqwUlWZM"
 }</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_로그인_request_fields"><a class="link" href="#_로그인_request_fields">1.2.3. Request fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_2_request_fields"><a class="link" href="#_성공_2_request_fields">Request fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -653,8 +658,8 @@ Content-Length: 228
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_로그인_response_fields"><a class="link" href="#_로그인_response_fields">1.2.4. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_2_response_fields"><a class="link" href="#_성공_2_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -685,13 +690,16 @@ Content-Length: 228
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_단어사전"><a class="link" href="#_단어사전">2. 단어사전</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_한국어대사전_기반_검색"><a class="link" href="#_한국어대사전_기반_검색">2.1. 한국어대사전 기반 검색</a></h3>
 <div class="sect3">
-<h4 id="_한국어대사전_기반_검색_http_request"><a class="link" href="#_한국어대사전_기반_검색_http_request">2.1.1. HTTP request</a></h4>
+<h4 id="_성공_3"><a class="link" href="#_성공_3">2.1.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_3_http_request"><a class="link" href="#_성공_3_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/dictionary/word?q=%EC%82%AC%EB%9E%91 HTTP/1.1
@@ -699,8 +707,8 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_한국어대사전_기반_검색_http_response"><a class="link" href="#_한국어대사전_기반_검색_http_response">2.1.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_3_http_response"><a class="link" href="#_성공_3_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -969,8 +977,8 @@ Content-Length: 8524
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_한국어대사전_기반_검색_request_parameters"><a class="link" href="#_한국어대사전_기반_검색_request_parameters">2.1.3. Request parameters</a></h4>
+<div class="sect4">
+<h5 id="_성공_3_request_parameters"><a class="link" href="#_성공_3_request_parameters">Request parameters</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -990,8 +998,8 @@ Content-Length: 8524
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_한국어대사전_기반_검색_response_fields"><a class="link" href="#_한국어대사전_기반_검색_response_fields">2.1.4. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_3_response_fields"><a class="link" href="#_성공_3_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1057,18 +1065,21 @@ Content-Length: 8524
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_나만의_단어장"><a class="link" href="#_나만의_단어장">3. 나만의 단어장</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_나만의_단어장에_추가"><a class="link" href="#_나만의_단어장에_추가">3.1. 나만의 단어장에 추가</a></h3>
 <div class="sect3">
-<h4 id="_나만의_단어장에_추가_http_request"><a class="link" href="#_나만의_단어장에_추가_http_request">3.1.1. HTTP request</a></h4>
+<h4 id="_성공_4"><a class="link" href="#_성공_4">3.1.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_4_http_request"><a class="link" href="#_성공_4_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjozLCJpYXQiOjE2OTQxOTEyNDIsImV4cCI6MTY5NDE5MjI0Mn0.w2W9cLsFD1ey3rwXK1GfkCwKcFX2LFoczCesiNiUrmM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjozLCJpYXQiOjE2OTQxOTcxNjgsImV4cCI6MTY5NDE5ODE2OH0.dzShWzftAb29EqR90y_xmRfKMiwsmHW-RRBKowYzqVk
 Content-Length: 73
 Host: localhost:8080
 
@@ -1080,8 +1091,8 @@ Host: localhost:8080
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에_추가_http_response"><a class="link" href="#_나만의_단어장에_추가_http_response">3.1.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_4_http_response"><a class="link" href="#_성공_4_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1103,8 +1114,8 @@ Content-Length: 178
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에_추가_request_headers"><a class="link" href="#_나만의_단어장에_추가_request_headers">3.1.3. Request headers</a></h4>
+<div class="sect4">
+<h5 id="_성공_4_request_headers"><a class="link" href="#_성공_4_request_headers">Request headers</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1124,8 +1135,8 @@ Content-Length: 178
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에_추가_request_fields"><a class="link" href="#_나만의_단어장에_추가_request_fields">3.1.4. Request fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_4_request_fields"><a class="link" href="#_성공_4_request_fields">Request fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1158,8 +1169,8 @@ Content-Length: 178
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에_추가_response_fields"><a class="link" href="#_나만의_단어장에_추가_response_fields">3.1.5. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_4_response_fields"><a class="link" href="#_성공_4_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1208,20 +1219,23 @@ Content-Length: 178
 </table>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_나만의_단어장에서_삭제"><a class="link" href="#_나만의_단어장에서_삭제">3.2. 나만의 단어장에서 삭제</a></h3>
 <div class="sect3">
-<h4 id="_나만의_단어장에서_삭제_http_request"><a class="link" href="#_나만의_단어장에서_삭제_http_request">3.2.1. HTTP request</a></h4>
+<h4 id="_성공_5"><a class="link" href="#_성공_5">3.2.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_5_http_request"><a class="link" href="#_성공_5_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/myWord/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo0LCJpYXQiOjE2OTQxOTEyNDMsImV4cCI6MTY5NDE5MjI0M30.uzyp2hhKCwZsijEPt6kDZQvjhNMrpOwitBIgGp5d9Go
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo0LCJpYXQiOjE2OTQxOTcxNjksImV4cCI6MTY5NDE5ODE2OX0.vI0ukgfn4MYdhRl9udNqpRz9Yam_9SDVAk2SGLCnSHw
 Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에서_삭제_http_response"><a class="link" href="#_나만의_단어장에서_삭제_http_response">3.2.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_5_http_response"><a class="link" href="#_성공_5_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1243,8 +1257,8 @@ Content-Length: 182
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에서_삭제_request_headers"><a class="link" href="#_나만의_단어장에서_삭제_request_headers">3.2.3. Request headers</a></h4>
+<div class="sect4">
+<h5 id="_성공_5_request_headers"><a class="link" href="#_성공_5_request_headers">Request headers</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1264,8 +1278,8 @@ Content-Length: 182
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_나만의_단어장에서_삭제_response_fields"><a class="link" href="#_나만의_단어장에서_삭제_response_fields">3.2.4. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_5_response_fields"><a class="link" href="#_성공_5_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1316,13 +1330,16 @@ Content-Length: 182
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_퀴즈"><a class="link" href="#_퀴즈">4. 퀴즈</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_퀴즈_목록_생성"><a class="link" href="#_퀴즈_목록_생성">4.1. 퀴즈 목록 생성</a></h3>
 <div class="sect3">
-<h4 id="_퀴즈_목록_생성_http_request"><a class="link" href="#_퀴즈_목록_생성_http_request">4.1.1. HTTP request</a></h4>
+<h4 id="_성공_6"><a class="link" href="#_성공_6">4.1.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_6_http_request"><a class="link" href="#_성공_6_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz HTTP/1.1
@@ -1330,8 +1347,8 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_목록_생성_http_response"><a class="link" href="#_퀴즈_목록_생성_http_response">4.1.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_6_http_response"><a class="link" href="#_성공_6_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1339,57 +1356,57 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1284
+Content-Length: 1285
 
 {
   "msg" : "나만의 단어장을 기반으로 생성된 퀴즈입니다.",
   "datum" : [ {
-    "question" : "mean25",
-    "answerIndex" : 2,
-    "choices" : [ "name14", "name25", "name30", "name33" ]
-  }, {
-    "question" : "mean35",
-    "answerIndex" : 2,
-    "choices" : [ "name19", "name35", "name39", "name31" ]
-  }, {
-    "question" : "mean2",
-    "answerIndex" : 4,
-    "choices" : [ "name13", "name0", "name3", "name2" ]
-  }, {
-    "question" : "mean32",
-    "answerIndex" : 1,
-    "choices" : [ "name32", "name22", "name23", "name7" ]
-  }, {
-    "question" : "mean6",
+    "question" : "mean23",
     "answerIndex" : 3,
-    "choices" : [ "name29", "name10", "name6", "name9" ]
+    "choices" : [ "name8", "name30", "name23", "name32" ]
   }, {
-    "question" : "mean27",
+    "question" : "mean7",
     "answerIndex" : 3,
-    "choices" : [ "name12", "name15", "name27", "name34" ]
+    "choices" : [ "name9", "name22", "name7", "name33" ]
   }, {
-    "question" : "mean8",
-    "answerIndex" : 4,
-    "choices" : [ "name5", "name1", "name37", "name8" ]
-  }, {
-    "question" : "mean17",
-    "answerIndex" : 1,
-    "choices" : [ "name17", "name26", "name4", "name24" ]
-  }, {
-    "question" : "mean20",
-    "answerIndex" : 4,
-    "choices" : [ "name28", "name36", "name11", "name20" ]
+    "question" : "mean19",
+    "answerIndex" : 2,
+    "choices" : [ "name38", "name19", "name27", "name25" ]
   }, {
     "question" : "mean16",
+    "answerIndex" : 2,
+    "choices" : [ "name15", "name16", "name3", "name10" ]
+  }, {
+    "question" : "mean0",
+    "answerIndex" : 2,
+    "choices" : [ "name2", "name0", "name24", "name26" ]
+  }, {
+    "question" : "mean18",
+    "answerIndex" : 3,
+    "choices" : [ "name37", "name14", "name18", "name29" ]
+  }, {
+    "question" : "mean31",
+    "answerIndex" : 2,
+    "choices" : [ "name20", "name31", "name5", "name21" ]
+  }, {
+    "question" : "mean17",
     "answerIndex" : 4,
-    "choices" : [ "name38", "name18", "name21", "name16" ]
+    "choices" : [ "name6", "name13", "name4", "name17" ]
+  }, {
+    "question" : "mean11",
+    "answerIndex" : 1,
+    "choices" : [ "name11", "name36", "name12", "name28" ]
+  }, {
+    "question" : "mean34",
+    "answerIndex" : 3,
+    "choices" : [ "name35", "name39", "name34", "name1" ]
   } ]
 }</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_목록_생성_response_fields"><a class="link" href="#_퀴즈_목록_생성_response_fields">4.1.3. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_6_response_fields"><a class="link" href="#_성공_6_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1433,15 +1450,18 @@ Content-Length: 1284
 </table>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_퀴즈_결과_반영"><a class="link" href="#_퀴즈_결과_반영">4.2. 퀴즈 결과 반영</a></h3>
 <div class="sect3">
-<h4 id="_퀴즈_결과_반영_http_request"><a class="link" href="#_퀴즈_결과_반영_http_request">4.2.1. HTTP request</a></h4>
+<h4 id="_성공_7"><a class="link" href="#_성공_7">4.2.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_7_http_request"><a class="link" href="#_성공_7_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjo3LCJpYXQiOjE2OTQxOTEyNDQsImV4cCI6MTY5NDE5MjI0NH0.0kHXn-R5ys8OYsTUnbGbfy7Wj0O_r4gi4exK-Qf9Z0M
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjo3LCJpYXQiOjE2OTQxOTcxNjksImV4cCI6MTY5NDE5ODE2OX0.y3axIBIiEF4dUWpArBDumuwqDyvUawxn-qXHyP7mh0g
 Content-Length: 19
 Host: localhost:8080
 
@@ -1451,8 +1471,8 @@ Host: localhost:8080
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_결과_반영_http_response"><a class="link" href="#_퀴즈_결과_반영_http_response">4.2.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_7_http_response"><a class="link" href="#_성공_7_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1470,8 +1490,8 @@ Content-Length: 91
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_결과_반영_request_headers"><a class="link" href="#_퀴즈_결과_반영_request_headers">4.2.3. Request headers</a></h4>
+<div class="sect4">
+<h5 id="_성공_7_request_headers"><a class="link" href="#_성공_7_request_headers">Request headers</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1491,8 +1511,8 @@ Content-Length: 91
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_결과_반영_request_fields"><a class="link" href="#_퀴즈_결과_반영_request_fields">4.2.4. Request fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_7_request_fields"><a class="link" href="#_성공_7_request_fields">Request fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1515,8 +1535,8 @@ Content-Length: 91
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_결과_반영_response_fields"><a class="link" href="#_퀴즈_결과_반영_response_fields">4.2.5. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_7_response_fields"><a class="link" href="#_성공_7_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1552,13 +1572,16 @@ Content-Length: 91
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_랭킹"><a class="link" href="#_랭킹">5. 랭킹</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_퀴즈_랭킹_출력_비회원"><a class="link" href="#_퀴즈_랭킹_출력_비회원">5.1. 퀴즈 랭킹 출력 (비회원)</a></h3>
 <div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_비회원_http_request"><a class="link" href="#_퀴즈_랭킹_출력_비회원_http_request">5.1.1. HTTP request</a></h4>
+<h4 id="_성공_8"><a class="link" href="#_성공_8">5.1.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_8_http_request"><a class="link" href="#_성공_8_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz/ranking/nonMember HTTP/1.1
@@ -1567,8 +1590,8 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_비회원_http_response"><a class="link" href="#_퀴즈_랭킹_출력_비회원_http_response">5.1.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_8_http_response"><a class="link" href="#_성공_8_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1589,8 +1612,8 @@ Content-Length: 152
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_비회원_response_fields"><a class="link" href="#_퀴즈_랭킹_출력_비회원_response_fields">5.1.3. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_8_response_fields"><a class="link" href="#_성공_8_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1634,21 +1657,24 @@ Content-Length: 152
 </table>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_퀴즈_랭킹_출력_회원"><a class="link" href="#_퀴즈_랭킹_출력_회원">5.2. 퀴즈 랭킹 출력 (회원)</a></h3>
 <div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_회원_http_request"><a class="link" href="#_퀴즈_랭킹_출력_회원_http_request">5.2.1. HTTP request</a></h4>
+<h4 id="_성공_9"><a class="link" href="#_성공_9">5.2.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_9_http_request"><a class="link" href="#_성공_9_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz/ranking HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IuydtOq4uOuPmSIsImlkIjo4LCJpYXQiOjE2OTQxOTEyNDQsImV4cCI6MTY5NDE5MjI0NH0.uiSxb7XcV8x3WqcasADUwK0zb8-T6vqBB9efSmrsaCI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IuydtOq4uOuPmSIsImlkIjo4LCJpYXQiOjE2OTQxOTcxNzAsImV4cCI6MTY5NDE5ODE3MH0.ngrM7KOtmgEekM-Xt3vHUYWo1-4Tvg2lMllEu-EPojc
 Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_회원_http_response"><a class="link" href="#_퀴즈_랭킹_출력_회원_http_response">5.2.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_9_http_response"><a class="link" href="#_성공_9_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1672,8 +1698,8 @@ Content-Length: 223
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_회원_request_headers"><a class="link" href="#_퀴즈_랭킹_출력_회원_request_headers">5.2.3. Request headers</a></h4>
+<div class="sect4">
+<h5 id="_성공_9_request_headers"><a class="link" href="#_성공_9_request_headers">Request headers</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1693,8 +1719,8 @@ Content-Length: 223
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_퀴즈_랭킹_출력_회원_response_fields"><a class="link" href="#_퀴즈_랭킹_출력_회원_response_fields">5.2.4. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_9_response_fields"><a class="link" href="#_성공_9_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1755,13 +1781,16 @@ Content-Length: 223
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_오늘의_단어"><a class="link" href="#_오늘의_단어">6. 오늘의 단어</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_오늘의_단어_출력"><a class="link" href="#_오늘의_단어_출력">6.1. 오늘의 단어 출력</a></h3>
 <div class="sect3">
-<h4 id="_오늘의_단어_출력_http_request"><a class="link" href="#_오늘의_단어_출력_http_request">6.1.1. HTTP request</a></h4>
+<h4 id="_성공_10"><a class="link" href="#_성공_10">6.1.1. 성공</a></h4>
+<div class="sect4">
+<h5 id="_성공_10_http_request"><a class="link" href="#_성공_10_http_request">HTTP request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/todayWord HTTP/1.1
@@ -1769,8 +1798,8 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_오늘의_단어_출력_http_response"><a class="link" href="#_오늘의_단어_출력_http_response">6.1.2. HTTP response</a></h4>
+<div class="sect4">
+<h5 id="_성공_10_http_response"><a class="link" href="#_성공_10_http_response">HTTP response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
@@ -1783,52 +1812,52 @@ Content-Length: 908
 {
   "msg" : "오늘의 단어 목록입니다.",
   "datum" : [ {
-    "name" : "name2",
-    "morpheme" : "morpheme2",
-    "mean" : "mean2"
-  }, {
-    "name" : "name6",
-    "morpheme" : "morpheme6",
-    "mean" : "mean6"
-  }, {
     "name" : "name4",
     "morpheme" : "morpheme4",
     "mean" : "mean4"
-  }, {
-    "name" : "name0",
-    "morpheme" : "morpheme0",
-    "mean" : "mean0"
-  }, {
-    "name" : "name1",
-    "morpheme" : "morpheme1",
-    "mean" : "mean1"
   }, {
     "name" : "name8",
     "morpheme" : "morpheme8",
     "mean" : "mean8"
   }, {
-    "name" : "name9",
-    "morpheme" : "morpheme9",
-    "mean" : "mean9"
-  }, {
-    "name" : "name7",
-    "morpheme" : "morpheme7",
-    "mean" : "mean7"
+    "name" : "name5",
+    "morpheme" : "morpheme5",
+    "mean" : "mean5"
   }, {
     "name" : "name3",
     "morpheme" : "morpheme3",
     "mean" : "mean3"
   }, {
-    "name" : "name5",
-    "morpheme" : "morpheme5",
-    "mean" : "mean5"
+    "name" : "name1",
+    "morpheme" : "morpheme1",
+    "mean" : "mean1"
+  }, {
+    "name" : "name2",
+    "morpheme" : "morpheme2",
+    "mean" : "mean2"
+  }, {
+    "name" : "name7",
+    "morpheme" : "morpheme7",
+    "mean" : "mean7"
+  }, {
+    "name" : "name9",
+    "morpheme" : "morpheme9",
+    "mean" : "mean9"
+  }, {
+    "name" : "name0",
+    "morpheme" : "morpheme0",
+    "mean" : "mean0"
+  }, {
+    "name" : "name6",
+    "morpheme" : "morpheme6",
+    "mean" : "mean6"
   } ]
 }</code></pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_오늘의_단어_출력_response_fields"><a class="link" href="#_오늘의_단어_출력_response_fields">6.1.3. Response fields</a></h4>
+<div class="sect4">
+<h5 id="_성공_10_response_fields"><a class="link" href="#_성공_10_response_fields">Response fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1875,10 +1904,11 @@ Content-Length: 908
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-09-09 01:37:09 +0900
+Last updated 2023-09-09 03:02:49 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

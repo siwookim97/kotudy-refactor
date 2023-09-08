@@ -11,38 +11,48 @@
 == 회원
 
 === 회원가입
+==== 성공
 operation::Member-join-200[snippets='http-request,http-response,request-fields,response-fields']
 === 로그인
+==== 성공
 operation::Member-login-200[snippets='http-request,http-response,request-fields,response-fields']
 
 == 단어사전
 
 === 한국어대사전 기반 검색
+==== 성공
 operation::Dictionary-word-200[snippets='http-request,http-response,request-parameters,response-fields']
 
 == 나만의 단어장
 
 === 나만의 단어장에 추가
+==== 성공
 operation::MyWord-add-200[snippets='http-request,http-response,request-headers,request-fields,response-fields']
 === 나만의 단어장에서 삭제
+==== 성공
 operation::MyWord-delete-200[snippets='http-request,http-response,request-headers,response-fields']
 
 == 퀴즈
 
 === 퀴즈 목록 생성
+==== 성공
 operation::Quiz-craete-200[snippets='http-request,http-response,response-fields']
 === 퀴즈 결과 반영
+==== 성공
 operation::Quiz-patch-200[snippets='http-request,http-response,request-headers,request-fields,response-fields']
 
 == 랭킹
 
 === 퀴즈 랭킹 출력 (비회원)
+==== 성공
 operation::QuizRankingNonMember-get-200[snippets='http-request,http-response,response-fields']
 === 퀴즈 랭킹 출력 (회원)
+==== 성공
 operation::QuizRanking-get-200[snippets='http-request,http-response,request-headers,response-fields']
 
 == 오늘의 단어
 
 === 오늘의 단어 출력
+==== 성공
 operation::TodayWord-get-200[snippets='http-request,http-response,response-fields']
 
