@@ -1,51 +1,48 @@
-= Kotudy Refactoring Project Rest Docs
+= Kotudy API 명세
 :doctype: book
-:icons: front
+:icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 1
+:toclevels: 2
+:sectlinks:
+:sectnums:
+:docinfo: shared-head
 
-[[Member-join]]
-== Member-join
+== 회원
 
-operation::Member-join[]
+=== 회원가입
+operation::Member-join-200[snippets='http-request,http-response,request-fields,response-fields']
+=== 로그인
+operation::Member-login-200[snippets='http-request,http-response,request-fields,response-fields']
 
-[[Member-login]]
-== Member-login
+== 단어사전
 
-operation::Member-login[]
+=== 한국어대사전 기반 검색
+operation::Dictionary-word-200[snippets='http-request,http-response,request-parameters,response-fields']
 
-[[Dictionary-word]]
-== Dictionary-word
+== 나만의 단어장
 
-operation::Dictionary-word[]
+=== 나만의 단어장에 추가
+operation::MyWord-add-200[snippets='http-request,http-response,request-headers,request-fields,response-fields']
+=== 나만의 단어장에서 삭제
+operation::MyWord-delete-200[snippets='http-request,http-response,request-headers,response-fields']
 
-[[MyWord-add]]
-== MyWord-add
+== 퀴즈
 
-operation::MyWord-add[]
+=== 퀴즈 목록 생성
+operation::Quiz-craete-200[snippets='http-request,http-response,response-fields']
+=== 퀴즈 결과 반영
+operation::Quiz-patch-200[snippets='http-request,http-response,request-headers,request-fields,response-fields']
 
-[[MyWord-delete]]
-== MyWord-delete
+== 랭킹
 
-operation::MyWord-delete[]
+=== 퀴즈 랭킹 출력 (비회원)
+operation::QuizRankingNonMember-get-200[snippets='http-request,http-response,response-fields']
+=== 퀴즈 랭킹 출력 (회원)
+operation::QuizRanking-get-200[snippets='http-request,http-response,request-headers,response-fields']
 
-[[Quiz-create]]
-== Quiz-create
+== 오늘의 단어
 
-operation::Quiz-craete[]
+=== 오늘의 단어 출력
+operation::TodayWord-get-200[snippets='http-request,http-response,response-fields']
 
-[[Quiz-patch]]
-== Quiz-patch
-
-operation::Quiz-patch[]
-
-[[QuizRanking-get]]
-== QuizRanking-get
-
-operation::QuizRanking-get[]
-
-[[TOdayWord-get]]
-== TodayWord-get
-
-operation::TodayWord-get[]
