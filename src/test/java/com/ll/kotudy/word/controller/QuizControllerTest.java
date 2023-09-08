@@ -32,10 +32,11 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.ServletException;
 
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -92,7 +93,7 @@ class QuizControllerTest {
         mockMvc.perform(get("/api/v1/quiz"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(response))
-                .andDo(document("Quiz-craete",
+                .andDo(document("Quiz-craete-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         responseFields(
@@ -143,13 +144,56 @@ class QuizControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(response))
-                .andDo(document("Quiz-patch",
+                .andDo(document("Quiz-patch-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
+                        requestFields(
+                                fieldWithPath("score").description("퀴즈 결과 점수").type(JsonFieldType.NUMBER)
+                        ),
                         responseFields(
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
                                 fieldWithPath("ranking").description("점수가 적용된 회원의 랭킹").type(JsonFieldType.NUMBER),
                                 fieldWithPath("score").description("회원의 최종 점수").type(JsonFieldType.NUMBER)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
+    public void quizRankingNonMember_get() throws Exception {
+        // given
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
+        MemberLoginRequest memberLoginRequest = new MemberLoginRequest("홍길동", "qwer1234");
+        String response = "퀴즈 랭킹 결과입니다.";
+
+        // when
+        mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andReturn();
+
+        mockMvc.perform(post("/api/v1/member/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberLoginRequest))
+                )
+                .andReturn();
+
+        // then
+        mockMvc.perform(get("/api/v1/quiz/ranking/nonMember")
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("QuizRankingNonMember-get-200",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        responseFields(
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("topMemberRanking").description("퀴즈 점수 상위 랭커 10명의 정보 (같은 점수라면 가입 순으로 정렬)").type(JsonFieldType.ARRAY),
+                                fieldWithPath("topMemberRanking[].ranking").description("랭커의 순위").type(JsonFieldType.NUMBER),
+                                fieldWithPath("topMemberRanking[].username").description("랭커의 이름 ").type(JsonFieldType.STRING),
+                                fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER)
                         )))
                 .andDo(print());
     }
@@ -185,9 +229,10 @@ class QuizControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(response))
-                .andDo(document("QuizRanking-get",
+                .andDo(document("QuizRanking-get-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
                         responseFields(
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
                                 fieldWithPath("userRanking").description("로그인한 회원의 랭킹").type(JsonFieldType.NUMBER),

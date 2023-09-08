@@ -2,13 +2,10 @@ package com.ll.kotudy.word.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.ll.kotudy.config.auth.JwtProvider;
 import com.ll.kotudy.member.domain.MemberRepository;
 import com.ll.kotudy.member.dto.reqeust.MemberJoinRequest;
 import com.ll.kotudy.member.dto.reqeust.MemberLoginRequest;
-import com.ll.kotudy.member.service.MemberService;
 import com.ll.kotudy.word.dto.request.MyWordAddRequest;
-import com.ll.kotudy.word.service.MyWordService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,11 +17,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
-import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.restdocs.operation.preprocess.Preprocessors;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.restdocs.request.RequestDocumentation;
-import org.springframework.restdocs.snippet.Snippet;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -56,12 +50,6 @@ class MyWordControllerTest {
 
     @Autowired
     private MemberRepository memberRepository;
-
-    @Autowired
-    private MyWordService myWordService;
-
-    @Autowired
-    private JwtProvider jwtProvider;
 
     final private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -105,7 +93,7 @@ class MyWordControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(("이름 단어 추가가 성공하였습니다.")))
-                .andDo(document("MyWord-add",
+                .andDo(document("MyWord-add-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
@@ -159,7 +147,7 @@ class MyWordControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(("1번호의 단어 삭제를 성공하였습니다.")))
-                .andDo(document("MyWord-delete",
+                .andDo(document("MyWord-delete-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         pathParameters(

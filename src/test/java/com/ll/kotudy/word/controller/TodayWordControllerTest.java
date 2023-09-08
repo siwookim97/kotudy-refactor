@@ -72,7 +72,7 @@ class TodayWordControllerTest {
         mockMvc.perform(get("/api/v1/todayWord"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(response))
-                .andDo(document("TodayWord-get",
+                .andDo(document("TodayWord-get-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         responseFields(

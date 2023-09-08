@@ -67,7 +67,7 @@ class MemberAuthControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().string(response))
-                .andDo(document("Member-join",
+                .andDo(document("Member-join-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestFields(
@@ -101,7 +101,7 @@ class MemberAuthControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(("로그인이 완료되었습니다.")))
-                .andDo(document("Member-login",
+                .andDo(document("Member-login-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestFields(

@@ -1,6 +1,5 @@
 package com.ll.kotudy.word.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,8 +33,6 @@ public class DictionaryOpenApiControllerTest {
 
     private MockMvc mockMvc;
 
-    final private ObjectMapper objectMapper = new ObjectMapper();
-
     @BeforeEach
     void setUpMockMvcForRestDocs(WebApplicationContext webApplicationContext,
                                  RestDocumentationContextProvider restDocumentationContextProvider) {
@@ -55,7 +52,7 @@ public class DictionaryOpenApiControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.msg").value(response))
-                .andDo(document("Dictionary-word",
+                .andDo(document("Dictionary-word-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestParameters(
