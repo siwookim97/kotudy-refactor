@@ -57,33 +57,66 @@ class MemberAuthControllerTest {
     }
 
     @Test
-    public void memberAuth_join() throws Exception {
+    public void memberAuth_join_2xx() throws Exception {
         MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
-        String response = "{\"msg\":\"회원 가입이 완료되었습니다.\",\"id\":1,\"username\":\"홍길동\"}";
+        String response = "회원 가입이 완료되었습니다.";
 
         mockMvc.perform(post("/api/v1/member/join")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(memberJoinRequest))
                 )
                 .andExpect(status().isOk())
-                .andExpect(content().string(response))
+                .andExpect(jsonPath("$.msg").value(response))
                 .andDo(document("Member-join-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestFields(
-                                fieldWithPath("username").description("Username for member join").type(JsonFieldType.STRING),
-                                fieldWithPath("password").description("Password for member join").type(JsonFieldType.STRING)
+                                fieldWithPath("username").description("회원가입을 위한 회원 ID").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("회원가입을 위한 회원 Password").type(JsonFieldType.STRING)
                         ),
                         responseFields(
-                                fieldWithPath("msg").description("Message of request").type(JsonFieldType.STRING),
-                                fieldWithPath("id").description("Id of member").type(JsonFieldType.NUMBER),
-                                fieldWithPath("username").description("Username of member").type(JsonFieldType.STRING)
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("id").description("회원가입이 완료된 회원 ID").type(JsonFieldType.NUMBER),
+                                fieldWithPath("username").description("회원가입이 완료된 회원 Password").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
 
     @Test
-    public void memberAuth_login() throws Exception {
+    public void memberAuth_join_4xx() throws Exception {
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
+        String response = "홍길동회원님은 이미 있습니다.";
+
+        mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andDo(print());
+
+        mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("Member-join-4xx",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestFields(
+                                fieldWithPath("username").description("회원가입을 위한 회원 ID").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("회원가입을 위한 회원 Password").type(JsonFieldType.STRING)
+                        ),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
+    public void memberAuth_login_2xx() throws Exception {
         MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
 
         mockMvc.perform(post("/api/v1/member/join")
@@ -105,12 +138,82 @@ class MemberAuthControllerTest {
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestFields(
-                                fieldWithPath("username").description("Username for member login").type(JsonFieldType.STRING),
-                                fieldWithPath("password").description("Password for member login").type(JsonFieldType.STRING)
+                                fieldWithPath("username").description("로그인을 위한 회원 ID").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("로그인을 위한 회원 Password").type(JsonFieldType.STRING)
                         ),
                         responseFields(
-                                fieldWithPath("msg").description("Message of request").type(JsonFieldType.STRING),
-                                fieldWithPath("accessToken").description("AccessToken of member").type(JsonFieldType.STRING)
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("accessToken").description("회원의 AccessToken").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
+    public void memberAuth_login_4xx() throws Exception {
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
+
+        mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        MemberLoginRequest memberLoginRequest = new MemberLoginRequest("홍길동", "qwer");
+
+        mockMvc.perform(post("/api/v1/member/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberLoginRequest))
+                )
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.msg").value(("패스워드를 잘못 입력했습니다.")))
+                .andDo(document("Member-login-4xx-ver2",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestFields(
+                                fieldWithPath("username").description("로그인을 위한 회원 ID").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("로그인을 위한 회원 Password").type(JsonFieldType.STRING)
+                        ),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
+    public void memberAuth_login_4xx_ver2() throws Exception {
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
+
+        mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        MemberLoginRequest memberLoginRequest = new MemberLoginRequest("Hong Gildong", "qwer");
+
+        mockMvc.perform(post("/api/v1/member/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberLoginRequest))
+                )
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.msg").value(("Hong Gildong회원이(가) 없습니다.")))
+                .andDo(document("Member-login-4xx",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestFields(
+                                fieldWithPath("username").description("로그인을 위한 회원 ID").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("로그인을 위한 회원 Password").type(JsonFieldType.STRING)
+                        ),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }

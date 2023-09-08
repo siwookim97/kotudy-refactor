@@ -29,19 +29,19 @@ public class GlobalExceptionHandler {
                 .body(ErrorResponse.occurred(e));
     }
 
-//    @ExceptionHandler(RuntimeException.class)
-//    public ResponseEntity<ErrorResponse> runtimeExceptionHandler(RuntimeException e) {
-//        log.info(LOG_FORMAT,
-//                e.getClass().getSimpleName(),
-//                ErrorCode.RUNTIME_EXCEPTION.getCode(),
-//                REQUEST_BODY_FORMAT_MESSAGE);
-//
-//        return ResponseEntity.status(ErrorCode.RUNTIME_EXCEPTION.getHttpStatus())
-//                .body(ErrorResponse.occurred(new AppException(
-//                        ErrorCode.RUNTIME_EXCEPTION,
-//                        INTERNAL_SERVER_ERROR_MESSAGE
-//                )));
-//    }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorResponse> runtimeExceptionHandler(RuntimeException e) {
+        log.info(LOG_FORMAT,
+                e.getClass().getSimpleName(),
+                ErrorCode.RUNTIME_EXCEPTION.getCode(),
+                REQUEST_BODY_FORMAT_MESSAGE);
+
+        return ResponseEntity.status(ErrorCode.RUNTIME_EXCEPTION.getHttpStatus())
+                .body(ErrorResponse.occurred(new AppException(
+                        ErrorCode.RUNTIME_EXCEPTION,
+                        INTERNAL_SERVER_ERROR_MESSAGE
+                )));
+    }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<ErrorResponse> MissingServletRequestParameterExceptionHandler(

@@ -79,7 +79,7 @@ class QuizControllerTest {
     }
 
     @Test
-    public void quiz_create() throws Exception {
+    public void quiz_create_2xx() throws Exception {
         // given
         String response = "나만의 단어장을 기반으로 생성된 퀴즈입니다.";
         Long id = memberService.join("홍길동", "qwer1234").getId();
@@ -107,8 +107,29 @@ class QuizControllerTest {
     }
 
     @Test
+    public void quiz_create_5xx() throws Exception {
+        // given
+        String response = "퀴즈를 만들기에 충분한 단어가 없습니다.";
+
+        // then
+        mockMvc.perform(get("/api/v1/quiz"))
+                .andExpect(status().is5xxServerError())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("Quiz-craete-500",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
     @WithMockUser(username = "김길동", roles = {"USER"})
-    public void quiz_update() throws Exception {
+    public void quiz_update_2xx() throws Exception {
         // given
         MemberJoinRequest memberJoinRequest = new MemberJoinRequest("김길동", "qwer1234");
         MemberLoginRequest memberLoginRequest = new MemberLoginRequest("김길동", "qwer1234");
@@ -160,7 +181,108 @@ class QuizControllerTest {
     }
 
     @Test
-    public void quizRankingNonMember_get() throws Exception {
+    @WithMockUser(username = "김길동", roles = {"USER"})
+    public void quiz_update_5xx() throws Exception {
+        // given
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("김길동", "qwer1234");
+        MemberLoginRequest memberLoginRequest = new MemberLoginRequest("김길동", "qwer1234");
+        String response = "서버에서 에러가 발생했습니다.";
+        Integer id = 0;
+
+        // when
+        MvcResult mvcResultJoin = mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andReturn();
+
+        MvcResult mvcResultLogin = mockMvc.perform(post("/api/v1/member/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberLoginRequest))
+                )
+                .andReturn();
+
+        id = JsonPath.parse(mvcResultJoin.getResponse().getContentAsString()).read("$.id");
+        token = JsonPath.parse(mvcResultLogin.getResponse().getContentAsString()).read("$.accessToken");
+
+        for (int i = 0; i < 40; i++) {
+            myWordService.add(new MyWordAddRequest("name" + i, "morpheme" + i, "mean" + i), id.longValue());
+        }
+
+        // then
+        mockMvc.perform(patch("/api/v1/quiz")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .content("{\n" +
+                                "    \"score\": \"asd\"\n" +
+                                "}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().is5xxServerError())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("Quiz-patch-500",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
+    @WithMockUser(username = "김길동", roles = {"USER"})
+    public void quiz_update_5xx_ver2() throws Exception {
+        // given
+        MemberJoinRequest memberJoinRequest = new MemberJoinRequest("김길동", "qwer1234");
+        MemberLoginRequest memberLoginRequest = new MemberLoginRequest("김길동", "qwer1234");
+        String response = "서버에서 에러가 발생했습니다.";
+        Integer id = 0;
+
+        // when
+        MvcResult mvcResultJoin = mockMvc.perform(post("/api/v1/member/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberJoinRequest))
+                )
+                .andReturn();
+
+        MvcResult mvcResultLogin = mockMvc.perform(post("/api/v1/member/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(memberLoginRequest))
+                )
+                .andReturn();
+
+        id = JsonPath.parse(mvcResultJoin.getResponse().getContentAsString()).read("$.id");
+        token = JsonPath.parse(mvcResultLogin.getResponse().getContentAsString()).read("$.accessToken");
+
+        for (int i = 0; i < 40; i++) {
+            myWordService.add(new MyWordAddRequest("name" + i, "morpheme" + i, "mean" + i), id.longValue());
+        }
+
+        // then
+        mockMvc.perform(patch("/api/v1/quiz")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().is5xxServerError())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("Quiz-patch-500-ver2",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
+
+    @Test
+    public void quizRankingNonMember_get_2xx() throws Exception {
         // given
         MemberJoinRequest memberJoinRequest = new MemberJoinRequest("홍길동", "qwer1234");
         MemberLoginRequest memberLoginRequest = new MemberLoginRequest("홍길동", "qwer1234");

@@ -71,4 +71,28 @@ public class DictionaryOpenApiControllerTest {
                         )))
                 .andDo(print());
     }
+
+    @Test
+    public void dictionary_word_500() throws Exception {
+        String response = "서버에서 에러가 발생했습니다.";
+
+        mockMvc.perform(get("/api/v1/dictionary/word")
+                        .param("q", "")
+                )
+                .andExpect(status().is5xxServerError())
+                .andExpect(jsonPath("$.msg").value(response))
+                .andDo(document("Dictionary-word-500",
+                        Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                        Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                        requestParameters(
+                                parameterWithName("q").description("찾고자 하는 단어")
+                        ),
+                        responseFields(
+                                fieldWithPath("timeStamp").description("API 요청 시간").type(JsonFieldType.STRING),
+                                fieldWithPath("httpStatus").description("HTTP 상태 메시지").type(JsonFieldType.STRING),
+                                fieldWithPath("errorCode").description("HTTP 에러 코드").type(JsonFieldType.NUMBER),
+                                fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING)
+                        )))
+                .andDo(print());
+    }
 }
