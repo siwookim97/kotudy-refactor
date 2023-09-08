@@ -18,7 +18,6 @@ public class GlobalExceptionHandler {
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "서버에서 에러가 발생했습니다.";
     private static final String REQUEST_BODY_FORMAT_MESSAGE = "올바른 요청 Body 형식이 아닙니다.";
     private static final String REQUEST_PARAM_ERROR_MESSAGE = "올바른 요청 Parameter 형식이 아닙니다.";
-    private static final String REQUEST_TOKEN_ERROR_MESSAGE = "올바른 토큰이 아닙니다.";
 
     @ExceptionHandler(AppException.class)
     public ResponseEntity<ErrorResponse> appExceptionHandler(AppException e) {
@@ -30,19 +29,19 @@ public class GlobalExceptionHandler {
                 .body(ErrorResponse.occurred(e));
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrorResponse> runtimeExceptionHandler(RuntimeException e) {
-        log.info(LOG_FORMAT,
-                e.getClass().getSimpleName(),
-                ErrorCode.RUNTIME_EXCEPTION.getCode(),
-                REQUEST_BODY_FORMAT_MESSAGE);
-
-        return ResponseEntity.status(ErrorCode.RUNTIME_EXCEPTION.getHttpStatus())
-                .body(ErrorResponse.occurred(new AppException(
-                        ErrorCode.RUNTIME_EXCEPTION,
-                        INTERNAL_SERVER_ERROR_MESSAGE
-                )));
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    public ResponseEntity<ErrorResponse> runtimeExceptionHandler(RuntimeException e) {
+//        log.info(LOG_FORMAT,
+//                e.getClass().getSimpleName(),
+//                ErrorCode.RUNTIME_EXCEPTION.getCode(),
+//                REQUEST_BODY_FORMAT_MESSAGE);
+//
+//        return ResponseEntity.status(ErrorCode.RUNTIME_EXCEPTION.getHttpStatus())
+//                .body(ErrorResponse.occurred(new AppException(
+//                        ErrorCode.RUNTIME_EXCEPTION,
+//                        INTERNAL_SERVER_ERROR_MESSAGE
+//                )));
+//    }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<ErrorResponse> MissingServletRequestParameterExceptionHandler(
