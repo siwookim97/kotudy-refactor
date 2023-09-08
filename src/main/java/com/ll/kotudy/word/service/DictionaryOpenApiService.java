@@ -91,7 +91,7 @@ public class DictionaryOpenApiService {
     private SearchedWordsResponse getSearchedWordResponseFromCache(String q) {
         List<SearchedWordDto> datum = openApiCacheRepository.findById(q).get().getDatum();
 
-        return new SearchedWordsResponse("표준 한국어 대사전 Open API를 통해 단어" + q + "의 검색결과는 다음과 같습니다.", datum);
+        return new SearchedWordsResponse("표준 한국어 대사전 Open API를 통해 단어 " + q + "의 검색결과는 다음과 같습니다.", datum);
     }
 
     private String replaceBlank(String q) {
