@@ -11,6 +11,7 @@ import com.ll.kotudy.word.dto.QuizForm;
 import com.ll.kotudy.word.dto.request.QuizResultRequest;
 import com.ll.kotudy.word.dto.response.QuizResponse;
 import com.ll.kotudy.word.dto.response.QuizResultResponse;
+import com.ll.kotudy.word.dto.response.RankingNonMemberResponse;
 import com.ll.kotudy.word.dto.response.RankingResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -110,5 +111,11 @@ public class QuizService {
         memberRankingDtoList.forEach(dto -> dto.setRanking(memberRankingDtoList.indexOf(dto) + 1));
 
         return memberRankingDtoList;
+    }
+
+    public RankingNonMemberResponse getNonMemberQuizRanking() {
+        List<MemberRankingDto> memberRankingDtoList = setMemberRankingDtoList();
+
+        return new RankingNonMemberResponse("퀴즈 랭킹 결과입니다.", memberRankingDtoList);
     }
 }

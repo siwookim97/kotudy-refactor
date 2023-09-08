@@ -3,6 +3,7 @@ package com.ll.kotudy.word.controller;
 import com.ll.kotudy.config.auth.JwtProvider;
 import com.ll.kotudy.member.dto.reqeust.TokenHeaderRequest;
 import com.ll.kotudy.word.dto.request.QuizResultRequest;
+import com.ll.kotudy.word.dto.response.RankingNonMemberResponse;
 import com.ll.kotudy.word.dto.response.RankingResponse;
 import com.ll.kotudy.word.dto.response.QuizResponse;
 import com.ll.kotudy.word.dto.response.QuizResultResponse;
@@ -36,6 +37,14 @@ public class QuizController {
             @RequestBody @Valid QuizResultRequest request) {
 
         QuizResultResponse response = quizService.applyScore(request, jwtProvider.getId(tokenHeaderRequest.getToken()));
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/ranking/nonMember")
+    public ResponseEntity<RankingNonMemberResponse> getQuizRanking_nonMember() {
+
+        RankingNonMemberResponse response = quizService.getNonMemberQuizRanking();
 
         return ResponseEntity.ok(response);
     }
