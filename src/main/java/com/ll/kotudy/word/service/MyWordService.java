@@ -124,7 +124,7 @@ public class MyWordService {
         );
 
         return new MyWordDeleteResponse(
-                myWordId + "번호의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)", item);
+                myWordId + "번의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)", item);
     }
 
     private MyWordDeleteResponse createDeleteMethodReponseSuccess(MyWord responseEntity) {

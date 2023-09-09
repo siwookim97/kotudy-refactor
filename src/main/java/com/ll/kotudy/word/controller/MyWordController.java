@@ -31,7 +31,6 @@ public class MyWordController {
 
         MyWordAddResponse response = myWordService.add(request, jwtProvider.getId(tokenHeaderRequest.getToken()));
 
-        // TODO: ResponseEntity.created(URI).body(response)로 변경
         return ResponseEntity.ok(response);
     }
 
