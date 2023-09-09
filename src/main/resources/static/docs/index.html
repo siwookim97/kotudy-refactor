@@ -622,7 +622,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 162
 
 {
-  "timeStamp" : "2023-09-08T19:48:27.468+00:00",
+  "timeStamp" : "2023-09-09T14:20:34.766+00:00",
   "httpStatus" : "CONFLICT",
   "errorCode" : 409,
   "msg" : "홍길동회원님은 이미 있습니다."
@@ -705,7 +705,7 @@ Content-Length: 228
 
 {
   "msg" : "로그인이 완료되었습니다.",
-  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoxLCJpYXQiOjE2OTQyMDI1MDYsImV4cCI6MTY5NDIwMzUwNn0._zthe8hiwYvh_MXR_kDcbal9Quy1LkQ-X2YwluHxxng"
+  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoxLCJpYXQiOjE2OTQyNjkyMzQsImV4cCI6MTY5NDI3MDIzNH0.N7S_sU18N3UycjX6CeI0NuYT0ilMIxeMMlL8QykXqZs"
 }</code></pre>
 </div>
 </div>
@@ -801,7 +801,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 163
 
 {
-  "timeStamp" : "2023-09-08T19:48:27.279+00:00",
+  "timeStamp" : "2023-09-09T14:20:34.610+00:00",
   "httpStatus" : "BAD_REQUEST",
   "errorCode" : 400,
   "msg" : "Hong Gildong회원이(가) 없습니다."
@@ -879,7 +879,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 166
 
 {
-  "timeStamp" : "2023-09-08T19:48:27.169+00:00",
+  "timeStamp" : "2023-09-09T14:20:34.526+00:00",
   "httpStatus" : "UNAUTHORIZED",
   "errorCode" : 401,
   "msg" : "패스워드를 잘못 입력했습니다."
@@ -1328,7 +1328,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 175
 
 {
-  "timeStamp" : "2023-09-08T19:48:29.306+00:00",
+  "timeStamp" : "2023-09-09T14:20:35.665+00:00",
   "httpStatus" : "INTERNAL_SERVER_ERROR",
   "errorCode" : 500,
   "msg" : "서버에서 에러가 발생했습니다."
@@ -1393,7 +1393,7 @@ Content-Length: 175
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo2LCJpYXQiOjE2OTQyMDI1MDksImV4cCI6MTY5NDIwMzUwOX0.D4QxQtHlpHwqgA93UORJQRbhbnEtZOA5BbvrnENsET4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjozLCJpYXQiOjE2OTQyNjkyMzIsImV4cCI6MTY5NDI3MDIzMn0.6LPj2JCoOxo8hpUo_35QVt6BOAKJz8leydB1BKtrYx4
 Content-Length: 73
 Host: localhost:8080
 
@@ -1419,7 +1419,7 @@ Content-Length: 178
 {
   "msg" : "이름 단어 추가가 성공하였습니다.",
   "data" : {
-    "wordId" : 1,
+    "wordId" : 2,
     "name" : "이름",
     "morpheme" : "품사",
     "mean" : "의미"
@@ -1533,6 +1533,181 @@ Content-Length: 178
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_실패_4"><a class="link" href="#_실패_4">3.1.2. 실패</a></h4>
+<div class="sect4">
+<h5 id="_한_회원이_중복된_단어를_저장했을_경우"><a class="link" href="#_한_회원이_중복된_단어를_저장했을_경우">한 회원이 중복된 단어를 저장했을 경우</a></h5>
+<div class="sect5">
+<h6 id="_한_회원이_중복된_단어를_저장했을_경우_http_request"><a class="link" href="#_한_회원이_중복된_단어를_저장했을_경우_http_request">HTTP request</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo1LCJpYXQiOjE2OTQyNjkyMzIsImV4cCI6MTY5NDI3MDIzMn0.GOy9LFdldxHT7YDchKjRrCwhhP0B1j3cPAmeScYAICk
+Content-Length: 71
+Host: localhost:8080
+
+{
+  "name" : "name",
+  "morpheme" : "morpheme",
+  "mean" : "mean"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_한_회원이_중복된_단어를_저장했을_경우_http_response"><a class="link" href="#_한_회원이_중복된_단어를_저장했을_경우_http_response">HTTP response</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+Content-Length: 202
+
+{
+  "msg" : "name 단어 추가가 실패하였습니다.(이미 단어장에 존재)",
+  "data" : {
+    "wordId" : 3,
+    "name" : "name",
+    "morpheme" : "morpheme",
+    "mean" : "mean"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_한_회원이_중복된_단어를_저장했을_경우_response_fields"><a class="link" href="#_한_회원이_중복된_단어를_저장했을_경우_response_fields">Response fields</a></h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">저장을 요청한 단어의 정보</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.wordId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">저장을 요청한 단어의 ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">저장을 요청한 단어</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.morpheme</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">저장을 요청한 단어의 품사</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.mean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">저장을 요청한 단어의 의미</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_header에_accesstoken을_넣지_않았을_경우"><a class="link" href="#_header에_accesstoken을_넣지_않았을_경우">Header에 AccessToken을 넣지 않았을 경우</a></h5>
+<div class="sect5">
+<h6 id="_header에_accesstoken을_넣지_않았을_경우_http_request"><a class="link" href="#_header에_accesstoken을_넣지_않았을_경우_http_request">HTTP request</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 71
+Host: localhost:8080
+
+{
+  "name" : "name",
+  "morpheme" : "morpheme",
+  "mean" : "mean"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_header에_accesstoken을_넣지_않았을_경우_http_response"><a class="link" href="#_header에_accesstoken을_넣지_않았을_경우_http_response">HTTP response</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 400 Bad Request
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+Content-Length: 170
+
+{
+  "timeStamp" : "2023-09-09T14:20:32.652+00:00",
+  "httpStatus" : "BAD_REQUEST",
+  "errorCode" : 400,
+  "msg" : "올바른 요청 Header 형식이 아닙니다."
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_header에_accesstoken을_넣지_않았을_경우_response_fields"><a class="link" href="#_header에_accesstoken을_넣지_않았을_경우_response_fields">Response fields</a></h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeStamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API 요청 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>httpStatus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 상태 메시지</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>errorCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 에러 코드</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_나만의_단어장에서_삭제"><a class="link" href="#_나만의_단어장에서_삭제">3.2. 나만의 단어장에서 삭제</a></h3>
@@ -1543,7 +1718,7 @@ Content-Length: 178
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/myWord/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo3LCJpYXQiOjE2OTQyMDI1MDksImV4cCI6MTY5NDIwMzUwOX0.GBNXyb-GqFnTAAl80cevMBAZOpkTMDMiZMOPcRKZLIE
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoxLCJpYXQiOjE2OTQyNjkyMzEsImV4cCI6MTY5NDI3MDIzMX0.73I6U-R_iHrNGwNqBW6M2vd9Ml0fe7JGTvAqurqVO70
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -1642,6 +1817,94 @@ Content-Length: 182
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_실패_5"><a class="link" href="#_실패_5">3.2.2. 실패</a></h4>
+<div class="sect4">
+<h5 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우">삭제를 요청하는 단어의 ID가 단어장에 없을 경우</a></h5>
+<div class="sect5">
+<h6 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_request"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_request">HTTP request</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/myWord/10 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoyLCJpYXQiOjE2OTQyNjkyMzIsImV4cCI6MTY5NDI3MDIzMn0.AxKOZZesGZZ3Ms3TeHahURjkh7WTUe8EpXy3gkaEV4c
+Host: localhost:8080</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_response"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_response">HTTP response</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+Content-Length: 230
+
+{
+  "msg" : "10번의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)",
+  "data" : {
+    "wordId" : 10,
+    "name" : null,
+    "morpheme" : null,
+    "mean" : null
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우_response_fields"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우_response_fields">Response fields</a></h6>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">삭제를 요청한 단어의 정보</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.wordId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">삭제를 요청한 단어의 ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.morpheme</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.mean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1670,50 +1933,50 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1284
+Content-Length: 1285
 
 {
   "msg" : "나만의 단어장을 기반으로 생성된 퀴즈입니다.",
   "datum" : [ {
-    "question" : "mean20",
+    "question" : "mean26",
     "answerIndex" : 2,
-    "choices" : [ "name35", "name20", "name18", "name39" ]
-  }, {
-    "question" : "mean12",
-    "answerIndex" : 1,
-    "choices" : [ "name12", "name19", "name3", "name15" ]
-  }, {
-    "question" : "mean7",
-    "answerIndex" : 4,
-    "choices" : [ "name13", "name29", "name9", "name7" ]
-  }, {
-    "question" : "mean0",
-    "answerIndex" : 4,
-    "choices" : [ "name24", "name17", "name21", "name0" ]
-  }, {
-    "question" : "mean5",
-    "answerIndex" : 2,
-    "choices" : [ "name33", "name5", "name6", "name2" ]
-  }, {
-    "question" : "mean34",
-    "answerIndex" : 4,
-    "choices" : [ "name11", "name31", "name25", "name34" ]
-  }, {
-    "question" : "mean16",
-    "answerIndex" : 1,
-    "choices" : [ "name16", "name37", "name26", "name32" ]
+    "choices" : [ "name3", "name26", "name20", "name22" ]
   }, {
     "question" : "mean30",
-    "answerIndex" : 4,
-    "choices" : [ "name1", "name36", "name23", "name30" ]
-  }, {
-    "question" : "mean22",
-    "answerIndex" : 3,
-    "choices" : [ "name8", "name27", "name22", "name38" ]
-  }, {
-    "question" : "mean14",
     "answerIndex" : 2,
-    "choices" : [ "name28", "name14", "name10", "name4" ]
+    "choices" : [ "name32", "name30", "name36", "name27" ]
+  }, {
+    "question" : "mean16",
+    "answerIndex" : 4,
+    "choices" : [ "name34", "name9", "name23", "name16" ]
+  }, {
+    "question" : "mean19",
+    "answerIndex" : 3,
+    "choices" : [ "name35", "name31", "name19", "name11" ]
+  }, {
+    "question" : "mean13",
+    "answerIndex" : 3,
+    "choices" : [ "name10", "name17", "name13", "name21" ]
+  }, {
+    "question" : "mean12",
+    "answerIndex" : 4,
+    "choices" : [ "name15", "name18", "name14", "name12" ]
+  }, {
+    "question" : "mean1",
+    "answerIndex" : 3,
+    "choices" : [ "name0", "name8", "name1", "name4" ]
+  }, {
+    "question" : "mean28",
+    "answerIndex" : 4,
+    "choices" : [ "name7", "name38", "name25", "name28" ]
+  }, {
+    "question" : "mean29",
+    "answerIndex" : 4,
+    "choices" : [ "name37", "name39", "name24", "name29" ]
+  }, {
+    "question" : "mean6",
+    "answerIndex" : 4,
+    "choices" : [ "name33", "name2", "name5", "name6" ]
   } ]
 }</code></pre>
 </div>
@@ -1765,7 +2028,7 @@ Content-Length: 1284
 </div>
 </div>
 <div class="sect3">
-<h4 id="_실패_4"><a class="link" href="#_실패_4">4.1.2. 실패</a></h4>
+<h4 id="_실패_6"><a class="link" href="#_실패_6">4.1.2. 실패</a></h4>
 <div class="sect4">
 <h5 id="_퀴즈를_만들기에_충분한_나만의_단어가_db에_없을경우_최소_40개"><a class="link" href="#_퀴즈를_만들기에_충분한_나만의_단어가_db에_없을경우_최소_40개">퀴즈를 만들기에 충분한 나만의 단어가 DB에 없을경우 (최소 40개)</a></h5>
 <div class="sect5">
@@ -1789,7 +2052,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 189
 
 {
-  "timeStamp" : "2023-09-08T19:48:31.696+00:00",
+  "timeStamp" : "2023-09-09T14:20:37.096+00:00",
   "httpStatus" : "INTERNAL_SERVER_ERROR",
   "errorCode" : 500,
   "msg" : "퀴즈를 만들기에 충분한 단어가 없습니다."
@@ -1849,7 +2112,7 @@ Content-Length: 189
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjo4LCJpYXQiOjE2OTQyMDI1MDksImV4cCI6MTY5NDIwMzUwOX0.LCdj0ZGeUADUO-nKIXNQeE9Qp3SBz_yfK8vcne_uwlI
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjo2LCJpYXQiOjE2OTQyNjkyMzUsImV4cCI6MTY5NDI3MDIzNX0.3cYdcFrUrgBLrKWVRWWseHoYe3MNtSGmQvkyFt4jpfs
 Content-Length: 19
 Host: localhost:8080
 
@@ -1959,7 +2222,7 @@ Content-Length: 91
 </div>
 </div>
 <div class="sect3">
-<h4 id="_실패_5"><a class="link" href="#_실패_5">4.2.2. 실패</a></h4>
+<h4 id="_실패_7"><a class="link" href="#_실패_7">4.2.2. 실패</a></h4>
 <div class="sect4">
 <h5 id="_body의_형식이_문자형일_경우"><a class="link" href="#_body의_형식이_문자형일_경우">body의 형식이 문자형일 경우</a></h5>
 <div class="sect5">
@@ -1968,7 +2231,7 @@ Content-Length: 91
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjo5LCJpYXQiOjE2OTQyMDI1MTAsImV4cCI6MTY5NDIwMzUxMH0.5c5TATukFpzD2dcGcuPqize-h7YIkF7W7lOyBSac050
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjo3LCJpYXQiOjE2OTQyNjkyMzYsImV4cCI6MTY5NDI3MDIzNn0.kHtmX2Cmov6kxIbIfyeS2L_2zRCmIP5zz4ssxU3hEjI
 Content-Length: 23
 Host: localhost:8080
 
@@ -1990,7 +2253,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 175
 
 {
-  "timeStamp" : "2023-09-08T19:48:30.910+00:00",
+  "timeStamp" : "2023-09-09T14:20:36.481+00:00",
   "httpStatus" : "INTERNAL_SERVER_ERROR",
   "errorCode" : 500,
   "msg" : "서버에서 에러가 발생했습니다."
@@ -2046,7 +2309,7 @@ Content-Length: 175
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjoxMiwiaWF0IjoxNjk0MjAyNTExLCJleHAiOjE2OTQyMDM1MTF9.Va23vsUO57KfuSn4YXM6vErx8B-bAHLEvk5miuK1XrM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjoxMCwiaWF0IjoxNjk0MjY5MjM3LCJleHAiOjE2OTQyNzAyMzd9.5f3WEYl0B2hXnpDqjp9of5BXtoIllXRhK08Zk_40PZg
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2063,7 +2326,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 175
 
 {
-  "timeStamp" : "2023-09-08T19:48:32.101+00:00",
+  "timeStamp" : "2023-09-09T14:20:37.429+00:00",
   "httpStatus" : "INTERNAL_SERVER_ERROR",
   "errorCode" : 500,
   "msg" : "서버에서 에러가 발생했습니다."
@@ -2210,7 +2473,7 @@ Content-Length: 152
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz/ranking HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IuydtOq4uOuPmSIsImlkIjoxMywiaWF0IjoxNjk0MjAyNTEyLCJleHAiOjE2OTQyMDM1MTJ9.V3YAyqmaKve-CcZNefvae7N53I4vexI-pgpujVAFUfg
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IuydtOq4uOuPmSIsImlkIjoxMSwiaWF0IjoxNjk0MjY5MjM3LCJleHAiOjE2OTQyNzAyMzd9.TQdZoQXgNs-nJubxirNZ3HKcPaS5vLTvuJ2csgWP6Kg
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2354,45 +2617,45 @@ Content-Length: 908
 {
   "msg" : "오늘의 단어 목록입니다.",
   "datum" : [ {
-    "name" : "name8",
-    "morpheme" : "morpheme8",
-    "mean" : "mean8"
-  }, {
-    "name" : "name6",
-    "morpheme" : "morpheme6",
-    "mean" : "mean6"
-  }, {
-    "name" : "name1",
-    "morpheme" : "morpheme1",
-    "mean" : "mean1"
-  }, {
-    "name" : "name2",
-    "morpheme" : "morpheme2",
-    "mean" : "mean2"
-  }, {
-    "name" : "name0",
-    "morpheme" : "morpheme0",
-    "mean" : "mean0"
+    "name" : "name7",
+    "morpheme" : "morpheme7",
+    "mean" : "mean7"
   }, {
     "name" : "name3",
     "morpheme" : "morpheme3",
     "mean" : "mean3"
   }, {
+    "name" : "name5",
+    "morpheme" : "morpheme5",
+    "mean" : "mean5"
+  }, {
     "name" : "name4",
     "morpheme" : "morpheme4",
     "mean" : "mean4"
+  }, {
+    "name" : "name8",
+    "morpheme" : "morpheme8",
+    "mean" : "mean8"
+  }, {
+    "name" : "name0",
+    "morpheme" : "morpheme0",
+    "mean" : "mean0"
+  }, {
+    "name" : "name2",
+    "morpheme" : "morpheme2",
+    "mean" : "mean2"
   }, {
     "name" : "name9",
     "morpheme" : "morpheme9",
     "mean" : "mean9"
   }, {
-    "name" : "name7",
-    "morpheme" : "morpheme7",
-    "mean" : "mean7"
+    "name" : "name1",
+    "morpheme" : "morpheme1",
+    "mean" : "mean1"
   }, {
-    "name" : "name5",
-    "morpheme" : "morpheme5",
-    "mean" : "mean5"
+    "name" : "name6",
+    "morpheme" : "morpheme6",
+    "mean" : "mean6"
   } ]
 }</code></pre>
 </div>
@@ -2450,7 +2713,7 @@ Content-Length: 908
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-09-09 04:38:48 +0900
+Last updated 2023-09-09 23:16:42 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
