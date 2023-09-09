@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,6 +19,7 @@ public class GlobalExceptionHandler {
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "서버에서 에러가 발생했습니다.";
     private static final String REQUEST_BODY_FORMAT_MESSAGE = "올바른 요청 Body 형식이 아닙니다.";
     private static final String REQUEST_PARAM_ERROR_MESSAGE = "올바른 요청 Parameter 형식이 아닙니다.";
+    private static final String REQUEST_HEADER_FORMAT_MESSAGE = "올바른 요청 Header 형식이 아닙니다.";
 
     @ExceptionHandler(AppException.class)
     public ResponseEntity<ErrorResponse> appExceptionHandler(AppException e) {
@@ -44,16 +46,16 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    public ResponseEntity<ErrorResponse> MissingServletRequestParameterExceptionHandler(
+    public ResponseEntity<ErrorResponse> missingServletRequestParameterExceptionHandler(
             MissingServletRequestParameterException e) {
         log.info(LOG_FORMAT,
                 e.getClass().getSimpleName(),
-                ErrorCode.REQUEST_PARAM_BAD_REQUEST.getCode(),
+                ErrorCode.PARAM_BAD_REQUEST.getCode(),
                 e.getMessage());
 
-        return ResponseEntity.status(ErrorCode.REQUEST_PARAM_BAD_REQUEST.getHttpStatus())
+        return ResponseEntity.status(ErrorCode.PARAM_BAD_REQUEST.getHttpStatus())
                 .body(ErrorResponse.occurred(new AppException(
-                        ErrorCode.REQUEST_PARAM_BAD_REQUEST,
+                        ErrorCode.PARAM_BAD_REQUEST,
                         REQUEST_PARAM_ERROR_MESSAGE
                 )));
     }
@@ -67,6 +69,20 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(ErrorCode.BODY_BAD_REQUEST.getHttpStatus())
                 .body(makeValidErrorResponse(e.getBindingResult()));
+    }
+
+    @ExceptionHandler(MissingRequestHeaderException.class)
+    public ResponseEntity<ErrorResponse> missingRequestHeaderExceptionHandler(MissingRequestHeaderException e) {
+        log.info(LOG_FORMAT,
+                e.getClass().getSimpleName(),
+                ErrorCode.HEADER_BAD_REQUEST.getCode(),
+                e.getMessage());
+
+        return ResponseEntity.status(ErrorCode.HEADER_BAD_REQUEST.getHttpStatus())
+                .body(ErrorResponse.occurred(new AppException(
+                        ErrorCode.HEADER_BAD_REQUEST,
+                        REQUEST_HEADER_FORMAT_MESSAGE
+                )));
     }
 
     private ErrorResponse makeValidErrorResponse(BindingResult bindingResult) {
