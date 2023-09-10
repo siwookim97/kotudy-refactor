@@ -55,6 +55,10 @@ operation::MyWord-delete-200[snippets='http-request,http-response,request-header
 ===== 삭제를 요청하는 단어의 ID가 단어장에 없을 경우
 operation::MyWord-delete-fail[snippets='http-request,http-response,response-fields']
 
+=== 나만의 단어장에서 검색
+==== 성공
+operation::MyWord-search-200[snippets='http-request,http-response,request-headers,request-parameters,request-fields,response-fields']
+
 
 == 퀴즈
 
