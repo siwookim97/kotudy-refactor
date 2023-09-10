@@ -9,6 +9,8 @@ import com.ll.kotudy.word.dto.response.MyWordDeleteResponse;
 import com.ll.kotudy.word.dto.response.MyWordSearchResponse;
 import com.ll.kotudy.word.service.MyWordService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +55,9 @@ public class MyWordController {
             @RequestParam("page") Integer page,
             @RequestParam("count") int count) {
 
-        MyWordSearchResponse response = myWordService.searchByPagenation(request, page, count);
+        Pageable pageRequest = PageRequest.of(page, count);
+        MyWordSearchResponse response = myWordService.searchByPagenation(
+                request, pageRequest, jwtProvider.getId(tokenHeaderRequest.getToken()));
 
         return ResponseEntity.ok(response);
     }

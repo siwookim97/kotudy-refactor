@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class MyWordSearchRequest {
 
     private String name;
-    private Integer ageGoe;
-    private Integer ageLoe;
+    private String morpheme;
 }

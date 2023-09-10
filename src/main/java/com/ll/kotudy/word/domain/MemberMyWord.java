@@ -1,6 +1,7 @@
 package com.ll.kotudy.word.domain;
 
 import com.ll.kotudy.member.domain.Member;
+import com.ll.kotudy.util.baseEntity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberMyWord {
+public class MemberMyWord extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

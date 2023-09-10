@@ -8,7 +8,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class SearchedWordDto {
 
     private int targetCode;

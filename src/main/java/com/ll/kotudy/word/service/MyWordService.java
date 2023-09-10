@@ -15,11 +15,11 @@ import com.ll.kotudy.word.dto.response.MyWordDeleteResponse;
 import com.ll.kotudy.word.dto.response.MyWordResponse;
 import com.ll.kotudy.word.dto.response.MyWordSearchResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
 
 @Service
 @Transactional(readOnly = true)
@@ -138,9 +138,9 @@ public class MyWordService {
         return new MyWordDeleteResponse(responseEntity.getId() + "번호의 단어 삭제를 성공하였습니다.", item);
     }
 
-    public MyWordSearchResponse searchByPagenation(MyWordSearchRequest request, Integer page, int count) {
-        Pageable pageRequest = (Pageable) PageRequest.of(page, count);
+    public MyWordSearchResponse searchByPagenation(MyWordSearchRequest condition, Pageable pageable, Long memberId) {
+        Page<MyWordResponse> datum = myWordRepository.findMyWordByConditionMyWord(condition, pageable, memberId);
 
-        return null;
+        return new MyWordSearchResponse("나만의 단어 검색 결과는 다음과 같습니다.", datum);
     }
 }
