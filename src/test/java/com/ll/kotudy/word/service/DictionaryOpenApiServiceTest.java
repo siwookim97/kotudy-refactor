@@ -49,7 +49,7 @@ class DictionaryOpenApiServiceTest {
 
         // when
         SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
-        System.out.println("Data : " + response.getData());
+
         // then
         assertThat(response.getMsg()).endsWith("의 검색결과는 다음과 같습니다.");
         assertThat(response.getData().size()).isNotEqualTo(0);
