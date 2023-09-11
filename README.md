@@ -17,6 +17,8 @@
 
 </div>
 
+<br>
+
 ## 🚀 주요 기능
 
 
@@ -44,9 +46,17 @@
 
 > 매일 자정마다 바뀌는 오늘의 단어로 다른 회원들이 어려워 하는 단어들을 학습할 수 있습니다.
 
+<br>
+
 ## 📄 API 문서
+
 
 
 각 기능들의 호출 방법은 다음 API 문서를 통해 확인할 수 있습니다.
 
 **[API 명세](https://siwookim97.github.io/kotudy-refactor/src/main/resources/static/docs/index.html)**
+
+<br>
+
+## 🛠 기술 스택
+
