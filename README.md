@@ -1,4 +1,9 @@
+<div align="center">
+  
 # kotudy 팀 프로젝트, 나혼자 리팩토링
+<img src="https://github.com/siwookim97/kotudy-refactor/assets/72070679/a33ab99b-0109-4bae-bd53-40fc2f857e37" width="75%" height="75%">
+
+</div>
 
 > 팀 프로젝트로 진행했던 프로젝트의 부족한 점을 보완하고 학습하기 위해 **리팩토링 프로젝트**를 시작하게 되었습니다.
 >
@@ -59,4 +64,6 @@
 <br>
 
 ## 🛠 기술 스택
+
+![kotudy-stack](https://github.com/siwookim97/kotudy-refactor/assets/72070679/d6562257-3790-46ee-9cb2-8a5f0b9f4180)
 
