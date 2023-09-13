@@ -6,13 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SearchedWordsResponse {
+public class SearchedWordsResponse implements Serializable {
 
     private String msg;
     private List<SearchedWordDto> data;
