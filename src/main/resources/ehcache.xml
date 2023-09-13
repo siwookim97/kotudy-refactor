@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xmlns:jsr107='http://www.ehcache.org/v3/jsr107'>
+    <service>
+        <jsr107:defaults enable-statistics="true"/>
+    </service>
+    <cache alias="searchedWordsCache">
+        <key-type>java.lang.String</key-type>
+        <value-type>com.ll.kotudy.word.dto.response.SearchedWordsResponse</value-type>
+        <expiry>
+            <ttl unit="seconds">14400</ttl>
+        </expiry>
+        <listeners>
+            <listener>
+                <class>com.ll.kotudy.logging.CacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>UPDATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+                <events-to-fire-on>REMOVED</events-to-fire-on>
+                <events-to-fire-on>EVICTED</events-to-fire-on>
+            </listener>
+        </listeners>
+        <resources>
+            <offheap unit="MB">100</offheap>
+        </resources>
+    </cache>
+</config>
