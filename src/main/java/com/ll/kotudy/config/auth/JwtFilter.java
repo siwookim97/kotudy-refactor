@@ -69,7 +69,6 @@ public class JwtFilter extends OncePerRequestFilter {
                                             HttpServletResponse response,
                                             FilterChain filterChain, String authorization) throws IOException, ServletException {
         if (authorization == null || !authorization.startsWith("Bearer ")) {
-            log.info("authorization 이 없거나 잘못 보냈습니다.");
             filterChain.doFilter(request, response);
             return true;
         }
