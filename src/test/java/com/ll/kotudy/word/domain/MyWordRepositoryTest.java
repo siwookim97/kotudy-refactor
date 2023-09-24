@@ -56,7 +56,7 @@ class MyWordRepositoryTest {
     }
 
     @Test
-    @DisplayName("단어장에 단어 찾기 테스트 (성공)")
+    @DisplayName("단어장에 단어 검색 테스트 (성공)")
     void findByNameAndMorphemeAndMeanMyWord() {
         // given
         MyWord createdMyWord = new MyWord("단어", "품사", "의미");

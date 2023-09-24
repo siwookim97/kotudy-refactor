@@ -52,6 +52,8 @@ public class MyWord extends BaseEntity {
     }
 
     public void minusCount() {
-        this.count--;
+        if (this.count != 0) {
+            this.count--;
+        }
     }
 }
