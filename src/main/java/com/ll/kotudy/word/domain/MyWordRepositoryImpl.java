@@ -17,7 +17,6 @@ import org.springframework.data.support.PageableExecutionUtils;
 
 import java.util.List;
 
-import static com.ll.kotudy.member.domain.QMember.member;
 import static com.ll.kotudy.word.domain.QMemberMyWord.memberMyWord;
 import static com.ll.kotudy.word.domain.QMyWord.*;
 import static io.jsonwebtoken.lang.Strings.hasText;

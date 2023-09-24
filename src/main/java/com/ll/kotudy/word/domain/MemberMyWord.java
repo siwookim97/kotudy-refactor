@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Table(name = "member_my_words")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberMyWord extends BaseEntity {
 

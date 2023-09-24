@@ -13,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "members")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
 
@@ -30,7 +31,8 @@ public class Member extends BaseEntity {
     private int score;
 
     @Enumerated(EnumType.STRING)
-    private MemberRole role; // ROLE_ADMIN, ROLE_USER, ROLE_GUEST
+    @Column(nullable = false)
+    private MemberRole role;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MemberMyWord> memberMyWords = new ArrayList<>();
@@ -52,3 +54,4 @@ public class Member extends BaseEntity {
         score += quizScore;
     }
 }
+

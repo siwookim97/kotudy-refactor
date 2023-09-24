@@ -21,8 +21,8 @@ public class TodayWordService {
     private final MyWordRepository myWordRepository;
     private final TodayWordRepository todayWordRepository;
 
-    @Scheduled(cron = "0 * * * * *")
-    //@Scheduled(cron = "0 0 0 * * *")
+//    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     public void setupTodayWordList() {
         todayWordRepository.deleteAll();
         List<TodayWord> todayWordList = createTodayWordList();

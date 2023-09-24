@@ -1,7 +1,6 @@
 package com.ll.kotudy.word.domain;
 
 import com.ll.kotudy.util.baseEntity.BaseEntity;
-import com.ll.kotudy.word.dto.response.MyWordResponse;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -11,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "my_words")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MyWord extends BaseEntity {
 
@@ -18,8 +18,13 @@ public class MyWord extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String morpheme;
+
+    @Column(nullable = false)
     private String mean;
 
     @ColumnDefault("0")
