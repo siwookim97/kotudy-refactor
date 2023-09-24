@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
-class DictionaryOpenApiServiceTest {
+class DictionaryServiceImplTest {
 
     @Autowired
-    DictionaryOpenApiService dictionaryOpenApiService;
+    DictionaryServiceImpl dictionaryService;
 
     @Test
     @DisplayName("표준한국어대사전 OpenAPI 테스트 - 검색 결과 없음, 실패1")
@@ -21,7 +21,7 @@ class DictionaryOpenApiServiceTest {
         String q = "뚫훓";
 
         // when
-        SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
+        SearchedWordsResponse response = dictionaryService.searchWords(q);
 
         // then
         assertThat(response.getMsg()).endsWith("검색 결과가 없습니다.");
@@ -35,7 +35,7 @@ class DictionaryOpenApiServiceTest {
         String q = "no reult";
 
         // when
-        SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
+        SearchedWordsResponse response = dictionaryService.searchWords(q);
         // then
         assertThat(response.getMsg()).endsWith("검색 결과가 없습니다.");
         assertThat(response.getData().size()).isEqualTo(0);
@@ -48,7 +48,7 @@ class DictionaryOpenApiServiceTest {
         String q = "사랑";
 
         // when
-        SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
+        SearchedWordsResponse response = dictionaryService.searchWords(q);
 
         // then
         assertThat(response.getMsg()).endsWith("의 검색결과는 다음과 같습니다.");

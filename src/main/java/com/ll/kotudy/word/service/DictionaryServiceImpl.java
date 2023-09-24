@@ -6,8 +6,8 @@ import com.ll.kotudy.word.dto.response.SearchedWordsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -39,7 +39,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DictionaryOpenApiService {
+public class DictionaryServiceImpl implements DictionaryService {
 
     @Value("${korean.dictionary.key}")
     private String key;
@@ -50,6 +50,7 @@ public class DictionaryOpenApiService {
     @Value("${korean.dictionary.no-result}")
     private String noResult;
 
+    @Override
     @Cacheable(cacheNames = "searchedWordsCache", key = "#q")
     public SearchedWordsResponse searchWords(String q)
             throws IOException, SAXException, ParserConfigurationException, XPathExpressionException, NoSuchAlgorithmException, KeyManagementException {
@@ -141,6 +142,7 @@ public class DictionaryOpenApiService {
             public void checkServerTrusted(X509Certificate[] certs, String authType) {
             }
         }};
+
 
         SSLContext sc;
         sc = SSLContext.getInstance("SSL");
