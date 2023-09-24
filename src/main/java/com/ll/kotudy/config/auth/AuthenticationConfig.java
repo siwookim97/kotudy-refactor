@@ -16,15 +16,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity(prePostEnabled = true)
 public class AuthenticationConfig {
 
-    private final MemberService memberService;
     private final JwtProvider jwtProvider;
     private final JwtFilter jwtFilter;
 
-    @Value("${jwt.token.secretKey}")
-    private String secretKey;
-
-    public AuthenticationConfig(MemberService memberService, JwtProvider jwtProvider) {
-        this.memberService = memberService;
+    public AuthenticationConfig(JwtProvider jwtProvider) {
         this.jwtProvider = jwtProvider;
         this.jwtFilter = new JwtFilter(jwtProvider);
     }

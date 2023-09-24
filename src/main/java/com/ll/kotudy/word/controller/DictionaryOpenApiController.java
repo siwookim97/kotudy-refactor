@@ -1,7 +1,7 @@
 package com.ll.kotudy.word.controller;
 
 import com.ll.kotudy.word.dto.response.SearchedWordsResponse;
-import com.ll.kotudy.word.service.DictionaryOpenApiService;
+import com.ll.kotudy.word.service.DictionaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("/api/v1/dictionary")
 public class DictionaryOpenApiController {
 
-    private final DictionaryOpenApiService dictionaryOpenApiService;
+    private final DictionaryService dictionaryService;
 
     @GetMapping("/word")
     public ResponseEntity<SearchedWordsResponse> search(
@@ -28,7 +28,7 @@ public class DictionaryOpenApiController {
             throws XPathExpressionException, IOException, ParserConfigurationException,
             SAXException, NoSuchAlgorithmException, KeyManagementException {
 
-        SearchedWordsResponse response = dictionaryOpenApiService.searchWords(q);
+        SearchedWordsResponse response = dictionaryService.searchWords(q);
 
         return ResponseEntity.ok(response);
     }

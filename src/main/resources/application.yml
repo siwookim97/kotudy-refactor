@@ -26,7 +26,7 @@ server:
       charset: UTF-8
       force: true
 
-
-logging.level:
-  org.hibernate.SQL: debug
-  # org.hibernate.type: trace
+#
+#logging.level:
+#  org.hibernate.SQL: debug
+#  # org.hibernate.type: trace

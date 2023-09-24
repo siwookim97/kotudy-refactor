@@ -38,7 +38,7 @@ class MemberRepositoryTest {
     }
 
     @Test
-    @DisplayName("username 값으로 회원의 존재 여부 테스트")
+    @DisplayName("username 값으로 회원 검색 테스트")
     void existsMemberByUsername() {
         // given
         Member createdMember = new Member("홍길동", "password");

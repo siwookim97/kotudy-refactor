@@ -27,7 +27,10 @@ public class MemberService {
                 .ifPresent(user -> {
                     throw new AppException(ErrorCode.USERNAME_DUPLICATED,  username + "회원님은 이미 있습니다.");
                 });
-        Member createdMember = new Member(username, encoder.encode(password));
+        Member createdMember = Member.builder()
+                .username(username)
+                .password(encoder.encode(password))
+                .build();
         memberRepository.save(createdMember);
 
         return new JoinResponse("회원 가입이 완료되었습니다.", createdMember.getId(), createdMember.getUsername());
@@ -47,3 +50,4 @@ public class MemberService {
         return new LoginResponse("로그인이 완료되었습니다.", jwtProvider.createToken(selectedMember.getUsername(), selectedMember.getId()));
     }
 }
+

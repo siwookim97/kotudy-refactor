@@ -3,6 +3,7 @@ package com.ll.kotudy.member.domain;
 import com.ll.kotudy.util.baseEntity.BaseEntity;
 import com.ll.kotudy.word.domain.MemberMyWord;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -44,6 +45,7 @@ public class Member extends BaseEntity {
         }
     }
 
+    @Builder
     public Member(String username, String password) {
         this.username = username;
         this.password = password;

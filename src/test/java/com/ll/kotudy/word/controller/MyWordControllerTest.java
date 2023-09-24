@@ -247,7 +247,7 @@ class MyWordControllerTest {
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.msg").value(("1번호의 단어 삭제를 성공하였습니다.")))
+                .andExpect(jsonPath("$.msg").value(("이름 단어 추가가 성공하였습니다.")))
                 .andDo(document("MyWord-delete-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
