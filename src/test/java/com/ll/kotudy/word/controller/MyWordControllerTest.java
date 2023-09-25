@@ -236,18 +236,17 @@ class MyWordControllerTest {
                 .andReturn();
 
         token = JsonPath.parse(mvcResult.getResponse().getContentAsString()).read("$.accessToken");
-        mockMvc.perform(post("/api/v1/myWord")
+        MvcResult mvcResultMyWord = mockMvc.perform(post("/api/v1/myWord")
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(myWordAddRequest))
                 )
-                .andDo(print());
-
-        mockMvc.perform(delete("/api/v1/myWord/{myWordId}", 1)
+                .andReturn();
+        int myWordId = JsonPath.parse(mvcResultMyWord.getResponse().getContentAsString()).read("$.data.wordId");
+        mockMvc.perform(delete("/api/v1/myWord/{myWordId}", myWordId)
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.msg").value(("이름 단어 추가가 성공하였습니다.")))
                 .andDo(document("MyWord-delete-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),

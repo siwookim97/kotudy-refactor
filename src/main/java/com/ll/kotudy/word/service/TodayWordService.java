@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TodayWordService {
 
+    private static final String TODAY_WORD_RESULT = "오늘의 단어 목록입니다.";
+
     private final MyWordRepository myWordRepository;
     private final TodayWordRepository todayWordRepository;
 
@@ -43,7 +45,7 @@ public class TodayWordService {
     public TodayWordResponse getTodayWordList() {
         List<TodayWordDto> todayWordDtoList = getTodayWordDtoList();
 
-        return new TodayWordResponse("오늘의 단어 목록입니다.", todayWordDtoList);
+        return new TodayWordResponse(TODAY_WORD_RESULT, todayWordDtoList);
     }
 
     private List<TodayWordDto> getTodayWordDtoList() {

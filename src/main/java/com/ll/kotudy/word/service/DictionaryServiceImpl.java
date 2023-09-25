@@ -41,6 +41,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DictionaryServiceImpl implements DictionaryService {
 
+    private static final String OPENAPI_SEARCH_RESULT_FORM = "표준 한국어 대사전 Open API를 통해 단어 ";
+    private static final String OPENAPI_SEARCH_FAIL = "의 검색 결과가 없습니다.";
+    private static final String OPENAPI_SEARCH_SUCCESS = "의 검색결과는 다음과 같습니다.";
+
     @Value("${korean.dictionary.key}")
     private String key;
 
@@ -66,7 +70,7 @@ public class DictionaryServiceImpl implements DictionaryService {
         String resultWord = trimXmlString(requestUrl.toString(), replacedQ);
 
         if (resultWord.contains(noResult)) {
-            String msg = "표준 한국어 대사전 Open API를 통해 단어 " + replacedQ + "의 검색 결과가 없습니다.";
+            String msg = OPENAPI_SEARCH_RESULT_FORM + replacedQ + OPENAPI_SEARCH_FAIL;
             List<SearchedWordDto> result = new ArrayList<>();
 
             return new SearchedWordsResponse(msg, result);
@@ -125,7 +129,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 
         }
 
-        searchedWordsResponse.setMsg("표준 한국어 대사전 Open API를 통해 단어 " + replacedQ + "의 검색결과는 다음과 같습니다.");
+        searchedWordsResponse.setMsg(OPENAPI_SEARCH_RESULT_FORM + replacedQ + OPENAPI_SEARCH_SUCCESS);
         searchedWordsResponse.setData(searchedWordDtoList);
         return searchedWordsResponse;
     }

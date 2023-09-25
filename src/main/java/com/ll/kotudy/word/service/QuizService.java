@@ -28,6 +28,12 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 public class QuizService {
 
+    private static final String QUIZ_CREATE_SUCCESS = "나만의 단어장을 기반으로 생성된 퀴즈입니다.";
+    private static final String QUIZ_CREATE_NOT_ENOUGH_FAIL = "퀴즈를 만들기에 충분한 단어가 없습니다.";
+    private static final String QUIZ_REFLECT_SUCCESS = "퀴즈 결과가 반영되었습니다.";
+    private static final String DO_NOT_HAVE_MEMBER_ID = " 번호의 회원이 없습니다.";
+    private static final String QUIZ_RANKING_RESULT_SUCCESS = "퀴즈 랭킹 결과입니다.";
+
     private final MyWordRepository myWordRepository;
     private final MemberRepository memberRepository;
 
@@ -40,12 +46,12 @@ public class QuizService {
                 .mapToObj(i -> createOneQuizForm(quizWordDtoList.subList(i * 4, Math.min((i + 1) * 4, quizWordDtoList.size()))))
                 .collect(Collectors.toList());
 
-        return new QuizResponse("나만의 단어장을 기반으로 생성된 퀴즈입니다.", quizFormList);
+        return new QuizResponse(QUIZ_CREATE_SUCCESS, quizFormList);
     }
 
     private void checkEnoughMyWordToCreateQuiz(List<QuizWordDto> quizWordDtoList) {
         if (quizWordDtoList.size() < 40) {
-            throw new AppException(ErrorCode.NOT_ENOUGH_MYWORD_FOR_CREATE_QUIZ, "퀴즈를 만들기에 충분한 단어가 없습니다.");
+            throw new AppException(ErrorCode.NOT_ENOUGH_MYWORD_FOR_CREATE_QUIZ, QUIZ_CREATE_NOT_ENOUGH_FAIL);
         }
     }
 
@@ -78,7 +84,7 @@ public class QuizService {
         addScore(request, findMember);
         int rank = getRankByMemberId(loginId);
 
-        return new QuizResultResponse("퀴즈 결과가 반영되었습니다.", rank, findMember.getScore());
+        return new QuizResultResponse(QUIZ_REFLECT_SUCCESS, rank, findMember.getScore());
     }
 
     private void addScore(QuizResultRequest request, Member findMember) {
@@ -88,7 +94,7 @@ public class QuizService {
 
     private Member getFindMember(Long loginId) {
         return memberRepository.findById(loginId)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, loginId + " 번호의 회원이 없습니다."));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, loginId + DO_NOT_HAVE_MEMBER_ID));
     }
     
     private int getRankByMemberId(Long loginId) {
@@ -103,7 +109,7 @@ public class QuizService {
 
         List<MemberRankingDto> memberRankingDtoList = setMemberRankingDtoList();
 
-        return new RankingResponse("퀴즈 랭킹 결과입니다.", rank, username, score, memberRankingDtoList);
+        return new RankingResponse(QUIZ_RANKING_RESULT_SUCCESS, rank, username, score, memberRankingDtoList);
     }
 
     private List<MemberRankingDto> setMemberRankingDtoList() {
@@ -116,6 +122,6 @@ public class QuizService {
     public RankingNonMemberResponse getNonMemberQuizRanking() {
         List<MemberRankingDto> memberRankingDtoList = setMemberRankingDtoList();
 
-        return new RankingNonMemberResponse("퀴즈 랭킹 결과입니다.", memberRankingDtoList);
+        return new RankingNonMemberResponse(QUIZ_RANKING_RESULT_SUCCESS, memberRankingDtoList);
     }
 }

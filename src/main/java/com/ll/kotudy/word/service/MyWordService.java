@@ -26,6 +26,14 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MyWordService {
 
+    private static final String DO_NOT_HAVE_MEMBER_ID = " 번호의 회원이 없습니다.";
+    private static final String DO_NOT_HAVE_MYWORD_ID = " 번호의 단어가 없습니다.";
+    private static final String MYWORD_ADD_SUCCESS = " 단어 추가가 성공하였습니다.";
+    private static final String MYWORD_ADD_ALREADY_FAIL = " 단어 추가가 실패하였습니다.(이미 단어장에 존재)";
+    private static final String MYWORD_DELETE_DO_NOT_SEARCH_FAIL = "번의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)";
+    private static final String MYWORD_DELETE_SUCCESS = "번호의 단어 삭제를 성공하였습니다.";
+    private static final String MYWROD_SEARCH_SUCCESS = "나만의 단어 검색 결과는 다음과 같습니다.";
+
     private final MyWordRepository myWordRepository;
     private final MemberMyWordRepository memberMyWordRepository;
     private final MemberRepository memberRepository;
@@ -55,7 +63,7 @@ public class MyWordService {
 
     private Member getFindMember(Long loginId) {
         return memberRepository.findById(loginId)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, loginId + " 번호의 회원이 없습니다."));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, loginId + DO_NOT_HAVE_MEMBER_ID));
     }
 
     private MyWord getFindMyWord(MyWordAddRequest request) {
@@ -79,7 +87,7 @@ public class MyWordService {
                 responseEntity.getMean()
         );
 
-        return new MyWordAddResponse(responseEntity.getName() + " 단어 추가가 실패하였습니다.(이미 단어장에 존재)", item);
+        return new MyWordAddResponse(responseEntity.getName() + MYWORD_ADD_ALREADY_FAIL, item);
     }
 
     private MyWordAddResponse createAddMethodReponseScuccess(MyWord responseEntity) {
@@ -90,7 +98,7 @@ public class MyWordService {
                 responseEntity.getMean()
         );
 
-        return new MyWordAddResponse(responseEntity.getName() + " 단어 추가가 성공하였습니다.", item);
+        return new MyWordAddResponse(responseEntity.getName() + MYWORD_ADD_SUCCESS, item);
     }
 
     @Transactional
@@ -109,7 +117,7 @@ public class MyWordService {
 
     private MyWord getFindMyWord(Long myWordId) {
         return myWordRepository.findById(myWordId)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, myWordId + " 번호의 단어가 없습니다."));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PASSWORD, myWordId + DO_NOT_HAVE_MYWORD_ID));
     }
 
     private void deleteIfMyWordEqualToZero(MyWord findMyWord) {
@@ -124,7 +132,7 @@ public class MyWordService {
         );
 
         return new MyWordDeleteResponse(
-                myWordId + "번의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)", item);
+                myWordId + MYWORD_DELETE_DO_NOT_SEARCH_FAIL, item);
     }
 
     private MyWordDeleteResponse createDeleteMethodReponseSuccess(MyWord responseEntity) {
@@ -135,12 +143,12 @@ public class MyWordService {
                 responseEntity.getMean()
         );
 
-        return new MyWordDeleteResponse(responseEntity.getId() + "번호의 단어 삭제를 성공하였습니다.", item);
+        return new MyWordDeleteResponse(responseEntity.getId() + MYWORD_DELETE_SUCCESS, item);
     }
 
     public MyWordSearchResponse searchByPagenation(MyWordSearchRequest condition, Pageable pageable, Long memberId) {
         Page<MyWordResponse> datum = myWordRepository.findMyWordByConditionMyWord(condition, pageable, memberId);
 
-        return new MyWordSearchResponse("나만의 단어 검색 결과는 다음과 같습니다.", datum);
+        return new MyWordSearchResponse(MYWROD_SEARCH_SUCCESS, datum);
     }
 }
