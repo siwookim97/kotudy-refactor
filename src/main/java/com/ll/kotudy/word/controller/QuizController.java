@@ -24,7 +24,7 @@ public class QuizController {
     private final JwtProvider jwtProvider;
 
     @GetMapping
-    public ResponseEntity<QuizResponse> getQuiz() {
+    public ResponseEntity<QuizResponse> createQuiz() {
         QuizResponse response = quizService.createForm();
 
         return ResponseEntity.ok(response);
