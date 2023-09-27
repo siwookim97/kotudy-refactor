@@ -25,7 +25,7 @@ class DictionaryServiceImplTest {
 
         // then
         assertThat(response.getMsg()).endsWith("검색 결과가 없습니다.");
-        assertThat(response.getData().size()).isEqualTo(0);
+        assertThat(response.getDatum().size()).isEqualTo(0);
     }
 
     @Test
@@ -38,7 +38,7 @@ class DictionaryServiceImplTest {
         SearchedWordsResponse response = dictionaryService.searchWords(q);
         // then
         assertThat(response.getMsg()).endsWith("검색 결과가 없습니다.");
-        assertThat(response.getData().size()).isEqualTo(0);
+        assertThat(response.getDatum().size()).isEqualTo(0);
     }
 
     @Test
@@ -52,6 +52,6 @@ class DictionaryServiceImplTest {
 
         // then
         assertThat(response.getMsg()).endsWith("의 검색결과는 다음과 같습니다.");
-        assertThat(response.getData().size()).isNotEqualTo(0);
+        assertThat(response.getDatum().size()).isNotEqualTo(0);
     }
 }
