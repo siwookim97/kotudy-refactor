@@ -16,5 +16,5 @@ import java.util.List;
 public class SearchedWordsResponse implements Serializable {
 
     private String msg;
-    private List<SearchedWordDto> data;
+    private List<SearchedWordDto> datum;
 }

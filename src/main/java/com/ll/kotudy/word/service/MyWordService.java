@@ -31,7 +31,7 @@ public class MyWordService {
     private static final String MYWORD_ADD_SUCCESS = " 단어 추가가 성공하였습니다.";
     private static final String MYWORD_ADD_ALREADY_FAIL = " 단어 추가가 실패하였습니다.(이미 단어장에 존재)";
     private static final String MYWORD_DELETE_DO_NOT_SEARCH_FAIL = "번의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)";
-    private static final String MYWORD_DELETE_SUCCESS = "번호의 단어 삭제를 성공하였습니다.";
+    private static final String MYWORD_DELETE_SUCCESS = "번의 단어 삭제를 성공하였습니다.";
     private static final String MYWROD_SEARCH_SUCCESS = "나만의 단어 검색 결과는 다음과 같습니다.";
 
     private final MyWordRepository myWordRepository;

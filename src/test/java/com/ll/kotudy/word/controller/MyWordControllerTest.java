@@ -253,7 +253,8 @@ class MyWordControllerTest {
                         pathParameters(
                                 parameterWithName("myWordId").description("삭제 요청할 단어 ID")
                         ),
-                        requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
+                        requestHeaders(
+                                headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
                         responseFields(
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
                                 fieldWithPath("data").description("삭제를 요청한 단어의 정보").type(JsonFieldType.OBJECT),
