@@ -130,7 +130,7 @@ public class DictionaryServiceImpl implements DictionaryService {
         }
 
         searchedWordsResponse.setMsg(OPENAPI_SEARCH_RESULT_FORM + replacedQ + OPENAPI_SEARCH_SUCCESS);
-        searchedWordsResponse.setData(searchedWordDtoList);
+        searchedWordsResponse.setDatum(searchedWordDtoList);
         return searchedWordsResponse;
     }
 
