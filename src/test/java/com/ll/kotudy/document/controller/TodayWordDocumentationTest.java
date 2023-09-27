@@ -1,8 +1,10 @@
-package com.ll.kotudy.word.controller;
+package com.ll.kotudy.document.controller;
 
 import com.ll.kotudy.document.utils.DocsControllerTestBase;
+import com.ll.kotudy.word.controller.TodayWordController;
 import com.ll.kotudy.word.dto.TodayWordDto;
 import com.ll.kotudy.word.dto.response.TodayWordResponse;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -25,14 +27,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(TodayWordController.class)
-@AutoConfigureRestDocs
-@ExtendWith(RestDocumentationExtension.class)
 class TodayWordDocumentationTest extends DocsControllerTestBase {
 
     private static final String TODAYWORD_GET = "/api/v1/todayWord";
     private static final String TODAYWORD_GET_MSG = "오늘의 단어 목록입니다.";
+
     @Test
+    @DisplayName("오늘의 단어 조회 DOCS")
     public void todayWord_get() throws Exception {
         // given
         TodayWordResponse response = createTodayWordResponse();
