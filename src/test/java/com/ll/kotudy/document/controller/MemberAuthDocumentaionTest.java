@@ -57,7 +57,7 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().isOk())
-                .andDo(document("MemberAuth-join-200gggg",
+                .andDo(document("MemberAuth-join-200",
                         Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                         Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
                         requestFields(
@@ -91,7 +91,7 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().is4xxClientError())
-                .andDo(document("MemberAuth-join-4xxgggg",
+                .andDo(document("MemberAuth-join-4xx",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
@@ -156,7 +156,7 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().is4xxClientError())
-                .andDo(document("MemberAuth-login-4xx-INVALI-PASSWORD",
+                .andDo(document("MemberAuth-login-4xx-invalid-password",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
@@ -193,7 +193,7 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().is4xxClientError())
-                .andDo(document("MemberAuth-login-4xx-USER-NOT-FOUND",
+                .andDo(document("MemberAuth-login-4xx-user-not-found",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(

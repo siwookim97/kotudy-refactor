@@ -52,7 +52,7 @@ public class DictionaryDocumentationTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().isOk())
-                .andDo(document("Dictionary-word-200qqqq",
+                .andDo(document("Dictionary-word-200",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestParameters(

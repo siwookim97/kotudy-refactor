@@ -104,7 +104,7 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().isOk())
-                .andDo(document("MyWord-add-200-ALREADY-EXIST",
+                .andDo(document("MyWord-add-200-already-exist",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestHeaders(headerWithName(HttpHeaders.AUTHORIZATION).description("JWT Access 토큰")),
@@ -144,7 +144,7 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
 
         // then
         result.andExpect(status().is4xxClientError())
-                .andDo(document("MyWord-add-4xx-LOGOUTED",
+                .andDo(document("MyWord-add-4xx-logouted",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
