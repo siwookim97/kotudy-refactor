@@ -10,4 +10,5 @@ public class JoinResponse {
     private String msg;
     private Long id;
     private String username;
+    private String password;
 }

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class MemberService {
     private final BCryptPasswordEncoder encoder;
     private final JwtProvider jwtProvider;
 
+    @Transactional
     public JoinResponse join(String username, String password) {
         // username 중복 체크
         memberRepository.findByUsername(username)
@@ -39,7 +41,7 @@ public class MemberService {
                 .build();
         memberRepository.save(createdMember);
 
-        return new JoinResponse(MEMBER_JOIN_SUCCESS, createdMember.getId(), createdMember.getUsername());
+        return new JoinResponse(MEMBER_JOIN_SUCCESS, createdMember.getId(), createdMember.getUsername(), createdMember.getPassword());
     }
 
     public LoginResponse login(String username, String password) {

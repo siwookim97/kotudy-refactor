@@ -9,5 +9,4 @@ public class LoginResponse {
 
     private String msg;
     private String accessToken;
-    // private String refreshToken;
 }

@@ -9,11 +9,14 @@ import com.ll.kotudy.word.dto.response.QuizResponse;
 import com.ll.kotudy.word.dto.response.QuizResultResponse;
 import com.ll.kotudy.word.service.QuizService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,38 +27,86 @@ public class QuizController {
     private final JwtProvider jwtProvider;
 
     @GetMapping
-    public ResponseEntity<QuizResponse> createQuiz() {
+    public EntityModel<QuizResponse> createQuiz() {
         QuizResponse response = quizService.createForm();
 
-        return ResponseEntity.ok(response);
+        return toModelQuizResponse(response);
     }
 
     @PatchMapping
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<QuizResultResponse> applyQuizResult(
+    public EntityModel<QuizResultResponse> applyQuizResult(
             @RequestHeader("Authorization") TokenHeaderRequest tokenHeaderRequest,
             @RequestBody @Valid QuizResultRequest request) {
 
         QuizResultResponse response = quizService.applyScore(request, jwtProvider.getId(tokenHeaderRequest.getToken()));
 
-        return ResponseEntity.ok(response);
+        return toModelQuizResultResponse(tokenHeaderRequest, request, response);
     }
 
     @GetMapping("/ranking/nonMember")
-    public ResponseEntity<RankingNonMemberResponse> getQuizRanking_nonMember() {
+    public EntityModel<RankingNonMemberResponse> getQuizRanking_nonMember() {
 
         RankingNonMemberResponse response = quizService.getNonMemberQuizRanking();
 
-        return ResponseEntity.ok(response);
+        return toModelRankingNonMemberResponse(response);
     }
 
     @GetMapping("/ranking")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<RankingResponse> getQuizRanking(
+    public EntityModel<RankingResponse> getQuizRanking(
             @RequestHeader("Authorization") TokenHeaderRequest tokenHeaderRequest) {
 
         RankingResponse response = quizService.getQuizRaking(jwtProvider.getId(tokenHeaderRequest.getToken()));
 
-        return ResponseEntity.ok(response);
+        return toModelRankingResponse(tokenHeaderRequest, response);
+    }
+
+    private EntityModel<QuizResponse> toModelQuizResponse(QuizResponse response) {
+        return EntityModel.of(response,
+                linkTo(methodOn(QuizController.class)
+                        .createQuiz())
+                        .withSelfRel()
+                        .withType("GET"),
+                linkTo(methodOn(QuizController.class)
+                        .applyQuizResult(new TokenHeaderRequest("Authorization Token"), new QuizResultRequest(10)))
+                        .withRel("apply-quiz-result")
+                        .withType("PATCH")
+        );
+    }
+
+    private EntityModel<QuizResultResponse> toModelQuizResultResponse(
+            TokenHeaderRequest tokenHeaderRequest, QuizResultRequest request, QuizResultResponse response) {
+
+        return EntityModel.of(response,
+                linkTo(methodOn(QuizController.class)
+                        .applyQuizResult(tokenHeaderRequest, request))
+                        .withSelfRel()
+                        .withType("PATCH"),
+                linkTo(methodOn(QuizController.class)
+                        .getQuizRanking(tokenHeaderRequest))
+                        .withRel("get-quiz-ranking")
+                        .withType("GET")
+        );
+    }
+
+    private EntityModel<RankingNonMemberResponse> toModelRankingNonMemberResponse(RankingNonMemberResponse response) {
+        return EntityModel.of(response,
+                linkTo(methodOn(QuizController.class)
+                        .getQuizRanking_nonMember())
+                        .withSelfRel()
+                        .withType("GET")
+        );
+    }
+
+    private EntityModel<RankingResponse> toModelRankingResponse(
+            TokenHeaderRequest tokenHeaderRequest, RankingResponse response) {
+
+        return EntityModel.of(response,
+                linkTo(methodOn(QuizController.class)
+                        .getQuizRanking(tokenHeaderRequest))
+                        .withSelfRel()
+                        .withType("GET")
+        );
     }
 }
