@@ -67,7 +67,15 @@ public class DictionaryDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum[].pos").description("찾고자 하는 단어의 품사").type(JsonFieldType.STRING),
                                 fieldWithPath("datum[].wordSenceList[]").description("해당 단어의 뜻").type(JsonFieldType.ARRAY),
                                 fieldWithPath("datum[].wordSenceList[].senseOrder").description("해당 단어의 뜻 순서").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum[].wordSenceList[].definition").description("해당 단어의 뜻").type(JsonFieldType.STRING)
+                                fieldWithPath("datum[].wordSenceList[].definition").description("해당 단어의 뜻").type(JsonFieldType.STRING),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.add-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.add-myWord.href").description("Add-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.add-myWord.type").description("Add-MyWord Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }

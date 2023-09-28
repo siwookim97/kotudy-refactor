@@ -1,16 +1,11 @@
 package com.ll.kotudy.document.controller;
 
 import com.ll.kotudy.document.utils.DocsControllerTestBase;
-import com.ll.kotudy.word.controller.TodayWordController;
 import com.ll.kotudy.word.dto.TodayWordDto;
 import com.ll.kotudy.word.dto.response.TodayWordResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -56,7 +51,14 @@ class TodayWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum").description("나만의 단어장을 기반으로 생성된 오늘의 단어 (24시, 자정 초기화)").type(JsonFieldType.ARRAY),
                                 fieldWithPath("datum[].name").description("오늘의 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("datum[].morpheme").description("오늘의 단어 품사").type(JsonFieldType.STRING),
-                                fieldWithPath("datum[].mean").description("오늘의 단어 의미").type(JsonFieldType.STRING)
+                                fieldWithPath("datum[].mean").description("오늘의 단어 의미").type(JsonFieldType.STRING),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.add-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.add-myWord.href").description("Add-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.add-myWord.type").description("Add-MyWord Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }

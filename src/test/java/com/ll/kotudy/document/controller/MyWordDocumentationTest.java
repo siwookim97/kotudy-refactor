@@ -11,7 +11,6 @@ import com.ll.kotudy.word.dto.response.MyWordResponse;
 import com.ll.kotudy.word.dto.response.MyWordSearchResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -81,7 +80,17 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.wordId").description("저장을 요청한 단어의 ID").type(JsonFieldType.NUMBER),
                                 fieldWithPath("data.name").description("저장을 요청한 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("data.morpheme").description("저장을 요청한 단어의 품사").type(JsonFieldType.STRING),
-                                fieldWithPath("data.mean").description("저장을 요청한 단어의 의미").type(JsonFieldType.STRING)
+                                fieldWithPath("data.mean").description("저장을 요청한 단어의 의미").type(JsonFieldType.STRING),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.delete-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.delete-myWord.href").description("Delete-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.delete-myWord.type").description("Delete-MyWord Hyper Link Type").ignored(),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -119,7 +128,17 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.wordId").description("저장을 요청한 단어의 ID").type(JsonFieldType.NUMBER),
                                 fieldWithPath("data.name").description("저장을 요청한 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("data.morpheme").description("저장을 요청한 단어의 품사").type(JsonFieldType.STRING),
-                                fieldWithPath("data.mean").description("저장을 요청한 단어의 의미").type(JsonFieldType.STRING)
+                                fieldWithPath("data.mean").description("저장을 요청한 단어의 의미").type(JsonFieldType.STRING),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.delete-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.delete-myWord.href").description("Delete-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.delete-myWord.type").description("Delete-MyWord Hyper Link Type").ignored(),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -192,7 +211,14 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.wordId").description("삭제를 요청한 단어의 ID").type(JsonFieldType.NUMBER),
                                 fieldWithPath("data.name").description("삭제를 요청한 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("data.morpheme").description("삭제를 요청한 단어의 품사").type(JsonFieldType.STRING),
-                                fieldWithPath("data.mean").description("삭제를 요청한 단어의 의미").type(JsonFieldType.STRING)
+                                fieldWithPath("data.mean").description("삭제를 요청한 단어의 의미").type(JsonFieldType.STRING).ignored(),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -229,7 +255,14 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.wordId").description("삭제를 요청한 단어의 ID").type(JsonFieldType.NUMBER),
                                 fieldWithPath("data.name").description("NULL").type(JsonFieldType.NULL),
                                 fieldWithPath("data.morpheme").description("NULL").type(JsonFieldType.NULL),
-                                fieldWithPath("data.mean").description("NULL").type(JsonFieldType.NULL)
+                                fieldWithPath("data.mean").description("NULL").type(JsonFieldType.NULL),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -273,19 +306,23 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum.content[].name").description("검색된 단어의 이름").type(JsonFieldType.STRING),
                                 fieldWithPath("datum.content[].morpheme").description("검색된 단어의 형태소").type(JsonFieldType.STRING),
                                 fieldWithPath("datum.content[].mean").description("검색된 단어의 의미").type(JsonFieldType.STRING),
-                                fieldWithPath("datum.pageable").description("페이징 정보").type(JsonFieldType.STRING),
-                                fieldWithPath("datum.last").description("마지막 페이지 여부").type(JsonFieldType.BOOLEAN),
-                                fieldWithPath("datum.totalPages").description("전체 페이지 수").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum.totalElements").description("전체 항목 수").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum.size").description("페이지 크기").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum.number").description("현재 페이지 번호").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum.sort").description("페이징된 결과의 정렬 정보").type(JsonFieldType.OBJECT),
-                                fieldWithPath("datum.sort.empty").description("정렬 정보가 비어있는지 여부").type(JsonFieldType.BOOLEAN),
-                                fieldWithPath("datum.sort.sorted").description("정렬된 정보가 있는지 여부").type(JsonFieldType.BOOLEAN),
-                                fieldWithPath("datum.sort.unsorted").description("정렬되지 않은 정보가 있는지 여부").type(JsonFieldType.BOOLEAN),
-                                fieldWithPath("datum.first").description("첫 번째 페이지 여부").type(JsonFieldType.BOOLEAN),
-                                fieldWithPath("datum.numberOfElements").description("현재 페이지에 포함된 항목 수").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum.empty").description("결과가 비어있는지 여부").type(JsonFieldType.BOOLEAN)
+                                fieldWithPath("datum.pageable").description("페이징 정보").ignored(),
+                                fieldWithPath("datum.last").description("마지막 페이지 여부").ignored(),
+                                fieldWithPath("datum.totalPages").description("전체 페이지 수").ignored(),
+                                fieldWithPath("datum.totalElements").description("전체 항목 수").ignored(),
+                                fieldWithPath("datum.size").description("페이지 크기").ignored(),
+                                fieldWithPath("datum.number").description("현재 페이지 번호").ignored(),
+                                fieldWithPath("datum.sort").description("페이징된 결과의 정렬 정보").ignored(),
+                                fieldWithPath("datum.sort.empty").description("정렬 정보가 비어있는지 여부").ignored(),
+                                fieldWithPath("datum.sort.sorted").description("정렬된 정보가 있는지 여부").ignored(),
+                                fieldWithPath("datum.sort.unsorted").description("정렬되지 않은 정보가 있는지 여부").ignored(),
+                                fieldWithPath("datum.first").description("첫 번째 페이지 여부").ignored(),
+                                fieldWithPath("datum.numberOfElements").description("현재 페이지에 포함된 항목 수").ignored(),
+                                fieldWithPath("datum.empty").description("결과가 비어있는지 여부").ignored(),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }

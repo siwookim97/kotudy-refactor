@@ -1,7 +1,6 @@
 package com.ll.kotudy.document.controller;
 
 import com.ll.kotudy.document.utils.DocsControllerTestBase;
-import com.ll.kotudy.member.controller.MemberAuthController;
 import com.ll.kotudy.member.dto.reqeust.MemberJoinRequest;
 import com.ll.kotudy.member.dto.reqeust.MemberLoginRequest;
 import com.ll.kotudy.member.dto.response.JoinResponse;
@@ -10,11 +9,7 @@ import com.ll.kotudy.util.exception.AppException;
 import com.ll.kotudy.util.exception.ErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.operation.preprocess.Preprocessors;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -67,7 +62,15 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
                         responseFields(
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
                                 fieldWithPath("id").description("회원가입이 완료된 회원 ID").type(JsonFieldType.NUMBER),
-                                fieldWithPath("username").description("회원가입이 완료된 회원 Password").type(JsonFieldType.STRING)
+                                fieldWithPath("username").description("회원가입이 완료된 회원 username").type(JsonFieldType.STRING),
+                                fieldWithPath("password").description("회원가입이 완료된 회원 Encoding Password").type(JsonFieldType.STRING),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.login").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.login.href").description("Login Hyper Link").ignored(),
+                                fieldWithPath("_links.login.type").description("Login Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -133,8 +136,15 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
                         ),
                         responseFields(
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
-                                fieldWithPath("accessToken").description("회원의 AccessToken").type(JsonFieldType.STRING)
-                        )))
+                                fieldWithPath("accessToken").description("회원의 AccessToken").type(JsonFieldType.STRING),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.login").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.login.href").description("Login Hyper Link").ignored(),
+                                fieldWithPath("_links.login.type").description("login Hyper Link Type").ignored()
+                                )))
                 .andDo(print());
     }
 
@@ -215,7 +225,7 @@ public class MemberAuthDocumentaionTest extends DocsControllerTestBase {
     }
 
     private JoinResponse createMemberJoinResponse() {
-        return new JoinResponse(MEMBERAUTH_JOIN_POST_MSG, 1L, "Hong-Gildong");
+        return new JoinResponse(MEMBERAUTH_JOIN_POST_MSG, 1L, "Hong-Gildong", "password");
     }
 
     private MemberLoginRequest createMemberLoginRequest() {

@@ -68,7 +68,14 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum").description("10개의 4지선다 단어 퀴즈").type(JsonFieldType.ARRAY),
                                 fieldWithPath("datum[].question").description("퀴즈 문제").type(JsonFieldType.STRING),
                                 fieldWithPath("datum[].answerIndex").description("퀴즈의 정답 Index (1~4)").type(JsonFieldType.NUMBER),
-                                fieldWithPath("datum[].choices[]").description("퀴즈의 선택지").type(JsonFieldType.ARRAY)
+                                fieldWithPath("datum[].choices[]").description("퀴즈의 선택지").type(JsonFieldType.ARRAY),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.apply-quiz-result").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.apply-quiz-result.href").description("Apply-Quiz-Result Hyper Link").ignored(),
+                                fieldWithPath("_links.apply-quiz-result.type").description("Apply-Quiz-Result Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -130,7 +137,14 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                         responseFields(
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
                                 fieldWithPath("ranking").description("점수가 적용된 회원의 랭킹").type(JsonFieldType.NUMBER),
-                                fieldWithPath("score").description("회원의 최종 점수").type(JsonFieldType.NUMBER)
+                                fieldWithPath("score").description("회원의 최종 점수").type(JsonFieldType.NUMBER),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
+                                fieldWithPath("_links.get-quiz-ranking").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.get-quiz-ranking.href").description("Get-Quiz-Ranking Hyper Link").ignored(),
+                                fieldWithPath("_links.get-quiz-ranking.type").description("Get-Quiz-Ranking Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -214,7 +228,11 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("topMemberRanking").description("퀴즈 점수 상위 랭커 10명의 정보 (같은 점수라면 가입 순으로 정렬)").type(JsonFieldType.ARRAY),
                                 fieldWithPath("topMemberRanking[].ranking").description("랭커의 순위").type(JsonFieldType.NUMBER),
                                 fieldWithPath("topMemberRanking[].username").description("랭커의 이름 ").type(JsonFieldType.STRING),
-                                fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER)
+                                fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
@@ -246,7 +264,11 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("topMemberRanking").description("퀴즈 점수 상위 랭커 10명의 정보 (같은 점수라면 가입 순으로 정렬)").type(JsonFieldType.ARRAY),
                                 fieldWithPath("topMemberRanking[].ranking").description("랭커의 순위").type(JsonFieldType.NUMBER),
                                 fieldWithPath("topMemberRanking[].username").description("랭커의 이름 ").type(JsonFieldType.STRING),
-                                fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER)
+                                fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER),
+                                fieldWithPath("_links").description("Hyper Links").ignored(),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored()
                         )))
                 .andDo(print());
     }
