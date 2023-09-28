@@ -12,19 +12,19 @@
 
 === 회원가입
 ==== 성공
-operation::Member-join-200[snippets='http-request,http-response,request-fields,response-fields']
+operation::MemberAuth-join-200[snippets='http-request,http-response,request-fields,response-fields']
 ==== 실패
 ===== 중복된 회원의 username일 경우
-operation::Member-join-4xx[snippets='http-request,http-response,response-fields']
+operation::MemberAuth-join-4xx[snippets='http-request,http-response,response-fields']
 
 === 로그인
 ==== 성공
-operation::Member-login-200[snippets='http-request,http-response,request-fields,response-fields']
+operation::MemberAuth-login-200[snippets='http-request,http-response,request-fields,response-fields']
 ==== 실패
 ===== password가 회원가입 정보와 맞지 않을경우
-operation::Member-login-4xx[snippets='http-request,http-response,response-fields']
+operation::MemberAuth-login-4xx-invalid-password[snippets='http-request,http-response,response-fields']
 ===== 회원가입을한 username이 아닐 경우
-operation::Member-login-4xx-ver2[snippets='http-request,http-response,response-fields']
+operation::MemberAuth-login-4xx-user-not-found[snippets='http-request,http-response,response-fields']
 
 
 == 단어사전
@@ -34,7 +34,7 @@ operation::Member-login-4xx-ver2[snippets='http-request,http-response,response-f
 operation::Dictionary-word-200[snippets='http-request,http-response,request-parameters,response-fields']
 ==== 실패
 ===== 파라미터가 누락 되었을 경우
-operation::Dictionary-word-500[snippets='http-request,http-response,response-fields']
+operation::Dictionary-word-5xxsnippets='http-request,http-response,response-fields']
 
 
 == 나만의 단어장
@@ -44,9 +44,9 @@ operation::Dictionary-word-500[snippets='http-request,http-response,response-fie
 operation::MyWord-add-200[snippets='http-request,http-response,request-headers,request-fields,response-fields']
 ==== 실패
 ===== 한 회원이 중복된 단어를 저장했을 경우
-operation::MyWord-add-fail[snippets='http-request,http-response,response-fields']
+operation::MyWord-add-200-already-exist[snippets='http-request,http-response,response-fields']
 ===== Header에 AccessToken을 넣지 않았을 경우
-operation::MyWord-add-4xx[snippets='http-request,http-response,response-fields']
+operation::MyWord-add-4xx-logouted[snippets='http-request,http-response,response-fields']
 
 === 나만의 단어장에서 삭제
 ==== 성공
@@ -67,16 +67,14 @@ operation::MyWord-search-200[snippets='http-request,http-response,request-header
 operation::Quiz-craete-200[snippets='http-request,http-response,response-fields']
 ==== 실패
 ===== 퀴즈를 만들기에 충분한 나만의 단어가 DB에 없을경우 (최소 40개)
-operation::Quiz-craete-500[snippets='http-request,http-response,response-fields']
+operation::Quiz-craete-5xx[snippets='http-request,http-response,response-fields']
 
 === 퀴즈 결과 반영
 ==== 성공
 operation::Quiz-patch-200[snippets='http-request,http-response,request-headers,request-fields,response-fields']
 ==== 실패
 ===== body의 형식이 문자형일 경우
-operation::Quiz-patch-500[snippets='http-request,http-response,response-fields']
-===== body에 올바른 값을 넣지 않았을 경우
-operation::Quiz-patch-500-ver2[snippets='http-request,http-response,response-fields']
+operation::Quiz-patch-5xx[snippets='http-request,http-response,response-fields']
 
 
 == 랭킹

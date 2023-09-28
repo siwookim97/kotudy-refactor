@@ -498,12 +498,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/join HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 60
+Content-Length: 63
 Host: localhost:8080
 
 {
-  "username" : "홍길동",
-  "password" : "qwer1234"
+  "username" : "Hong-Gildong",
+  "password" : "password"
 }</code></pre>
 </div>
 </div>
@@ -517,18 +517,20 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 99
+Content-Length: 102
 
 {
   "msg" : "회원 가입이 완료되었습니다.",
-  "id" : 4,
-  "username" : "홍길동"
+  "id" : 1,
+  "username" : "Hong-Gildong"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_성공_request_fields"><a class="link" href="#_성공_request_fields">Request fields</a></h5>
+<div class="sect4">
+<h5 id="_request_fields"><a class="link" href="#_request_fields">Request Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -537,9 +539,9 @@ Content-Length: 99
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -556,8 +558,11 @@ Content-Length: 99
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect4">
 <h5 id="_성공_response_fields"><a class="link" href="#_성공_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -566,9 +571,9 @@ Content-Length: 99
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -591,6 +596,7 @@ Content-Length: 99
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="_실패"><a class="link" href="#_실패">1.1.2. 실패</a></h4>
 <div class="sect4">
@@ -601,12 +607,12 @@ Content-Length: 99
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/join HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 60
+Content-Length: 63
 Host: localhost:8080
 
 {
-  "username" : "홍길동",
-  "password" : "qwer1234"
+  "username" : "Hong-Gildong",
+  "password" : "password"
 }</code></pre>
 </div>
 </div>
@@ -620,19 +626,21 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 162
+Content-Length: 165
 
 {
-  "timeStamp" : "2023-09-10T11:19:54.902+00:00",
+  "timeStamp" : "2023-09-28T09:38:27.943+00:00",
   "httpStatus" : "CONFLICT",
   "errorCode" : 409,
-  "msg" : "홍길동회원님은 이미 있습니다."
+  "msg" : "Hong-Gildong회원님은 이미 있습니다."
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_중복된_회원의_username일_경우_response_fields"><a class="link" href="#_중복된_회원의_username일_경우_response_fields">Response fields</a></h6>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -641,9 +649,9 @@ Content-Length: 162
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -673,6 +681,7 @@ Content-Length: 162
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_로그인"><a class="link" href="#_로그인">1.2. 로그인</a></h3>
 <div class="sect3">
@@ -683,12 +692,12 @@ Content-Length: 162
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/login HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 60
+Content-Length: 63
 Host: localhost:8080
 
 {
-  "username" : "홍길동",
-  "password" : "qwer1234"
+  "username" : "Hong-Gildong",
+  "password" : "password"
 }</code></pre>
 </div>
 </div>
@@ -702,17 +711,19 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 228
+Content-Length: 136
 
 {
   "msg" : "로그인이 완료되었습니다.",
-  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoxLCJpYXQiOjE2OTQzNDQ3OTQsImV4cCI6MTY5NDM0NTc5NH0.J-QXpCXgtEXWUrzQaXghsU7d3RyJN4gnI4o-lmqWI1k"
+  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_성공_2_request_fields"><a class="link" href="#_성공_2_request_fields">Request fields</a></h5>
+<div class="sect4">
+<h5 id="_request_fields"><a class="link" href="#_request_fields">Request Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -721,9 +732,9 @@ Content-Length: 228
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -740,8 +751,11 @@ Content-Length: 228
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect4">
 <h5 id="_성공_2_response_fields"><a class="link" href="#_성공_2_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -750,9 +764,9 @@ Content-Length: 228
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -770,6 +784,7 @@ Content-Length: 228
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="_실패_2"><a class="link" href="#_실패_2">1.2.2. 실패</a></h4>
 <div class="sect4">
@@ -780,96 +795,18 @@ Content-Length: 228
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/login HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 59
+Content-Length: 63
 Host: localhost:8080
 
 {
-  "username" : "Hong Gildong",
-  "password" : "qwer"
+  "username" : "Hong-Gildong",
+  "password" : "password"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_password가_회원가입_정보와_맞지_않을경우_http_response"><a class="link" href="#_password가_회원가입_정보와_맞지_않을경우_http_response">HTTP response</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 400 Bad Request
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/json;charset=UTF-8
-Content-Length: 163
-
-{
-  "timeStamp" : "2023-09-10T11:19:54.728+00:00",
-  "httpStatus" : "BAD_REQUEST",
-  "errorCode" : 400,
-  "msg" : "Hong Gildong회원이(가) 없습니다."
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_password가_회원가입_정보와_맞지_않을경우_response_fields"><a class="link" href="#_password가_회원가입_정보와_맞지_않을경우_response_fields">Response fields</a></h6>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeStamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API 요청 시간</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>httpStatus</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 상태 메시지</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>errorCode</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 에러 코드</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_회원가입을한_username이_아닐_경우"><a class="link" href="#_회원가입을한_username이_아닐_경우">회원가입을한 username이 아닐 경우</a></h5>
-<div class="sect5">
-<h6 id="_회원가입을한_username이_아닐_경우_http_request"><a class="link" href="#_회원가입을한_username이_아닐_경우_http_request">HTTP request</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/login HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Content-Length: 56
-Host: localhost:8080
-
-{
-  "username" : "홍길동",
-  "password" : "qwer"
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_회원가입을한_username이_아닐_경우_http_response"><a class="link" href="#_회원가입을한_username이_아닐_경우_http_response">HTTP response</a></h6>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 401 Unauthorized
@@ -880,7 +817,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 166
 
 {
-  "timeStamp" : "2023-09-10T11:19:54.632+00:00",
+  "timeStamp" : "2023-09-28T09:38:27.875+00:00",
   "httpStatus" : "UNAUTHORIZED",
   "errorCode" : 401,
   "msg" : "패스워드를 잘못 입력했습니다."
@@ -889,7 +826,9 @@ Content-Length: 166
 </div>
 </div>
 <div class="sect5">
-<h6 id="_회원가입을한_username이_아닐_경우_response_fields"><a class="link" href="#_회원가입을한_username이_아닐_경우_response_fields">Response fields</a></h6>
+<h6 id="_password가_회원가입_정보와_맞지_않을경우_response_fields"><a class="link" href="#_password가_회원가입_정보와_맞지_않을경우_response_fields">Response fields</a></h6>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -898,9 +837,9 @@ Content-Length: 166
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -926,6 +865,88 @@ Content-Length: 166
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_회원가입을한_username이_아닐_경우"><a class="link" href="#_회원가입을한_username이_아닐_경우">회원가입을한 username이 아닐 경우</a></h5>
+<div class="sect5">
+<h6 id="_회원가입을한_username이_아닐_경우_http_request"><a class="link" href="#_회원가입을한_username이_아닐_경우_http_request">HTTP request</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/member/login HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 63
+Host: localhost:8080
+
+{
+  "username" : "Hong-Gildong",
+  "password" : "password"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_회원가입을한_username이_아닐_경우_http_response"><a class="link" href="#_회원가입을한_username이_아닐_경우_http_response">HTTP response</a></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 400 Bad Request
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+Content-Length: 163
+
+{
+  "timeStamp" : "2023-09-28T09:38:27.853+00:00",
+  "httpStatus" : "BAD_REQUEST",
+  "errorCode" : 400,
+  "msg" : "Hong-Gildong회원이(가) 없습니다."
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_회원가입을한_username이_아닐_경우_response_fields"><a class="link" href="#_회원가입을한_username이_아닐_경우_response_fields">Response fields</a></h6>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeStamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API 요청 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>httpStatus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 상태 메시지</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>errorCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 에러 코드</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -957,261 +978,21 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 8524
+Content-Length: 474
 
 {
-  "msg" : "표준 한국어 대사전 Open API를 통해 단어 사랑의 검색결과는 다음과 같습니다.",
-  "data" : [ {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
+  "msg" : "표준 한국어 대사전 Open API를 통해 단어 하늘의 검색결과는 다음과 같습니다.",
+  "datum" : [ {
+    "targetCode" : 20311,
+    "word" : "하늘",
+    "pronunciation" : "하늘",
     "pos" : "명사",
     "wordSenceList" : [ {
       "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
+      "definition" : "땅 위로 펼쳐진 무한히 넓은 공간."
     }, {
       "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
-    } ]
-  }, {
-    "targetCode" : 66649,
-    "word" : "사랑",
-    "pronunciation" : "사랑",
-    "pos" : "명사",
-    "wordSenceList" : [ {
-      "senseOrder" : 1,
-      "definition" : "상대에게 성적으로 매력을 느껴 열렬히 좋아하는 마음."
-    }, {
-      "senseOrder" : 2,
-      "definition" : "아끼고 소중히 여겨 정성을 다해 위하는 마음."
-    }, {
-      "senseOrder" : 3,
-      "definition" : "남을 돕고 이해하려는 마음."
-    }, {
-      "senseOrder" : 4,
-      "definition" : "무엇을 매우 좋아하거나 즐기는 마음."
-    }, {
-      "senseOrder" : 5,
-      "definition" : "많이 좋아하고 아끼는 사람."
+      "definition" : "절대적인 존재, 하느님."
     } ]
   } ]
 }</code></pre>
@@ -1241,6 +1022,8 @@ Content-Length: 8524
 </div>
 <div class="sect4">
 <h5 id="_성공_3_response_fields"><a class="link" href="#_성공_3_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1249,9 +1032,9 @@ Content-Length: 8524
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -1261,120 +1044,56 @@ Content-Length: 8524
 <td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">한국어 대사전으로 찾은 동음 이의어들의 집합</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].targetCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].targetCode</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">찾고자 하는 단어의 한국어 대사전 TargetCode</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].word</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].word</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">찾고자 하는 단어</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].pronunciation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].pronunciation</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">찾고자 하는 단어의 발음</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].pos</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].pos</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">찾고자 하는 단어의 품사</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].wordSenceList[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].wordSenceList[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">해당 단어의 뜻</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].wordSenceList[].senseOrder</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].wordSenceList[].senseOrder</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">해당 단어의 뜻 순서</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data[].wordSenceList[].definition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum[].wordSenceList[].definition</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">해당 단어의 뜻</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_실패_3"><a class="link" href="#_실패_3">2.1.2. 실패</a></h4>
 <div class="sect4">
 <h5 id="_파라미터가_누락_되었을_경우"><a class="link" href="#_파라미터가_누락_되었을_경우">파라미터가 누락 되었을 경우</a></h5>
-<div class="sect5">
-<h6 id="_파라미터가_누락_되었을_경우_http_request"><a class="link" href="#_파라미터가_누락_되었을_경우_http_request">HTTP request</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/dictionary/word?q= HTTP/1.1
-Host: localhost:8080</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_파라미터가_누락_되었을_경우_http_response"><a class="link" href="#_파라미터가_누락_되었을_경우_http_response">HTTP response</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 500 Internal Server Error
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/json;charset=UTF-8
-Content-Length: 175
-
-{
-  "timeStamp" : "2023-09-10T11:19:56.536+00:00",
-  "httpStatus" : "INTERNAL_SERVER_ERROR",
-  "errorCode" : 500,
-  "msg" : "서버에서 에러가 발생했습니다."
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_파라미터가_누락_되었을_경우_response_fields"><a class="link" href="#_파라미터가_누락_되었을_경우_response_fields">Response fields</a></h6>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeStamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API 요청 시간</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>httpStatus</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 상태 메시지</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>errorCode</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 에러 코드</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>operation::Dictionary-word-5xxsnippets='http-request,http-response,response-fields']</p>
 </div>
 </div>
 </div>
@@ -1394,12 +1113,12 @@ Content-Length: 175
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo4LCJpYXQiOjE2OTQzNDQ3OTcsImV4cCI6MTY5NDM0NTc5N30.eE1iHd9cJVGqwi_WZLwnsS7bhXQdOzHFp1LdgEoS_34
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
 Content-Length: 73
 Host: localhost:8080
 
 {
-  "name" : "이름",
+  "name" : "단어",
   "morpheme" : "품사",
   "mean" : "의미"
 }</code></pre>
@@ -1415,13 +1134,13 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 178
+Content-Length: 184
 
 {
-  "msg" : "이름 단어 추가가 성공하였습니다.",
+  "msg" : "단어이름 단어 추가가 성공하였습니다.",
   "data" : {
-    "wordId" : 2,
-    "name" : "이름",
+    "wordId" : 1,
+    "name" : "단어",
     "morpheme" : "품사",
     "mean" : "의미"
   }
@@ -1452,6 +1171,8 @@ Content-Length: 178
 </div>
 <div class="sect4">
 <h5 id="_성공_4_request_fields"><a class="link" href="#_성공_4_request_fields">Request fields</a></h5>
+<div class="sect4">
+<h5 id="_request_fields"><a class="link" href="#_request_fields">Request Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1460,9 +1181,9 @@ Content-Length: 178
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -1484,8 +1205,11 @@ Content-Length: 178
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect4">
 <h5 id="_성공_4_response_fields"><a class="link" href="#_성공_4_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1494,9 +1218,9 @@ Content-Length: 178
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -1534,6 +1258,7 @@ Content-Length: 178
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="_실패_4"><a class="link" href="#_실패_4">3.1.2. 실패</a></h4>
 <div class="sect4">
@@ -1544,14 +1269,14 @@ Content-Length: 178
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoxMCwiaWF0IjoxNjk0MzQ0Nzk3LCJleHAiOjE2OTQzNDU3OTd9.PD_HTm2POmTAhXgT9Zh5kFNoPHiOzCrTUIL_fl7CJZk
-Content-Length: 71
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
+Content-Length: 73
 Host: localhost:8080
 
 {
-  "name" : "name",
-  "morpheme" : "morpheme",
-  "mean" : "mean"
+  "name" : "단어",
+  "morpheme" : "품사",
+  "mean" : "의미"
 }</code></pre>
 </div>
 </div>
@@ -1565,15 +1290,15 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 202
+Content-Length: 200
 
 {
-  "msg" : "name 단어 추가가 실패하였습니다.(이미 단어장에 존재)",
+  "msg" : " 단어 추가가 실패하였습니다.(이미 단어장에 존재)",
   "data" : {
-    "wordId" : 3,
-    "name" : "name",
-    "morpheme" : "morpheme",
-    "mean" : "mean"
+    "wordId" : 1,
+    "name" : "단어",
+    "morpheme" : "품사",
+    "mean" : "의미"
   }
 }</code></pre>
 </div>
@@ -1581,6 +1306,8 @@ Content-Length: 202
 </div>
 <div class="sect5">
 <h6 id="_한_회원이_중복된_단어를_저장했을_경우_response_fields"><a class="link" href="#_한_회원이_중복된_단어를_저장했을_경우_response_fields">Response fields</a></h6>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1589,9 +1316,9 @@ Content-Length: 202
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -1629,6 +1356,7 @@ Content-Length: 202
 </table>
 </div>
 </div>
+</div>
 <div class="sect4">
 <h5 id="_header에_accesstoken을_넣지_않았을_경우"><a class="link" href="#_header에_accesstoken을_넣지_않았을_경우">Header에 AccessToken을 넣지 않았을 경우</a></h5>
 <div class="sect5">
@@ -1637,13 +1365,13 @@ Content-Length: 202
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/myWord HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 71
+Content-Length: 73
 Host: localhost:8080
 
 {
-  "name" : "name",
-  "morpheme" : "morpheme",
-  "mean" : "mean"
+  "name" : "단어",
+  "morpheme" : "품사",
+  "mean" : "의미"
 }</code></pre>
 </div>
 </div>
@@ -1660,7 +1388,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 170
 
 {
-  "timeStamp" : "2023-09-10T11:19:57.214+00:00",
+  "timeStamp" : "2023-09-28T09:38:28.056+00:00",
   "httpStatus" : "BAD_REQUEST",
   "errorCode" : 400,
   "msg" : "올바른 요청 Header 형식이 아닙니다."
@@ -1670,6 +1398,8 @@ Content-Length: 170
 </div>
 <div class="sect5">
 <h6 id="_header에_accesstoken을_넣지_않았을_경우_response_fields"><a class="link" href="#_header에_accesstoken을_넣지_않았을_경우_response_fields">Response fields</a></h6>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1678,9 +1408,9 @@ Content-Length: 170
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -1710,6 +1440,7 @@ Content-Length: 170
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_나만의_단어장에서_삭제"><a class="link" href="#_나만의_단어장에서_삭제">3.2. 나만의 단어장에서 삭제</a></h3>
 <div class="sect3">
@@ -1719,7 +1450,8 @@ Content-Length: 170
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/myWord/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo2LCJpYXQiOjE2OTQzNDQ3OTYsImV4cCI6MTY5NDM0NTc5Nn0.VbJ-HnVfptprn6xr8nuni1DH_VoiAn1_v1s5hjokQtA
+Content-Type: application/json;charset=UTF-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -1733,13 +1465,13 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 182
+Content-Length: 179
 
 {
-  "msg" : "1번호의 단어 삭제를 성공하였습니다.",
+  "msg" : "1번의 단어 삭제를 성공하였습니다.",
   "data" : {
     "wordId" : 1,
-    "name" : "이름",
+    "name" : "단어",
     "morpheme" : "품사",
     "mean" : "의미"
   }
@@ -1770,6 +1502,8 @@ Content-Length: 182
 </div>
 <div class="sect4">
 <h5 id="_성공_5_response_fields"><a class="link" href="#_성공_5_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1778,9 +1512,9 @@ Content-Length: 182
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -1818,91 +1552,28 @@ Content-Length: 182
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="_실패_5"><a class="link" href="#_실패_5">3.2.2. 실패</a></h4>
 <div class="sect4">
 <h5 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우">삭제를 요청하는 단어의 ID가 단어장에 없을 경우</a></h5>
 <div class="sect5">
 <h6 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_request"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_request">HTTP request</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/myWord/10 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjo3LCJpYXQiOjE2OTQzNDQ3OTYsImV4cCI6MTY5NDM0NTc5Nn0.bzXnLwi1m_5rCbtpIqrCee7qSDQe7GOUdTOSxgU5lxw
-Host: localhost:8080</code></pre>
-</div>
+<div class="paragraph">
+<p>Snippet http-request not found for operation::MyWord-delete-fail</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_response"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우_http_response">HTTP response</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/json;charset=UTF-8
-Content-Length: 230
-
-{
-  "msg" : "10번의 단어 삭제가 실패하였습니다. (나만의 단어장에 존재하지 않는 단어입니다)",
-  "data" : {
-    "wordId" : 10,
-    "name" : null,
-    "morpheme" : null,
-    "mean" : null
-  }
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>Snippet http-response not found for operation::MyWord-delete-fail</p>
 </div>
 </div>
 <div class="sect5">
 <h6 id="_삭제를_요청하는_단어의_id가_단어장에_없을_경우_response_fields"><a class="link" href="#_삭제를_요청하는_단어의_id가_단어장에_없을_경우_response_fields">Response fields</a></h6>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">삭제를 요청한 단어의 정보</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.wordId</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">삭제를 요청한 단어의 ID</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.morpheme</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.mean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NULL</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Snippet response-fields not found for operation::MyWord-delete-fail</p>
+</div>
 </div>
 </div>
 </div>
@@ -1917,7 +1588,7 @@ Content-Length: 230
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/myWord?page=0&amp;count=10 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iu2Zjeq4uOuPmSIsImlkIjoxMSwiaWF0IjoxNjk0MzQ0Nzk3LCJleHAiOjE2OTQzNDU3OTd9.Gn3XfUVZw1xuuQ5iCbnFY0YgVLIzqj-BkyL01iEjcm8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
 Content-Length: 41
 Host: localhost:8080
 
@@ -1937,38 +1608,22 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 874
+Content-Length: 532
 
 {
   "msg" : "나만의 단어 검색 결과는 다음과 같습니다.",
   "datum" : {
     "content" : [ {
-      "wordId" : 6,
-      "name" : "name2",
-      "morpheme" : "morpheme2",
-      "mean" : "mean2"
-    }, {
-      "wordId" : 16,
-      "name" : "name12",
-      "morpheme" : "morpheme12",
-      "mean" : "mean12"
+      "wordId" : 1,
+      "name" : "단어",
+      "morpheme" : "품사",
+      "mean" : "의미"
     } ],
-    "pageable" : {
-      "sort" : {
-        "empty" : true,
-        "sorted" : false,
-        "unsorted" : true
-      },
-      "offset" : 0,
-      "pageSize" : 10,
-      "pageNumber" : 0,
-      "unpaged" : false,
-      "paged" : true
-    },
+    "pageable" : "INSTANCE",
+    "totalElements" : 1,
     "last" : true,
     "totalPages" : 1,
-    "totalElements" : 2,
-    "size" : 10,
+    "size" : 1,
     "number" : 0,
     "sort" : {
       "empty" : true,
@@ -1976,7 +1631,7 @@ Content-Length: 874
       "unsorted" : true
     },
     "first" : true,
-    "numberOfElements" : 2,
+    "numberOfElements" : 1,
     "empty" : false
   }
 }</code></pre>
@@ -2031,6 +1686,8 @@ Content-Length: 874
 </div>
 <div class="sect4">
 <h5 id="_성공_6_request_fields"><a class="link" href="#_성공_6_request_fields">Request fields</a></h5>
+<div class="sect4">
+<h5 id="_request_fields"><a class="link" href="#_request_fields">Request Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2039,9 +1696,9 @@ Content-Length: 874
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2058,8 +1715,11 @@ Content-Length: 874
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect4">
 <h5 id="_성공_6_response_fields"><a class="link" href="#_성공_6_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2068,9 +1728,9 @@ Content-Length: 874
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2111,53 +1771,8 @@ Content-Length: 874
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">페이징 정보</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.sort</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">페이징된 결과의 정렬 정보</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.sort.empty</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">정렬 정보가 비어있는지 여부</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.sort.sorted</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">정렬된 정보가 있는지 여부</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.sort.unsorted</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">정렬되지 않은 정보가 있는지 여부</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.offset</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">페이지 시작 오프셋</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.pageNumber</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">현재 페이지 번호</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.pageSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">페이지당 항목 수</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.paged</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">페이징 여부</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.pageable.unpaged</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">페이징되지 않음 여부</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>datum.last</code></p></td>
@@ -2226,6 +1841,7 @@ Content-Length: 874
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_퀴즈"><a class="link" href="#_퀴즈">4. 퀴즈</a></h2>
 <div class="sectionbody">
@@ -2238,6 +1854,7 @@ Content-Length: 874
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz HTTP/1.1
+Content-Type: application/json;charset=UTF-8
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2251,50 +1868,50 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 1282
+Content-Length: 1389
 
 {
   "msg" : "나만의 단어장을 기반으로 생성된 퀴즈입니다.",
   "datum" : [ {
-    "question" : "mean1",
-    "answerIndex" : 4,
-    "choices" : [ "name32", "name20", "name2", "name1" ]
-  }, {
-    "question" : "mean7",
-    "answerIndex" : 4,
-    "choices" : [ "name10", "name19", "name27", "name7" ]
-  }, {
-    "question" : "mean3",
-    "answerIndex" : 2,
-    "choices" : [ "name28", "name3", "name18", "name11" ]
-  }, {
-    "question" : "mean30",
-    "answerIndex" : 2,
-    "choices" : [ "name33", "name30", "name34", "name17" ]
-  }, {
-    "question" : "mean37",
-    "answerIndex" : 4,
-    "choices" : [ "name8", "name31", "name35", "name37" ]
-  }, {
-    "question" : "mean6",
+    "question" : "의미4",
     "answerIndex" : 1,
-    "choices" : [ "name6", "name0", "name9", "name16" ]
+    "choices" : [ "단어4", "단어5", "단어6", "단어7" ]
   }, {
-    "question" : "mean15",
-    "answerIndex" : 3,
-    "choices" : [ "name22", "name39", "name15", "name29" ]
+    "question" : "의미8",
+    "answerIndex" : 1,
+    "choices" : [ "단어8", "단어9", "단어10", "단어11" ]
   }, {
-    "question" : "mean12",
-    "answerIndex" : 2,
-    "choices" : [ "name13", "name12", "name4", "name24" ]
+    "question" : "의미12",
+    "answerIndex" : 1,
+    "choices" : [ "단어12", "단어13", "단어14", "단어15" ]
   }, {
-    "question" : "mean14",
-    "answerIndex" : 2,
-    "choices" : [ "name26", "name14", "name36", "name23" ]
+    "question" : "의미16",
+    "answerIndex" : 1,
+    "choices" : [ "단어16", "단어17", "단어18", "단어19" ]
   }, {
-    "question" : "mean5",
-    "answerIndex" : 2,
-    "choices" : [ "name21", "name5", "name38", "name25" ]
+    "question" : "의미20",
+    "answerIndex" : 1,
+    "choices" : [ "단어20", "단어21", "단어22", "단어23" ]
+  }, {
+    "question" : "의미24",
+    "answerIndex" : 1,
+    "choices" : [ "단어24", "단어25", "단어26", "단어27" ]
+  }, {
+    "question" : "의미28",
+    "answerIndex" : 1,
+    "choices" : [ "단어28", "단어29", "단어30", "단어31" ]
+  }, {
+    "question" : "의미32",
+    "answerIndex" : 1,
+    "choices" : [ "단어32", "단어33", "단어34", "단어35" ]
+  }, {
+    "question" : "의미36",
+    "answerIndex" : 1,
+    "choices" : [ "단어36", "단어37", "단어38", "단어39" ]
+  }, {
+    "question" : "의미40",
+    "answerIndex" : 1,
+    "choices" : [ "단어40", "단어41", "단어42", "단어43" ]
   } ]
 }</code></pre>
 </div>
@@ -2302,6 +1919,8 @@ Content-Length: 1282
 </div>
 <div class="sect4">
 <h5 id="_성공_7_response_fields"><a class="link" href="#_성공_7_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2310,9 +1929,9 @@ Content-Length: 1282
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2345,6 +1964,7 @@ Content-Length: 1282
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="_실패_6"><a class="link" href="#_실패_6">4.1.2. 실패</a></h4>
 <div class="sect4">
@@ -2354,6 +1974,7 @@ Content-Length: 1282
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz HTTP/1.1
+Content-Type: application/json;charset=UTF-8
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2370,7 +1991,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 189
 
 {
-  "timeStamp" : "2023-09-10T11:19:59.094+00:00",
+  "timeStamp" : "2023-09-28T09:38:28.151+00:00",
   "httpStatus" : "INTERNAL_SERVER_ERROR",
   "errorCode" : 500,
   "msg" : "퀴즈를 만들기에 충분한 단어가 없습니다."
@@ -2380,6 +2001,8 @@ Content-Length: 189
 </div>
 <div class="sect5">
 <h6 id="_퀴즈를_만들기에_충분한_나만의_단어가_db에_없을경우_최소_40개_response_fields"><a class="link" href="#_퀴즈를_만들기에_충분한_나만의_단어가_db에_없을경우_최소_40개_response_fields">Response fields</a></h6>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2388,9 +2011,9 @@ Content-Length: 189
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2420,6 +2043,7 @@ Content-Length: 189
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_퀴즈_결과_반영"><a class="link" href="#_퀴즈_결과_반영">4.2. 퀴즈 결과 반영</a></h3>
 <div class="sect3">
@@ -2430,7 +2054,7 @@ Content-Length: 189
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjoxMiwiaWF0IjoxNjk0MzQ0Nzk3LCJleHAiOjE2OTQzNDU3OTd9.uNR1G4PkS2axx_elLr6Y_llsaJwSu5pcbqNTBzw00DA
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
 Content-Length: 19
 Host: localhost:8080
 
@@ -2482,6 +2106,8 @@ Content-Length: 91
 </div>
 <div class="sect4">
 <h5 id="_성공_8_request_fields"><a class="link" href="#_성공_8_request_fields">Request fields</a></h5>
+<div class="sect4">
+<h5 id="_request_fields"><a class="link" href="#_request_fields">Request Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2490,9 +2116,9 @@ Content-Length: 91
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2504,8 +2130,11 @@ Content-Length: 91
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect4">
 <h5 id="_성공_8_response_fields"><a class="link" href="#_성공_8_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2514,9 +2143,9 @@ Content-Length: 91
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2539,6 +2168,7 @@ Content-Length: 91
 </table>
 </div>
 </div>
+</div>
 <div class="sect3">
 <h4 id="_실패_7"><a class="link" href="#_실패_7">4.2.2. 실패</a></h4>
 <div class="sect4">
@@ -2549,7 +2179,7 @@ Content-Length: 91
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjoxMywiaWF0IjoxNjk0MzQ0Nzk4LCJleHAiOjE2OTQzNDU3OTh9.GYLew9FB7pA7DcI0xHteh1aYQkwMJPkTAjfT715ELwk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
 Content-Length: 23
 Host: localhost:8080
 
@@ -2571,7 +2201,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 175
 
 {
-  "timeStamp" : "2023-09-10T11:19:58.584+00:00",
+  "timeStamp" : "2023-09-28T09:38:28.204+00:00",
   "httpStatus" : "INTERNAL_SERVER_ERROR",
   "errorCode" : 500,
   "msg" : "서버에서 에러가 발생했습니다."
@@ -2581,79 +2211,8 @@ Content-Length: 175
 </div>
 <div class="sect5">
 <h6 id="_body의_형식이_문자형일_경우_response_fields"><a class="link" href="#_body의_형식이_문자형일_경우_response_fields">Response fields</a></h6>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeStamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API 요청 시간</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>httpStatus</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 상태 메시지</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>errorCode</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP 에러 코드</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>msg</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">응답 메시지</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <div class="sect4">
-<h5 id="_body에_올바른_값을_넣지_않았을_경우"><a class="link" href="#_body에_올바른_값을_넣지_않았을_경우">body에 올바른 값을 넣지 않았을 경우</a></h5>
-<div class="sect5">
-<h6 id="_body에_올바른_값을_넣지_않았을_경우_http_request"><a class="link" href="#_body에_올바른_값을_넣지_않았을_경우_http_request">HTTP request</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/quiz HTTP/1.1
-Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Iuq5gOq4uOuPmSIsImlkIjoxNiwiaWF0IjoxNjk0MzQ0Nzk5LCJleHAiOjE2OTQzNDU3OTl9.Yvtui-6hkPcmTBuwfSGcBnuf95JXbUGp2rZtOHS6Rr0
-Host: localhost:8080</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_body에_올바른_값을_넣지_않았을_경우_http_response"><a class="link" href="#_body에_올바른_값을_넣지_않았을_경우_http_response">HTTP response</a></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 500 Internal Server Error
-Vary: Origin
-Vary: Access-Control-Request-Method
-Vary: Access-Control-Request-Headers
-Content-Type: application/json;charset=UTF-8
-Content-Length: 175
-
-{
-  "timeStamp" : "2023-09-10T11:19:59.373+00:00",
-  "httpStatus" : "INTERNAL_SERVER_ERROR",
-  "errorCode" : 500,
-  "msg" : "서버에서 에러가 발생했습니다."
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_body에_올바른_값을_넣지_않았을_경우_response_fields"><a class="link" href="#_body에_올바른_값을_넣지_않았을_경우_response_fields">Response fields</a></h6>
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2662,9 +2221,9 @@ Content-Length: 175
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2690,6 +2249,7 @@ Content-Length: 175
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -2722,14 +2282,26 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 152
+Content-Length: 388
 
 {
   "msg" : "퀴즈 랭킹 결과입니다.",
   "topMemberRanking" : [ {
     "ranking" : 1,
-    "username" : "홍길동",
-    "score" : 0
+    "username" : "1번 사람",
+    "score" : 9
+  }, {
+    "ranking" : 2,
+    "username" : "2번 사람",
+    "score" : 8
+  }, {
+    "ranking" : 3,
+    "username" : "3번 사람",
+    "score" : 7
+  }, {
+    "ranking" : 4,
+    "username" : "4번 사람",
+    "score" : 6
   } ]
 }</code></pre>
 </div>
@@ -2737,6 +2309,8 @@ Content-Length: 152
 </div>
 <div class="sect4">
 <h5 id="_성공_9_response_fields"><a class="link" href="#_성공_9_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2745,9 +2319,9 @@ Content-Length: 152
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2781,6 +2355,7 @@ Content-Length: 152
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_퀴즈_랭킹_출력_회원"><a class="link" href="#_퀴즈_랭킹_출력_회원">5.2. 퀴즈 랭킹 출력 (회원)</a></h3>
 <div class="sect3">
@@ -2791,7 +2366,7 @@ Content-Length: 152
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/quiz/ranking HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IuydtOq4uOuPmSIsImlkIjoxNywiaWF0IjoxNjk0MzQ0Nzk5LCJleHAiOjE2OTQzNDU3OTl9.GYzzQ-2DnZegkiuMq89E805goBeVCE3TlGCIk7tluu4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmNhQ5uHZELuMKK_1O_Wcd9lx0aggkg
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2805,17 +2380,29 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 223
+Content-Length: 461
 
 {
   "msg" : "퀴즈 랭킹 결과입니다.",
   "userRanking" : 1,
-  "username" : "이길동",
-  "userScore" : 0,
+  "username" : "1번 사람",
+  "userScore" : 9,
   "topMemberRanking" : [ {
     "ranking" : 1,
-    "username" : "이길동",
-    "score" : 0
+    "username" : "1번 사람",
+    "score" : 9
+  }, {
+    "ranking" : 2,
+    "username" : "2번 사람",
+    "score" : 8
+  }, {
+    "ranking" : 3,
+    "username" : "3번 사람",
+    "score" : 7
+  }, {
+    "ranking" : 4,
+    "username" : "4번 사람",
+    "score" : 6
   } ]
 }</code></pre>
 </div>
@@ -2844,6 +2431,8 @@ Content-Length: 223
 </div>
 <div class="sect4">
 <h5 id="_성공_10_response_fields"><a class="link" href="#_성공_10_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2852,9 +2441,9 @@ Content-Length: 223
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -2905,6 +2494,7 @@ Content-Length: 223
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_오늘의_단어"><a class="link" href="#_오늘의_단어">6. 오늘의 단어</a></h2>
 <div class="sectionbody">
@@ -2917,6 +2507,8 @@ Content-Length: 223
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/todayWord HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2930,50 +2522,18 @@ Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
 Content-Type: application/json;charset=UTF-8
-Content-Length: 908
+Content-Length: 264
 
 {
   "msg" : "오늘의 단어 목록입니다.",
   "datum" : [ {
-    "name" : "name9",
-    "morpheme" : "morpheme9",
-    "mean" : "mean9"
+    "name" : "1번 단어",
+    "morpheme" : "1번 품사",
+    "mean" : "1번 의미"
   }, {
-    "name" : "name8",
-    "morpheme" : "morpheme8",
-    "mean" : "mean8"
-  }, {
-    "name" : "name7",
-    "morpheme" : "morpheme7",
-    "mean" : "mean7"
-  }, {
-    "name" : "name3",
-    "morpheme" : "morpheme3",
-    "mean" : "mean3"
-  }, {
-    "name" : "name1",
-    "morpheme" : "morpheme1",
-    "mean" : "mean1"
-  }, {
-    "name" : "name5",
-    "morpheme" : "morpheme5",
-    "mean" : "mean5"
-  }, {
-    "name" : "name6",
-    "morpheme" : "morpheme6",
-    "mean" : "mean6"
-  }, {
-    "name" : "name0",
-    "morpheme" : "morpheme0",
-    "mean" : "mean0"
-  }, {
-    "name" : "name4",
-    "morpheme" : "morpheme4",
-    "mean" : "mean4"
-  }, {
-    "name" : "name2",
-    "morpheme" : "morpheme2",
-    "mean" : "mean2"
+    "name" : "2번 단어",
+    "morpheme" : "2번 품사",
+    "mean" : "2번 의미"
   } ]
 }</code></pre>
 </div>
@@ -2981,6 +2541,8 @@ Content-Length: 908
 </div>
 <div class="sect4">
 <h5 id="_성공_11_response_fields"><a class="link" href="#_성공_11_response_fields">Response fields</a></h5>
+<div class="sect4">
+<h5 id="_response_fields"><a class="link" href="#_response_fields">Response Fields</a></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2989,9 +2551,9 @@ Content-Length: 908
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Path</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
@@ -3028,10 +2590,11 @@ Content-Length: 908
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-09-10 20:18:32 +0900
+Last updated 2023-09-28 18:37:54 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
