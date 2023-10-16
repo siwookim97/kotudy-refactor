@@ -54,12 +54,131 @@
 <br>
 
 ## 📄 API 문서
-
-
-
 각 기능들의 호출 방법은 다음 API 문서를 통해 확인할 수 있습니다.
 
 **[API 명세](https://siwookim97.github.io/kotudy-refactor/src/main/resources/static/docs/index.html)**
+
+<br>
+
+## 📁 프로젝트 구조
+```bash
+├─java
+│  └─com
+│      └─ll
+│          └─kotudy
+│              │  KotudyRefactorApplication.java
+│              │  
+│              ├─config
+│              │  │  CacheConfig.java
+│              │  │  EncoderConfig.java
+│              │  │  JpaAuditingConfig.java
+│              │  │  QuerydslConfig.java
+│              │  │  WebConfig.java
+│              │  │  
+│              │  └─auth
+│              │          AuthenticationConfig.java
+│              │          JwtFilter.java
+│              │          JwtProvider.java
+│              │          
+│              ├─logging
+│              │      CacheEventLogger.java
+│              │      LoggingAspect.java
+│              │      
+│              ├─member
+│              │  ├─controller
+│              │  │      MemberController.java
+│              │  │      
+│              │  ├─domain
+│              │  │      Member.java
+│              │  │      MemberRepository.java
+│              │  │      MemberRole.java
+│              │  │      
+│              │  ├─dto
+│              │  │  ├─reqeust
+│              │  │  │      MemberJoinRequest.java
+│              │  │  │      MemberLoginRequest.java
+│              │  │  │      TokenHeaderRequest.java
+│              │  │  │      
+│              │  │  └─response
+│              │  │          JoinResponse.java
+│              │  │          LoginResponse.java
+│              │  │          SearchMemberResponse.java
+│              │  │          
+│              │  └─service
+│              │          MemberService.java
+│              │          
+│              ├─util
+│              │  ├─baseEntity
+│              │  │      BaseEntity.java
+│              │  │      
+│              │  └─exception
+│              │          AppException.java
+│              │          ErrorCode.java
+│              │          ErrorResponse.java
+│              │          GlobalExceptionHandler.java
+│              │          
+│              └─word
+│                  ├─controller
+│                  │      DictionaryController.java
+│                  │      MyWordController.java
+│                  │      QuizController.java
+│                  │      TodayWordController.java
+│                  │      
+│                  ├─domain
+│                  │      MemberMyWord.java
+│                  │      MemberMyWordRepository.java
+│                  │      MyWord.java
+│                  │      MyWordRepository.java
+│                  │      MyWordRepositoryCustom.java
+│                  │      MyWordRepositoryImpl.java
+│                  │      TodayWord.java
+│                  │      TodayWordRepository.java
+│                  │      
+│                  ├─dto
+│                  │  │  MemberRankingDto.java
+│                  │  │  QuizForm.java
+│                  │  │  QuizWordDto.java
+│                  │  │  SearchedWordDto.java
+│                  │  │  TodayWordDto.java
+│                  │  │  WordSenceDto.java
+│                  │  │  
+│                  │  ├─request
+│                  │  │      MyWordAddRequest.java
+│                  │  │      MyWordSearchRequest.java
+│                  │  │      QuizResultRequest.java
+│                  │  │      
+│                  │  └─response
+│                  │          MyWordAddResponse.java
+│                  │          MyWordDeleteResponse.java
+│                  │          MyWordResponse.java
+│                  │          MyWordSearchResponse.java
+│                  │          QuizResponse.java
+│                  │          QuizResultResponse.java
+│                  │          RankingNonMemberResponse.java
+│                  │          RankingResponse.java
+│                  │          SearchedWordsResponse.java
+│                  │          TodayWordResponse.java
+│                  │          
+│                  └─service
+│                          DictionaryService.java
+│                          DictionaryServiceImpl.java
+│                          MyWordService.java
+│                          QuizService.java
+│                          TodayWordService.java
+│                          
+└─resources
+    │  application-redis.yml
+    │  application-secret.yml
+    │  application.yml
+    │  ehcache.xml
+    │  
+    ├─META-INF
+    ├─static
+    │  └─docs
+    │          index.html
+    │          
+    └─templates
+```
 
 <br>
 
