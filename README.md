@@ -184,5 +184,4 @@
 
 ## 🛠 기술 스택
 
-![kotudy-stack](https://github.com/siwookim97/kotudy-refactor/assets/72070679/d6562257-3790-46ee-9cb2-8a5f0b9f4180)
-
+![image](https://github.com/siwookim97/kotudy-refactor/assets/72070679/62a65918-9ec3-46ab-a8e5-f3205ccc80aa)
