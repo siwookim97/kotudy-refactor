@@ -12,7 +12,7 @@
 
 === 회원가입
 ==== 성공
-operation::MemberAuth-join-200[snippets='http-request,http-response,request-fields,response-fields']
+operation::MemberAuth-join-201[snippets='http-request,http-response,request-fields,response-fields']
 ==== 실패
 ===== 중복된 회원의 username일 경우
 operation::MemberAuth-join-4xx[snippets='http-request,http-response,response-fields']
@@ -26,6 +26,9 @@ operation::MemberAuth-login-4xx-invalid-password[snippets='http-request,http-res
 ===== 회원가입을한 username이 아닐 경우
 operation::MemberAuth-login-4xx-user-not-found[snippets='http-request,http-response,response-fields']
 
+=== 회원조회(ID)
+==== 성공
+operation::MemberAuth-search-id-200[snippets='http-request,http-response,request-fields,response-fields']
 
 == 단어사전
 
