@@ -81,16 +81,16 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.name").description("저장을 요청한 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("data.morpheme").description("저장을 요청한 단어의 품사").type(JsonFieldType.STRING),
                                 fieldWithPath("data.mean").description("저장을 요청한 단어의 의미").type(JsonFieldType.STRING),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.delete-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.delete-myWord.href").description("Delete-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.delete-myWord.type").description("Delete-MyWord Hyper Link Type").ignored(),
-                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.delete-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.delete-myWord.href").description("Delete-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.delete-myWord.type").description("Delete-MyWord Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -129,16 +129,16 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.name").description("저장을 요청한 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("data.morpheme").description("저장을 요청한 단어의 품사").type(JsonFieldType.STRING),
                                 fieldWithPath("data.mean").description("저장을 요청한 단어의 의미").type(JsonFieldType.STRING),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.delete-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.delete-myWord.href").description("Delete-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.delete-myWord.type").description("Delete-MyWord Hyper Link Type").ignored(),
-                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.delete-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.delete-myWord.href").description("Delete-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.delete-myWord.type").description("Delete-MyWord Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -212,13 +212,13 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.name").description("삭제를 요청한 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("data.morpheme").description("삭제를 요청한 단어의 품사").type(JsonFieldType.STRING),
                                 fieldWithPath("data.mean").description("삭제를 요청한 단어의 의미").type(JsonFieldType.STRING).ignored(),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -256,13 +256,13 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("data.name").description("NULL").type(JsonFieldType.NULL),
                                 fieldWithPath("data.morpheme").description("NULL").type(JsonFieldType.NULL),
                                 fieldWithPath("data.mean").description("NULL").type(JsonFieldType.NULL),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.search-myWord.href").description("Search-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.search-myWord.type").description("Search-MyWord Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -319,10 +319,10 @@ public class MyWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum.first").description("첫 번째 페이지 여부").ignored(),
                                 fieldWithPath("datum.numberOfElements").description("현재 페이지에 포함된 항목 수").ignored(),
                                 fieldWithPath("datum.empty").description("결과가 비어있는지 여부").ignored(),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }

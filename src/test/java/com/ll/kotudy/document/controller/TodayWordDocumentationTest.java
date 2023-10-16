@@ -52,13 +52,13 @@ class TodayWordDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum[].name").description("오늘의 단어").type(JsonFieldType.STRING),
                                 fieldWithPath("datum[].morpheme").description("오늘의 단어 품사").type(JsonFieldType.STRING),
                                 fieldWithPath("datum[].mean").description("오늘의 단어 의미").type(JsonFieldType.STRING),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.add-myWord").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.add-myWord.href").description("Add-MyWord Hyper Link").ignored(),
-                                fieldWithPath("_links.add-myWord.type").description("Add-MyWord Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.add-myWord").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.add-myWord.href").description("Add-MyWord Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.add-myWord.type").description("Add-MyWord Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }

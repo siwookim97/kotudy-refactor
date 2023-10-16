@@ -69,13 +69,13 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("datum[].question").description("퀴즈 문제").type(JsonFieldType.STRING),
                                 fieldWithPath("datum[].answerIndex").description("퀴즈의 정답 Index (1~4)").type(JsonFieldType.NUMBER),
                                 fieldWithPath("datum[].choices[]").description("퀴즈의 선택지").type(JsonFieldType.ARRAY),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.apply-quiz-result").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.apply-quiz-result.href").description("Apply-Quiz-Result Hyper Link").ignored(),
-                                fieldWithPath("_links.apply-quiz-result.type").description("Apply-Quiz-Result Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.apply-quiz-result").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.apply-quiz-result.href").description("Apply-Quiz-Result Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.apply-quiz-result.type").description("Apply-Quiz-Result Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -138,13 +138,13 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("msg").description("응답 메시지").type(JsonFieldType.STRING),
                                 fieldWithPath("ranking").description("점수가 적용된 회원의 랭킹").type(JsonFieldType.NUMBER),
                                 fieldWithPath("score").description("회원의 최종 점수").type(JsonFieldType.NUMBER),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored(),
-                                fieldWithPath("_links.get-quiz-ranking").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.get-quiz-ranking.href").description("Get-Quiz-Ranking Hyper Link").ignored(),
-                                fieldWithPath("_links.get-quiz-ranking.type").description("Get-Quiz-Ranking Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.get-quiz-ranking").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.get-quiz-ranking.href").description("Get-Quiz-Ranking Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.get-quiz-ranking.type").description("Get-Quiz-Ranking Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -229,10 +229,10 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("topMemberRanking[].ranking").description("랭커의 순위").type(JsonFieldType.NUMBER),
                                 fieldWithPath("topMemberRanking[].username").description("랭커의 이름 ").type(JsonFieldType.STRING),
                                 fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
@@ -265,10 +265,10 @@ public class QuizDocumentationTest extends DocsControllerTestBase {
                                 fieldWithPath("topMemberRanking[].ranking").description("랭커의 순위").type(JsonFieldType.NUMBER),
                                 fieldWithPath("topMemberRanking[].username").description("랭커의 이름 ").type(JsonFieldType.STRING),
                                 fieldWithPath("topMemberRanking[].score").description("랭커의 점수").type(JsonFieldType.NUMBER),
-                                fieldWithPath("_links").description("Hyper Links").ignored(),
-                                fieldWithPath("_links.self").description("Hyper Link 이름").ignored(),
-                                fieldWithPath("_links.self.href").description("Self Hyper Link").ignored(),
-                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").ignored()
+                                fieldWithPath("_links").description("Hyper Links").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self").description("Hyper Link 이름").type(JsonFieldType.OBJECT),
+                                fieldWithPath("_links.self.href").description("Self Hyper Link").type(JsonFieldType.STRING),
+                                fieldWithPath("_links.self.type").description("Self Hyper Link Type").type(JsonFieldType.STRING)
                         )))
                 .andDo(print());
     }
