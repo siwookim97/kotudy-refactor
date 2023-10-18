@@ -2,18 +2,15 @@ package com.ll.kotudy.logging;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.*;
 
+@Slf4j
 @Aspect
 @Component
-@Slf4j
 public class LoggingAspect {
 
     @Pointcut("execution(* com.ll.kotudy.*.controller.*Controller.*(..))")
@@ -24,7 +21,6 @@ public class LoggingAspect {
     @Before("loggingTarget()")
     public void logRequest(final JoinPoint joinPoint) {
         CodeSignature signature = (CodeSignature) joinPoint.getSignature();
-
         log.info("[Request] Controller: {} / Method: {} / Arguments: {}",
                 joinPoint.getTarget().getClass().getSimpleName(),
                 signature.getName(),
