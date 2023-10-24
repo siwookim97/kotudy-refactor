@@ -14,7 +14,10 @@ import java.util.List;
 
 @Entity
 @Getter
-@Table(name = "members")
+@Table(name = "members"
+        , indexes = {
+        @Index(name = "idx__username", columnList = "username", unique = true)
+})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
 

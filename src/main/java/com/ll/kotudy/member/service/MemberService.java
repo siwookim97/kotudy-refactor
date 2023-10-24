@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional(readOnly = true)
 public class MemberService {
 
     private static final String MEMBER_JOIN_ALREADY_FAIL = "회원님은 이미 있습니다.";
@@ -40,7 +41,8 @@ public class MemberService {
                 });
         Member createdMember = Member.builder()
                 .username(username)
-                .password(encoder.encode(password))
+//                .password(encoder.encode(password))
+                .password(password)
                 .build();
         memberRepository.save(createdMember);
 
@@ -53,7 +55,10 @@ public class MemberService {
                 .orElseThrow(() -> new AppException(ErrorCode.BODY_BAD_REQUEST, username + MEMBER_LOGIN_DO_NOT_EXIST_FAIL));
 
         // password 틀림
-        if (!encoder.matches(password, selectedMember.getPassword())) {
+//        if (!encoder.matches(password, selectedMember.getPassword())) {
+//            throw new AppException(ErrorCode.INVALID_PASSWORD, MEMBER_LOGIN_WRONG_PASSWORD_FAIL);
+//        }
+        if (!password.equals(selectedMember.getPassword())) {
             throw new AppException(ErrorCode.INVALID_PASSWORD, MEMBER_LOGIN_WRONG_PASSWORD_FAIL);
         }
 

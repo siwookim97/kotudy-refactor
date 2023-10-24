@@ -23,7 +23,7 @@ public class InitData {
             public void run(String... args) throws Exception {
                 List<Member> memberList = new ArrayList<>() {
                     {
-                        for (int i = 0 ; i < 3000000; i++) {
+                        for (int i = 0 ; i < 10000; i++) {
                             Member createdMember =Member.builder()
                                     .username(UUID.randomUUID().toString())
                                     .password(UUID.randomUUID().toString())
