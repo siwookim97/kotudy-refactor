@@ -2,10 +2,7 @@ package com.ll.kotudy.member.domain;
 
 import com.ll.kotudy.util.baseEntity.BaseEntity;
 import com.ll.kotudy.word.domain.MemberMyWord;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -16,7 +13,7 @@ import java.util.List;
 @Getter
 @Table(name = "members"
         , indexes = {
-        @Index(name = "idx__username", columnList = "username", unique = true)
+        @Index(name = "uk__username", columnList = "username", unique = true)
 })
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
